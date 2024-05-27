@@ -1,6 +1,6 @@
 import cn from 'clsx'
 
-w
+
 export function Steps({
   children,
   className,
