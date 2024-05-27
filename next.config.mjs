@@ -17,6 +17,8 @@ import { remarkMdxFrontMatter } from './plugins/remark-mdx-frontmatter.mjs'
 import { remarkMdxTitle } from './plugins/remark-mdx-title.mjs'
 import { remarkStaticImage } from './plugins/remark-static-image.mjs'
 import { remarkStructurize } from './plugins/remark-structurize.mjs'
+import { rehypeParseCodeMeta } from './plugins/rehype.mjs'
+import { rehypeExtractTocContent } from './plugins/rehype-extract-toc-content.mjs'
 
 
 
@@ -47,14 +49,16 @@ const withMDX = nextMDX({
       // [rehypeRaw, {
       //   passThrough: ['mdxjsEsm', 'mdxJsxFlowElement', 'mdxTextExpression']
       // }],
-      rehypeStringify, 
+      [rehypeParseCodeMeta, { defaultShowCopyCode: true }],
+      rehypeStringify,
       rehypeKatex,
       [rehypeShiki, {
         themes: {
           light: 'github-light',
           dark: 'github-dark'
         }
-      }]
+      }],
+      rehypeExtractTocContent,
     ],
   },
 })
