@@ -21,6 +21,7 @@ import remarkMdxDisableExplicitJsx from "./plugins/remark-mdx-disable-explicit-j
 import { remarkCustomHeadingId } from './plugins/remark-custom-heading-id.mjs'
 import { remarkHeadings } from './plugins/remark-headings.mjs'
 import { remarkLinkRewrite } from './plugins/remark-link-rewrite.mjs'
+import { remarkMdxFrontMatter } from './plugins/remark-mdx-frontmatter.mjs'
 
 
 const withMDX = nextMDX({
@@ -28,6 +29,7 @@ const withMDX = nextMDX({
   baseUrl: "./",
   options: {
     remarkPlugins: [
+      remarkMdxFrontMatter,
       remarkGfm,
       remarkParse,
       remarkRehype,
@@ -40,7 +42,9 @@ const withMDX = nextMDX({
         pattern: /\.mdx?(?:(?=[#?])|$)/,
         replace: '',
         excludeExternalLinks: true
-      }]],
+      }],
+    ],
+
     rehypePlugins: [rehypeStringify, rehypeKatex, [rehypeShiki, {
       themes: {
         light: 'github-light',
