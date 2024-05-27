@@ -1,3 +1,5 @@
+"use client"
+
 import cn from 'clsx'
 import { createContext, memo, useCallback, useContext, useState } from 'react'
 
@@ -6,7 +8,6 @@ const ctx = createContext(0)
 function useIndent() {
   return useContext(ctx)
 }
-
 
 function Tree({ children }) {
   return (

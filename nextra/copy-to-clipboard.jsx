@@ -1,3 +1,4 @@
+"use client"
 
 import { useCallback, useEffect, useState } from 'react'
 import { CheckIcon, CopyIcon } from './icons'

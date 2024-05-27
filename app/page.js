@@ -1,4 +1,4 @@
-import Callout from "@/nextra/callout";
+import {Callout} from "@/nextra/callout";
 import Image from "next/image";
 
 export default function Home() {
