@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function CopyIcon() {
+export function CopyIcon(props) {
   return (
     <svg
       width="24"
@@ -9,6 +9,7 @@ export function CopyIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"
+      {...props}
     >
       <rect
         x="9"
