@@ -20,9 +20,9 @@ export default function RootLayout({ children }) {
       <body >
         <Header />
         <Body>
-          <ThemeProvider>
+          {/* <ThemeProvider> */}
             {children}
-          </ThemeProvider>
+          {/* </ThemeProvider> */}
         </Body>
         <Footer />
       </body>
