@@ -80,7 +80,6 @@ const isImportDeclaration = node => node.data.estree.body[0].type === 'ImportDec
 const isImportFrom = node => node.data.estree.body[0].source.value === '@/nextra/icons';
 
 export const rehypeIcon = (replaces = REHYPE_ICON_DEFAULT_REPLACES) => ast => {
-    console.log("replaces", replaces)
     const imports = ast.children.filter(
         node =>
             isMdxJsEsm(node) && isImportDeclaration(node) && isImportFrom(node)
