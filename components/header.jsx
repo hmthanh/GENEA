@@ -1,5 +1,5 @@
 import React from 'react'
-import Github from './icons/Github'
+import Github from './icons/github'
 import Twitter from './icons/twitter'
 
 export default function Header() {
