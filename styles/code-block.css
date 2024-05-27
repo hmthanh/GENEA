@@ -1,6 +1,6 @@
 .nextra-code span {
-  @apply _bg-[--shiki-light-bg] _text-[--shiki-light];
-  @apply dark:_bg-[--shiki-dark-bg] dark:_text-[--shiki-dark];
+  @apply bg-[--shiki-light-bg] text-[--shiki-light];
+  @apply dark:bg-[--shiki-dark-bg] dark:text-[--shiki-dark];
 }
 
 code:not([class*="twoslash-"]) {
@@ -8,39 +8,39 @@ code:not([class*="twoslash-"]) {
   font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
 
   :not(pre) > & {
-    @apply _border-black _border-opacity-[0.04] _bg-opacity-[0.03] _bg-black _break-words _rounded-md _border _py-0.5 _px-[.25em] _text-[.9em];
-    @apply dark:_border-white/10 dark:_bg-white/10;
+    @apply border-black border-opacity-[0.04] bg-opacity-[0.03] bg-black break-words rounded-md border py-0.5 px-[.25em] text-[.9em];
+    @apply dark:border-white/10 dark:bg-white/10;
   }
 }
 
 pre code:not([class*="twoslash-"]) {
-  @apply _grid _text-sm;
+  @apply grid text-sm;
 
   &[data-line-numbers] > span {
-    @apply _pl-2;
+    @apply pl-2;
 
     &::before {
       counter-increment: line;
       content: counter(line);
-      @apply _float-left _pr-4 _text-right _min-w-[2.6rem] _text-gray-500;
+      @apply float-left pr-4 text-right min-w-[2.6rem] text-gray-500;
     }
   }
 
   & > span {
-    @apply _px-4;
+    @apply px-4;
 
     &[data-highlighted-line] {
-      @apply _bg-primary-600/10 dark:_bg-primary-600/20 !_text-primary-600/80 _shadow-[2px_0_currentColor_inset];
+      @apply bg-primary-600/10 dark:bg-primary-600/20 !text-primary-600/80 shadow-[2px0currentColorinset];
     }
 
     [data-highlighted-chars] {
-      @apply _rounded-sm _ring-2 _ring-primary-600/20 dark:_ring-primary-600/40;
-      @apply _bg-primary-600/20 dark:_bg-primary-600/40;
+      @apply rounded-sm ring-2 ring-primary-600/20 dark:ring-primary-600/40;
+      @apply bg-primary-600/20 dark:bg-primary-600/40;
     }
   }
 
   html[data-nextra-word-wrap] & {
-    @apply max-md:_whitespace-pre-wrap;
+    @apply max-md:whitespace-pre-wrap;
   }
 }
 
@@ -108,7 +108,7 @@ pre code:not([class*="twoslash-"]) {
 }
 
 .twoslash-popup-container {
-  @apply _inline-flex _flex-col _opacity-0 _absolute _transition-opacity _duration-300 _z-10 _mt-1.5 _rounded;
+  @apply inline-flex flex-col opacity-0 absolute transition-opacity duration-300 z-10 mt-1.5 rounded;
   transform: translateY(1.1em);
   background: var(--twoslash-popup-bg) !important;
   color: var(--twoslash-popup-color);
@@ -135,8 +135,8 @@ pre code:not([class*="twoslash-"]) {
 }
 
 .twoslash-popup-arrow {
-  @apply _absolute _-top-1 _border-t _border-r _size-1.5 _-rotate-45;
-  @apply _border-[--twoslash-border-color] _bg-[--twoslash-popup-bg];
+  @apply absolute -top-1 border-t border-r size-1.5 -rotate-45;
+  @apply border-[--twoslash-border-color] bg-[--twoslash-popup-bg];
   left: 1em;
   pointer-events: none;
 }
@@ -195,14 +195,14 @@ pre code:not([class*="twoslash-"]) {
 }
 
 .twoslash-completion-cursor .twoslash-completion-list {
-  @apply _absolute _left-0 _border _top-1 _rounded;
+  @apply absolute left-0 border top-1 rounded;
   transform: translate(0, 1.2em);
   background: var(--twoslash-popup-bg);
   border-color: var(--twoslash-border-color);
 }
 
 .twoslash-completion-list {
-  @apply _py-1 _px-2 _w-60;
+  @apply py-1 px-2 w-60;
   font-size: 0.8rem;
 }
 

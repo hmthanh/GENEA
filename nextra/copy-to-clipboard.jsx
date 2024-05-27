@@ -1,6 +1,6 @@
 
 import { useCallback, useEffect, useState } from 'react'
-// import { CheckIcon, CopyIcon } from '../icons/index'
+import { CheckIcon, CopyIcon } from './icons'
 import { Button } from './button'
 
 export const CopyToClipboard = ({
@@ -32,11 +32,11 @@ export const CopyToClipboard = ({
     }
   }, [getValue])
 
-  // const IconToUse = isCopied ? CheckIcon : CopyIcon
+  const IconToUse = isCopied ? CheckIcon : CopyIcon
 
   return (
     <Button onClick={handleClick} title="Copy code" tabIndex={0} {...props}>
-      {/* <IconToUse className="nextra-copy-icon pointer-events-none h-4 w-4" /> */}
+      <IconToUse className="nextra-copy-icon pointer-events-none h-4 w-4" />
     </Button>
   )
 }

@@ -2,8 +2,8 @@
 
 import cn from 'clsx'
 import { useCallback, useRef } from 'react'
-// import { WordWrapIcon } from '../icons/index'
-// import { Button, classes } from './button'
+import { WordWrapIcon } from './icons'
+import { Button, classes } from './button'
 import { CopyToClipboard } from './copy-to-clipboard'
 
 export function Pre({
@@ -15,7 +15,7 @@ export function Pre({
     icon: Icon,
     ...props
 }) {
-    const preRef = useRef(null)
+    const preRef = useRef(true)
 
     const toggleWordWrap = useCallback(() => {
         const htmlDataset = document.documentElement.dataset
@@ -73,13 +73,13 @@ export function Pre({
                     filename ? 'top-14' : 'top-2'
                 )}
             >
-                {/* <Button
+                <Button
                     onClick={toggleWordWrap}
                     className="md:hidden"
                     title="Toggle word wrap"
                 >
                     <WordWrapIcon className="h-4 w-auto" />
-                </Button> */}
+                </Button>
                 {!filename && copyButton}
             </div>
         </div>

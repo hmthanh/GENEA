@@ -20,6 +20,8 @@
     "highcharts": "^11.4.3",
     "highcharts-react-official": "^3.2.1",
     "next": "14.2.3",
+    "next-themes": "^0.3.0",
+    "postcss-lightningcss": "^1.0.0",
     "react": "^18",
     "react-dom": "^18",
     "rehype-katex": "^7.0.0",

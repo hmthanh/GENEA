@@ -1,8 +1,11 @@
 import "./globals.css";
+import "../styles/custom.css"
 import 'katex/dist/katex.min.css'
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Body from "@/components/body";
+import { ThemeProvider } from 'next-themes'
+// import { useThemeConfig } from "@/contexts/theme";
 
 export const metadata = {
   title: "GENEA",
@@ -10,12 +13,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // const themeConfig = useThemeConfig()
+
   return (
     <html lang="en">
       <body >
         <Header />
         <Body>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </Body>
         <Footer />
       </body>

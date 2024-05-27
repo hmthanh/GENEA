@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --twoslash-border-color: hsla(0, 0%, 53%, 0.533);
   --twoslash-underline-color: currentColor;

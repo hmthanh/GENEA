@@ -1,7 +1,7 @@
 // export { Button } from './button'
 // export { Callout } from './callout'
 // export { Cards } from './cardsx'
-// export { Code } from './code'
+export { Code } from './code'
 // export { CopyToClipboard } from './copy-to-clipboard'
 // export { FileTree } from './file-tree'
 export { Pre } from './pre'
