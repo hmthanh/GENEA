@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-export default function Callout() {
+export function Callout() {
     return (
         <div className="nextra-callout overflow-x-auto mt-6 flex rounded-lg border py-2 ltr:pr-4 rtl:pl-4 contrast-more:border-current contrast-more:dark:border-current border-orange-100 bg-orange-50 text-orange-800 dark:border-orange-400/30 dark:bg-orange-400/20 dark:text-orange-300">
             <div className="select-none text-xl ltr:pl-3 ltr:pr-2 rtl:pr-3 rtl:pl-2" >💡</div>

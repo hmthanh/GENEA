@@ -1,15 +1,18 @@
-import { Tab as HeadlessTab } from '@headlessui/react'
+"use client"
+
 import cn from 'clsx'
+// import { Tab as HeadlessTab } from '@headlessui/react'
 import { useCallback, useEffect, useState } from 'react'
+import { Tab as TabUI, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
 
 function isTabObjectItem(item) {
   return !!item && 'label' in item
 }
 
-function Tabs({
+export function Tabs({
   items,
-  selectedIndex: selectedIndex,
+  selectedIndex: tabIndex,
   defaultIndex = 0,
   onChange,
   children,
@@ -18,10 +21,10 @@ function Tabs({
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex)
 
   useEffect(() => {
-    if (selectedIndex !== undefined) {
-      setSelectedIndex(selectedIndex)
+    if (tabIndex !== undefined) {
+      setSelectedIndex(tabIndex)
     }
-  }, [selectedIndex])
+  }, [tabIndex])
 
   useEffect(() => {
     if (!storageKey) {
@@ -61,17 +64,17 @@ function Tabs({
   }, []) // eslint-disable-line react-hooks/exhaustive-deps -- only on mount
 
   return (
-    <HeadlessTab.Group
+    <TabGroup
       selectedIndex={selectedIndex}
       defaultIndex={defaultIndex}
       onChange={handleChange}
     >
       <div className="nextra-scrollbar overflow-x-auto overflow-y-hidden overscroll-x-contain">
-        <HeadlessTab.List className="mt-4 flex w-max min-w-full border-b border-gray-200 pb-px dark:border-neutral-800">
+        <TabList className="mt-4 flex w-max min-w-full border-b border-gray-200 pb-px dark:border-neutral-800">
           {items.map((item, index) => {
             const disabled = isTabObjectItem(item) && item.disabled
             return (
-              <HeadlessTab
+              <Tab
                 key={index}
                 disabled={disabled}
                 className={({ selected }) =>
@@ -87,25 +90,25 @@ function Tabs({
                 }
               >
                 {isTabObjectItem(item) ? item.label : item}
-              </HeadlessTab>
+              </Tab>
             )
           })}
-        </HeadlessTab.List>
+        </TabList>
       </div>
-      <HeadlessTab.Panels>{children}</HeadlessTab.Panels>
-    </HeadlessTab.Group>
+      <TabPanels>{children}</TabPanels>
+    </TabGroup>
   )
 }
 
-function Tab({
+export function Tab({
   children,
   ...props
 }) {
   return (
-    <HeadlessTab.Panel {...props} className="rounded pt-6">
+    <TabPanel {...props} className="rounded pt-6">
       {children}
-    </HeadlessTab.Panel>
+    </TabPanel>
   )
 }
 
-export const Tabs = Object.assign(Tabs, { displayName: 'Tabs', Tab })
+// export const Tabs = Object.assign(Tabs, { displayName: 'Tabs', Tab })
