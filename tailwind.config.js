@@ -14,6 +14,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./nextra/**/*.{js,ts,jsx,tsx,mdx}",
     "./config/**/*.{js,jsx}",
     "./contexts/**/*.{js,jsx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",

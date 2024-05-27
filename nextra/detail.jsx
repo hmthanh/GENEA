@@ -1,8 +1,9 @@
 "use client"
 
 import cn from 'clsx'
-import { useEffect, useMemo, useState } from 'react'
+import { Children, useEffect, useMemo, useState } from 'react'
 import { Collapse } from './collapse'
+import { Summary } from '.'
 
 
 export function Details({

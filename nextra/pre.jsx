@@ -4,7 +4,7 @@ import cn from 'clsx'
 import { useCallback, useRef } from 'react'
 import { Button, classes } from './button'
 import { CopyToClipboard } from './copy-to-clipboard'
-import { WordWrapIcon } from './icons/wordwrap.jsx'
+import { WordWrapIcon } from './icons/wordwrap'
 
 export function Pre({
     children,

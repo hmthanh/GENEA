@@ -15,20 +15,22 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
-import rehypePrettyCode from 'rehype-pretty-code'
 import { remarkMermaid } from '@theguild/remark-mermaid'
 import rehypeShiki from '@shikijs/rehype'
+import remarkMdxDisableExplicitJsx from "./plugins/remark-mdx-disable-explicit-jsx.mjs"
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
+  baseUrl: "./",
   options: {
-    remarkPlugins: [remarkGfm, remarkParse, remarkRehype, remarkMath, remarkMermaid],
+    remarkPlugins: [remarkGfm, remarkParse, remarkRehype, remarkMath, remarkMermaid, remarkMdxDisableExplicitJsx],
     rehypePlugins: [rehypeStringify, rehypeKatex, [rehypeShiki, {
       themes: {
         light: 'github-light',
         dark: 'github-dark'
       }
-    }]],
+    }]
+    ],
   },
 })
 

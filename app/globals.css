@@ -4,31 +4,6 @@
 
 
 :root {
-  --twoslash-border-color: hsla(0, 0%, 53%, 0.533);
-  --twoslash-underline-color: currentColor;
-  --twoslash-highlighted-border: rgba(195, 125, 13, 0.314);
-  --twoslash-highlighted-bg: rgba(195, 125, 13, 0.125);
-  --twoslash-popup-bg: #f8f8f8;
-  --twoslash-popup-color: inherit;
-  --twoslash-popup-shadow: #000 0px 1px 4px;
-  --twoslash-docs-color: #888;
-  --twoslash-docs-font: sans-serif;
-  --twoslash-code-font: inherit;
-  --twoslash-code-font-size: 1em;
-  --twoslash-matched-color: inherit;
-  --twoslash-unmatched-color: #888;
-  --twoslash-cursor-color: hsla(0, 0%, 53%, 0.533);
-  --twoslash-error-color: #d45656;
-  --twoslash-error-bg: rgba(212, 86, 86, 0.125);
-  --twoslash-tag-color: #3772cf;
-  --twoslash-tag-bg: rgba(55, 114, 207, 0.125);
-  --twoslash-tag-warn-color: #c37d0d;
-  --twoslash-tag-warn-bg: rgba(195, 125, 13, 0.125);
-  --twoslash-tag-annotate-color: #1ba673;
-  --twoslash-tag-annotate-bg: rgba(27, 166, 115, 0.125);
-}
-
-:root {
   --nextra-primary-hue: 212deg;
   --nextra-primary-saturation: 100%;
   --nextra-navbar-height: 4rem;

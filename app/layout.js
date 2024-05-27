@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./index.css";
 import "../styles/custom.css"
 import 'katex/dist/katex.min.css'
 import Header from "@/components/header";
@@ -16,15 +17,18 @@ export default function RootLayout({ children }) {
   // const themeConfig = useThemeConfig()
 
   return (
-    <html lang="en">
-      <body >
-        <Header />
-        <Body>
-          {/* <ThemeProvider> */}
+    // <html lang="en">
+    <html lang="en" className="js-focus-visible light" suppressHydrationWarning={true} dir="ltr" style={{ colorScheme: "light" }} >
+      <body className="nextra-banner-hidden">
+        <div dir="ltr">
+          <Header />
+          <Body>
+            <ThemeProvider>
             {children}
-          {/* </ThemeProvider> */}
-        </Body>
-        <Footer />
+            </ThemeProvider>
+          </Body>
+          <Footer />
+        </div>
       </body>
     </html>
   );
