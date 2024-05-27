@@ -1,5 +1,5 @@
 import { Anchor } from "@/nextra/anchor"
-import { Tr, Th, Td, Pre, Code } from "@/nextra"
+import { Tr, Th, Td, Pre, Code, Table, Details, Summary } from "@/nextra"
 import cn from 'clsx'
 
 const EXTERNALHREFREGEX = /https?:\/\//
@@ -36,6 +36,38 @@ export function useMDXComponents(components) {
                 {...props}
             />
         ),
+        h3: props => (
+            <h3
+                className={
+                    cn("font-semibold tracking-tight text-slate-900 dark:text-slate-100",
+                        "mt-8 text-2xl")}
+                {...props}
+            />
+        ),
+        h4: props => (
+            <h4
+                className={
+                    cn("font-semibold tracking-tight text-slate-900 dark:text-slate-100",
+                        "mt-8 text-xl")}
+                {...props}
+            />
+        ),
+        h5: props => (
+            <h5
+                className={
+                    cn("font-semibold tracking-tight text-slate-900 dark:text-slate-100",
+                        "mt-8 text-lg")}
+                {...props}
+            />
+        ),
+        h6: props => (
+            <h6
+                className={
+                    cn("font-semibold tracking-tight text-slate-900 dark:text-slate-100",
+                        "mt-8 text-base")}
+                {...props}
+            />
+        ),
         ul: ({ children }) => (
             <ul
                 className="mt-6 list-disc first:mt-0 ltr:ml-6 rtl:mr-6"
@@ -66,15 +98,15 @@ export function useMDXComponents(components) {
             />
         ),
         a: Link,
-        // table: props => (
-        //     <Table className="nextra-scrollbar mt-6 p-0 first:mt-0" {...props} />
-        // ),
+        table: props => (
+            <Table className="nextra-scrollbar mt-6 p-0 first:mt-0" {...props} />
+        ),
         p: props => <p className="mt-6 leading-7 first:mt-0" {...props} />,
         tr: Tr,
         th: Th,
         td: Td,
-        // details: Details,
-        // summary: Summary,
+        details: Details,
+        summary: Summary,
         pre: Pre,
         code: Code,
         ...components,
