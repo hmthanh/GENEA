@@ -15,3 +15,7 @@ export function createAstExportConst(name, value) {
         }
     }
 }
+
+export function pageTitleFromFilename(fileName) {
+    return title(fileName.replaceAll(/[-_]/g, ' '), { special: ['SSR'] })
+}
