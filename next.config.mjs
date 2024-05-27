@@ -25,8 +25,6 @@ import { rehypeIcon } from './plugins/rehype-icon.mjs'
 // import { recmaRewriteFunctionBody } from './plugins/recma-rewrite-function-body.mjs'
 
 
-
-
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   baseUrl: "./",
@@ -68,7 +66,7 @@ const withMDX = nextMDX({
           ],
         }
       ],
-      
+
       [rehypeParseCodeMeta, { defaultShowCopyCode: true }],
       rehypeStringify,
       rehypeKatex,
@@ -138,5 +136,6 @@ const withMDX = nextMDX({
 })
 
 export default withMDX({
+  output: 'export',
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 })
