@@ -1,4 +1,6 @@
 
+"use client"
+
 export function ExpandIcon({
   isOpen,
   ...props

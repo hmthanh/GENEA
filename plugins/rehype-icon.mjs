@@ -33,7 +33,7 @@ function createImport(iconName) {
                 body: [
                     {
                         type: 'ImportDeclaration',
-                        source: { type: 'Literal', value: 'nextra/icons' },
+                        source: { type: 'Literal', value: '@/nextra/icons' },
                         specifiers: [
                             {
                                 type: 'ImportSpecifier',
@@ -77,9 +77,10 @@ function attachIconProp(node, iconName) {
 
 const isMdxJsEsm = node => node.type === 'mdxjsEsm';
 const isImportDeclaration = node => node.data.estree.body[0].type === 'ImportDeclaration';
-const isImportFrom = node => node.data.estree.body[0].source.value === 'nextra/icons';
+const isImportFrom = node => node.data.estree.body[0].source.value === '@/nextra/icons';
 
 export const rehypeIcon = (replaces = REHYPE_ICON_DEFAULT_REPLACES) => ast => {
+    console.log("replaces", replaces)
     const imports = ast.children.filter(
         node =>
             isMdxJsEsm(node) && isImportDeclaration(node) && isImportFrom(node)

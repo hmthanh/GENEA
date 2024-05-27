@@ -1,6 +1,8 @@
+"use client"
+
 import React from 'react'
 
-export function CheckIcon() {
+export function CheckIcon(props) {
   return (
     <svg
       viewBox="0 0 20 20"
@@ -8,6 +10,7 @@ export function CheckIcon() {
       height="1em"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fillRule="evenodd"

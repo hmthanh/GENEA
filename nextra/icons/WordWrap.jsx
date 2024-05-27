@@ -1,12 +1,16 @@
+"use client"
+
 import React from 'react'
 
-export function WordWrapIcon() {
+export function WordWrapIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
       width="24"
       height="24"
       xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      {...props}
     >
       <path
         fill="currentColor"
