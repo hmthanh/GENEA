@@ -2,7 +2,7 @@ import cn from 'clsx'
 
 export function Code({
     children,
-    className,  
+    className,
     'data-language': _language,
     ...props
 }) {

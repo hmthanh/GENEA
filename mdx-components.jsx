@@ -1,3 +1,9 @@
+import { Anchor } from "@/nextra/anchor"
+import { Tr, Th, Td } from "@/nextra"
+import cn from 'clsx'
+// import { Pre } from "./nextra/pre"
+// import { Code } from "./nextra/code"
+
 const EXTERNALHREFREGEX = /https?:\/\//
 
 export const Link = ({ href = '', className, ...props }) => (
@@ -53,11 +59,18 @@ export function useMDXComponents(components) {
                 {...props}
             />
         ),
-        // a: Link,
+        a: Link,
         // table: props => (
         //     <Table className="nextra-scrollbar mt-6 p-0 first:mt-0" {...props} />
         // ),
         p: props => <p className="mt-6 leading-7 first:mt-0" {...props} />,
+        tr: Tr,
+        th: Th,
+        td: Td,
+        // details: Details,
+        // summary: Summary,
+        // pre: Pre,
+        // code: Code,
         ...components,
     }
 }

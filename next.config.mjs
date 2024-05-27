@@ -17,12 +17,18 @@ import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import rehypePrettyCode from 'rehype-pretty-code'
 import { remarkMermaid } from '@theguild/remark-mermaid'
+import rehypeShiki from '@shikijs/rehype'
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm, remarkParse, remarkRehype,remarkMath, remarkMermaid],
-    rehypePlugins: [rehypeStringify, rehypeKatex,rehypePrettyCode],
+    remarkPlugins: [remarkGfm, remarkParse, remarkRehype, remarkMath, remarkMermaid],
+    rehypePlugins: [rehypeStringify, rehypeKatex, [rehypeShiki, {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      }
+    }]],
   },
 })
 

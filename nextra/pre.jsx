@@ -1,8 +1,10 @@
+"use client"
+
 import cn from 'clsx'
 import { useCallback, useRef } from 'react'
-// import { WordWrapIcon } from '../icons/index.js'
-import { Button, classes } from './button.js'
-import { CopyToClipboard } from './copy-to-clipboard.js'
+// import { WordWrapIcon } from '../icons/index'
+// import { Button, classes } from './button'
+import { CopyToClipboard } from './copy-to-clipboard'
 
 export function Pre({
     children,
@@ -13,7 +15,7 @@ export function Pre({
     icon: Icon,
     ...props
 }) {
-    const preRef = useRef < HTMLPreElement | null > (null)
+    const preRef = useRef(null)
 
     const toggleWordWrap = useCallback(() => {
         const htmlDataset = document.documentElement.dataset
