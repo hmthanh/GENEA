@@ -1,5 +1,5 @@
 import { Anchor } from "@/nextra/anchor"
-import { Tr, Th, Td,Pre,Code } from "@/nextra"
+import { Tr, Th, Td, Pre, Code } from "@/nextra"
 import cn from 'clsx'
 
 const EXTERNALHREFREGEX = /https?:\/\//
@@ -25,6 +25,14 @@ export function useMDXComponents(components) {
         h1: props => (
             <h1
                 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100"
+                {...props}
+            />
+        ),
+        h2: props => (
+            <h2
+                className={
+                    cn("font-semibold tracking-tight text-slate-900 dark:text-slate-100",
+                        "mt-10 border-b pb-1 text-3xl border-neutral-200/70 contrast-more:border-neutral-400 dark:border-primary-100/10 contrast-more:dark:border-neutral-400")}
                 {...props}
             />
         ),

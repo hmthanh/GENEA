@@ -35,7 +35,7 @@ function Ident() {
   )
 }
 
-const Folder = memo < FolderProps > (
+const Folder = memo(
   ({ label, name, open, children, defaultOpen = false, onToggle }) => {
     const indent = useIndent()
     const [isOpen, setIsOpen] = useState(defaultOpen)
@@ -82,7 +82,7 @@ const Folder = memo < FolderProps > (
 )
 Folder.displayName = 'Folder'
 
-const File = memo < FileProps > (({ label, name, active }) => (
+const File = memo(({ label, name, active }) => (
   <li
     className={cn(
       'flex list-none',
