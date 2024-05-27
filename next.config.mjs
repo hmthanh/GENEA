@@ -5,6 +5,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+import rehypeRaw from 'rehype-raw'
 import remarkEmbedImages from "remark-embed-images"
 import { remarkMermaid } from '@theguild/remark-mermaid'
 import rehypeShiki from '@shikijs/rehype'
@@ -15,6 +16,7 @@ import { remarkLinkRewrite } from './plugins/remark-link-rewrite.mjs'
 import { remarkMdxFrontMatter } from './plugins/remark-mdx-frontmatter.mjs'
 import { remarkMdxTitle } from './plugins/remark-mdx-title.mjs'
 import { remarkStaticImage } from './plugins/remark-static-image.mjs'
+import { remarkStructurize } from './plugins/remark-structurize.mjs'
 
 
 
@@ -32,21 +34,27 @@ const withMDX = nextMDX({
       remarkMdxDisableExplicitJsx,
       remarkCustomHeadingId,
       // remarkMdxTitle,
-      [remarkHeadings, { exportName: "useTOC" }],
+      // [remarkHeadings, { exportName: "useTOC" }],
       [remarkLinkRewrite, {
         pattern: /\.mdx?(?:(?=[#?])|$)/,
         replace: '',
         excludeExternalLinks: true
       }],
       remarkStaticImage,
+      [remarkStructurize, { codeblocks: true }],
     ],
-
-    rehypePlugins: [rehypeStringify, rehypeKatex, [rehypeShiki, {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark'
-      }
-    }]
+    rehypePlugins: [
+      // [rehypeRaw, {
+      //   passThrough: ['mdxjsEsm', 'mdxJsxFlowElement', 'mdxTextExpression']
+      // }],
+      rehypeStringify, 
+      rehypeKatex,
+      [rehypeShiki, {
+        themes: {
+          light: 'github-light',
+          dark: 'github-dark'
+        }
+      }]
     ],
   },
 })
