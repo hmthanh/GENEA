@@ -18,12 +18,29 @@ import remarkMath from 'remark-math'
 import { remarkMermaid } from '@theguild/remark-mermaid'
 import rehypeShiki from '@shikijs/rehype'
 import remarkMdxDisableExplicitJsx from "./plugins/remark-mdx-disable-explicit-jsx.mjs"
+import { remarkCustomHeadingId } from './plugins/remark-custom-heading-id.mjs'
+import { remarkHeadings } from './plugins/remark-headings.mjs'
+import { remarkLinkRewrite } from './plugins/remark-link-rewrite.mjs'
+
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   baseUrl: "./",
   options: {
-    remarkPlugins: [remarkGfm, remarkParse, remarkRehype, remarkMath, remarkMermaid, remarkMdxDisableExplicitJsx],
+    remarkPlugins: [
+      remarkGfm,
+      remarkParse,
+      remarkRehype,
+      remarkMath,
+      remarkMermaid,
+      remarkMdxDisableExplicitJsx,
+      remarkCustomHeadingId,
+      [remarkHeadings, { exportName: "useTOC" }],
+      [remarkLinkRewrite, {
+        pattern: /\.mdx?(?:(?=[#?])|$)/,
+        replace: '',
+        excludeExternalLinks: true
+      }]],
     rehypePlugins: [rehypeStringify, rehypeKatex, [rehypeShiki, {
       themes: {
         light: 'github-light',
