@@ -1,6 +1,14 @@
-import {Callout} from "@/nextra/callout"
+import { Callout } from "@/nextra/callout"
+import { Cards, Card } from "@/nextra/cards"
+import { CardsIcon, WarningIcon } from "@/nextra/icons"
 
 # Welcome to my MDX page!
+
+<Cards>
+  <Card icon={<WarningIcon />} title="Callout" href="/docs/guide/built-ins/callout" />
+  <Card icon={<CardsIcon />} title="Tabs" href="/docs/guide/built-ins/tabs" />
+  {/* <Card icon={<OneIcon />} title="Steps" href="/docs/guide/built-ins/steps" /> */}
+</Cards>
 
 $\mathcal{G}enea$
 
@@ -23,7 +31,6 @@ npm run build
 
 1. Ul sample 1
 2. Ul Sample 2
-
 
 This is a list in markdown:
 

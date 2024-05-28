@@ -1,6 +1,6 @@
 export { Button } from './button'
 export { Callout } from './callout'
-export { Cards } from './cards'
+export { Cards, Card } from './cards'
 export { Code } from './code'
 export { CopyToClipboard } from './copy-to-clipboard'
 export { Tree, Folder, File } from './file-tree'
