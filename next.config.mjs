@@ -137,5 +137,6 @@ const withMDX = nextMDX({
 
 export default withMDX({
   output: 'export',
+  reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 })
