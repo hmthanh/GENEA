@@ -3,7 +3,8 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createClient } from '@/utils/supabase/server'
+// import { createClient } from '@/utils/supabase/server'
+import { createClient } from '@/utils/supabase/client'
 
 export async function signup(formData) {
     const supabase = createClient()
@@ -12,7 +13,7 @@ export async function signup(formData) {
     // in practice, you should validate your inputs
     const data = {
         email: formData.get('email'),
-        password: formData.get('password'),
+        password: formData.get('current-password'),
     }
 
     const { error } = await supabase.auth.signUp(data)
