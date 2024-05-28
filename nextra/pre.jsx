@@ -40,7 +40,7 @@ export function Pre({
                     className={cn(
                         'px-4 text-xs text-gray-700 dark:text-gray-200',
                         'bg-gray-100 dark:bg-neutral-900',
-                        'flex items-center h-12 gap-2 rounded-t-md',
+                        'flex items-center h-10 gap-2 rounded-t-md',
                         classes.border,
                         'border-b-0'
                     )}

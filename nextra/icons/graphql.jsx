@@ -6,8 +6,8 @@ export function GraphQLIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M12 1.65674L20.9575 6.82836V17.1716L12 22.3432L3.04248 17.1716V6.82836L12 1.65674ZM4.04753 7.40863V15.006L10.6271 3.60994L4.04753 7.40863ZM12 3.24206L4.4154 16.379H19.5846L12 3.24206ZM18.5796 17.384H5.42045L12 21.1827L18.5796 17.384ZM19.9525 15.006L13.3729 3.60994L19.9525 7.40863V15.006Z"
       />
       <path
