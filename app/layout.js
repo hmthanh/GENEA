@@ -15,20 +15,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   // const themeConfig = useThemeConfig()
+  // <html lang="en" className="js-focus-visible light" suppressHydrationWarning={true} dir="ltr" style={{ colorScheme: "light" }} >
+
 
   return (
-    // <html lang="en">
-    <html lang="en" className="js-focus-visible light" suppressHydrationWarning={true} dir="ltr" style={{ colorScheme: "light" }} >
+    <html lang="en">
       <body className="nextra-banner-hidden">
-        <div dir="ltr">
-          <Header />
-          <Body>
-            <ThemeProvider>
-            {children}
-            </ThemeProvider>
-          </Body>
-          <Footer />
-        </div>
+        <ThemeProvider>
+          <div dir="ltr">
+            <Header />
+            <Body>
+              {children}
+            </Body>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
