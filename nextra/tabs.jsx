@@ -74,7 +74,7 @@ export function Tabs({
           {items.map((item, index) => {
             const disabled = isTabObjectItem(item) && item.disabled
             return (
-              <Tab
+              <TabUI
                 key={index}
                 disabled={disabled}
                 className={({ selected }) =>
@@ -90,7 +90,7 @@ export function Tabs({
                 }
               >
                 {isTabObjectItem(item) ? item.label : item}
-              </Tab>
+              </TabUI>
             )
           })}
         </TabList>

@@ -107,4 +107,6 @@ const File = memo(({ label, name, active }) => (
 ))
 File.displayName = 'File'
 
-export const FileTree = Object.assign(Tree, { Folder, File })
+// export const FileTree = Object.assign(Tree, { Folder, File })
+
+export {Tree, Folder, File}

@@ -74,7 +74,7 @@ export function Pre({
             >
                 <Button
                     onClick={toggleWordWrap}
-                    className="md:hidden"
+                    className="md:hidden bg-red-500"
                     title="Toggle word wrap"
                 >
                     <svg

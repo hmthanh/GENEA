@@ -1,11 +1,39 @@
-import {Callout} from "@/nextra/callout" 
+import { Callout } from "@/nextra/callout"
+import { Steps  } from "@/nextra/steps"
+import {Tree, Folder, File} from "@/nextra/file-tree"
 
 # Welcome to my MDX page!
 
 <Callout>
-  If you want to use GraphQL API or libs like Axios, you can create your own
-  fetcher function. Check [here](/docs/data-fetching) for more examples.
+  If you want to use GraphQL API or libs like Axios, you can create your own fetcher function. Check
+  [here](/docs/data-fetching) for more examples.
 </Callout>
+
+<Steps>
+  ### One
+  <Steps>### Two ### Three</Steps>
+  ### Four
+  <Steps>### Five ### Six</Steps>
+  ### Seven
+</Steps>
+
+<Tree>
+  <Folder name="users-service" defaultOpen>
+    <File name="schema.graphql" />
+  </Folder>
+  <Folder name="posts-service" defaultOpen>
+    <File name="schema.graphql" />
+  </Folder>
+</Tree>
+
+<Tree>
+  <Folder name="users-service" defaultOpen>
+    <File name="schema.graphql" />
+    <Folder name="posts-service" defaultOpen>
+      <File name="schema.graphql" />
+    </Folder>
+  </Folder>
+</Tree>
 
 This is some **bold** and _italics_ text.
 
@@ -18,7 +46,6 @@ This is a list in markdown:
 Checkout my React component:
 
 # Getting Started
-
 
 ```css filename="CSS" word-wrap=false
 html {
@@ -54,7 +81,6 @@ public class Character {
 
 ---
 
-
 export const myVar = '"I am from export const"'
 
 ## Foo {myVar}
@@ -67,7 +93,7 @@ export const myVar = '"I am from export const"'
 
 ###### _Ma_**Chi**<s>na</s>
 
-export const Test = props => <b>{props.someProp}</b>
+export const Test = (props) => <b>{props.someProp}</b>
 
 #### Qux <Test someProp="someVal" />
 
@@ -93,7 +119,7 @@ For normal RESTful APIs with JSON data, first you need to create a `fetcher`
 function, which is just a wrapper of the native `fetch`:
 
 ```jsx
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 ```
 
 <details>
@@ -106,14 +132,13 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
   <div className="_flex _justify-center">content</div>
 </details>
 
-
 Then you can import `useSWR` and start using it inside any function components:
 
 ```jsx
-import useSWR from 'swr'
+import useSWR from "swr"
 
 function Profile() {
-  const { data, error } = useSWR('/api/user/123', fetcher)
+  const { data, error } = useSWR("/api/user/123", fetcher)
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
@@ -141,7 +166,7 @@ function useUser(id) {
   return {
     user: data,
     isLoading: !error && !data,
-    isError: error
+    isError: error,
   }
 }
 ```
@@ -168,9 +193,7 @@ what data is used by the component.
 In a real-world example, our website shows a navbar and the content, both depend
 on `user`:
 
-
-<div className="mt-8">
-</div>
+<div className="mt-8"></div>
 
 Traditionally, we fetch data once using `useEffect` in the top level component,
 and pass it to child components via props (notice that we don't handle error
@@ -184,9 +207,9 @@ function Page() {
 
   // fetch data
   useEffect(() => {
-    fetch('/api/user')
-      .then(res => res.json())
-      .then(data => setUser(data))
+    fetch("/api/user")
+      .then((res) => res.json())
+      .then((data) => setUser(data))
   }, [])
 
   // global loading state

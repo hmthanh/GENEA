@@ -1,3 +1,5 @@
+"use client"
+
 import cn from 'clsx'
 
 
@@ -18,7 +20,7 @@ export function Button({
             className={cn(
                 'transition rounded-md p-1.5',
                 classes.border,
-                className
+                className,
             )}
             {...props}
         >
