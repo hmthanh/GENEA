@@ -1,7 +1,6 @@
 "use client"
 
 export { ArrowRightIcon } from './arrow-right'
-export { WordWrapIcon } from './wordwrap'
 export { CheckIcon } from './check'
 export { CopyIcon } from './copy'
 export { DiscordIcon } from './discord'
