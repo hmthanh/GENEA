@@ -2,7 +2,6 @@
 
 import cn from 'clsx'
 import { Children, useEffect, useMemo, useState } from 'react'
-import { Collapse } from './collapse'
 import { Summary } from '.'
 
 
@@ -52,7 +51,7 @@ export function Details({
             data-expanded={openState ? '' : undefined}
         >
             {summary}
-            <Collapse isOpen={openState}>{restChildren}</Collapse>
+            {restChildren}
         </details>
     )
 }
