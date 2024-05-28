@@ -107,7 +107,7 @@ export function useMDXComponents(components) {
         td: Td,
         details: props => (<Details {...props} />),
         summary: props => (<Summary {...props} />),
-        pre: Pre,
+        // pre: Pre,
         code: Code,
         ...components,
     }
