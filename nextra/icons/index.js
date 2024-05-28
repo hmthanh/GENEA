@@ -29,3 +29,4 @@ export { MoveIcon } from './move'
 export { CardsIcon } from './cards'
 export { WarningIcon } from './warning'
 export { BoxIcon } from "./box"
+export{StarsIcon} from "./stars"
