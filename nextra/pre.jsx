@@ -2,9 +2,9 @@
 
 import cn from 'clsx'
 import { useCallback, useRef } from 'react'
-import { Button, classes } from './button'
-import { CopyToClipboard } from './copy-to-clipboard'
-import { WordWrapIcon } from './icons'
+import { Button, classes } from '@/nextra/button'
+import { CopyToClipboard } from '@/nextra/copy-to-clipboard'
+import { WordWrapIcon } from '@/nextra/icons'
 
 export function Pre({
     children,
