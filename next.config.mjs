@@ -12,7 +12,7 @@ import { remarkMermaid } from '@theguild/remark-mermaid'
 import rehypeShiki from '@shikijs/rehype'
 import remarkMdxDisableExplicitJsx from "./plugins/remark-mdx-disable-explicit-jsx.mjs"
 import { remarkCustomHeadingId } from './plugins/remark-custom-heading-id.mjs'
-// import { remarkHeadings } from './plugins/remark-headings.mjs'
+import { remarkHeadings } from './plugins/remark-headings.mjs'
 import { remarkLinkRewrite } from './plugins/remark-link-rewrite.mjs'
 import { remarkMdxFrontMatter } from './plugins/remark-mdx-frontmatter.mjs'
 // import { remarkMdxTitle } from './plugins/remark-mdx-title.mjs'
@@ -30,16 +30,16 @@ const withMDX = nextMDX({
   baseUrl: "./",
   options: {
     remarkPlugins: [
-      remarkMdxFrontMatter,
+      remarkMermaid,
       remarkGfm,
+      remarkMdxFrontMatter,
       remarkParse,
       remarkRehype,
       remarkMath,
-      remarkMermaid,
       remarkMdxDisableExplicitJsx,
       remarkCustomHeadingId,
       // remarkMdxTitle,
-      // [remarkHeadings, { exportName: "useTOC" }],
+      [remarkHeadings, { exportName: "useTOC" }],
       [remarkLinkRewrite, {
         pattern: /\.mdx?(?:(?=[#?])|$)/,
         replace: '',
