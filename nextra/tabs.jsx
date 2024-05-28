@@ -1,13 +1,12 @@
 "use client"
 
 import cn from 'clsx'
-// import { Tab as HeadlessTab } from '@headlessui/react'
 import { useCallback, useEffect, useState } from 'react'
-import { Tab as TabUI, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { Tab as TabItem, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
 
 function isTabObjectItem(item) {
-  return !!item && 'label' in item
+  return !!item && item.hasOwnProperty('label')
 }
 
 export function Tabs({
@@ -74,7 +73,7 @@ export function Tabs({
           {items.map((item, index) => {
             const disabled = isTabObjectItem(item) && item.disabled
             return (
-              <TabUI
+              <TabItem
                 key={index}
                 disabled={disabled}
                 className={({ selected }) =>
@@ -90,7 +89,7 @@ export function Tabs({
                 }
               >
                 {isTabObjectItem(item) ? item.label : item}
-              </TabUI>
+              </TabItem>
             )
           })}
         </TabList>

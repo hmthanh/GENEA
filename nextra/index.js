@@ -7,10 +7,11 @@ export { Tree, Folder, File } from './file-tree'
 export { Pre } from './pre'
 export { Steps } from './steps'
 export { Table } from './table'
-export { Tabs } from './tabs'
+export { Tabs, Tab } from './tabs'
 export { Td } from './td'
 export { Th } from './th'
 export { Tr } from './tr'
 export { Summary } from './summary'
 export { Details } from './detail'
-
+export { OptionTable } from "./option-table"
+export { Screenshot } from "./screenshot"

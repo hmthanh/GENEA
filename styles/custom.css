@@ -5,6 +5,7 @@
 @import "./cards.css";
 @import "./hamburger.css";
 @import "./typesetting-article.css";
+@import "./utilities.css";
 
 html {
   @apply antialiased text-base scroll-pt-[--nextra-navbar-height];

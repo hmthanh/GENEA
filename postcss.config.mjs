@@ -6,7 +6,9 @@ const config = {
     tailwindcss: {},
     'postcss-lightningcss': {
       browsers: '>= .25%'
-    }
+    },
+    'autoprefixer': {},
+    'cssnano': {}
   },
 };
 
