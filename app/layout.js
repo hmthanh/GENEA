@@ -21,15 +21,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="nextra-banner-hidden">
-        <ThemeProvider>
+        {/* <ThemeProvider> */}
           <div dir="ltr">
-            <Header />
-            <Body>
+            {/* <Header /> */}
+            {/* <Body> */}
               {children}
-            </Body>
-            <Footer />
+            {/* </Body> */}
+            {/* <Footer /> */}
           </div>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
