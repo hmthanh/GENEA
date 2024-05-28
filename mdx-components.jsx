@@ -1,5 +1,5 @@
 import { Anchor } from "@/nextra/anchor"
-import { Tr, Th, Td, Pre, Code, Table, Details, Summary } from "@/nextra"
+import { Tr, Th, Td,  Code, Table, Details, Summary } from "@/nextra"
 import cn from 'clsx'
 
 const EXTERNALHREFREGEX = /https?:\/\//

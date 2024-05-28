@@ -4,7 +4,7 @@ import cn from 'clsx'
 import { useCallback, useRef } from 'react'
 import { Button, classes } from '@/nextra/button'
 import { CopyToClipboard } from '@/nextra/copy-to-clipboard'
-import { WordWrapIcon } from '@/nextra/icons'
+// import { WordWrapIcon } from '@/nextra/icons'
 
 export function Pre({
     children,
@@ -78,7 +78,7 @@ export function Pre({
                     className="md:hidden"
                     title="Toggle word wrap"
                 >
-                    <WordWrapIcon className="h-4 w-auto" />
+                    {/* <WordWrapIcon className="h-4 w-auto" /> */}
                 </Button>
                 {!filename && copyButton}
             </div>
