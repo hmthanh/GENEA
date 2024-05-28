@@ -1,5 +1,5 @@
 import { Anchor } from "@/nextra/anchor"
-import { Tr, Th, Td,  Code, Table, Details, Summary } from "@/nextra"
+import { Tr, Th, Td, Code, Table, Pre, Details, Summary } from "@/nextra"
 import cn from 'clsx'
 
 const EXTERNALHREFREGEX = /https?:\/\//
@@ -107,7 +107,7 @@ export function useMDXComponents(components) {
         td: Td,
         details: props => (<Details {...props} />),
         summary: props => (<Summary {...props} />),
-        // pre: Pre,
+        pre: Pre,
         code: Code,
         ...components,
     }

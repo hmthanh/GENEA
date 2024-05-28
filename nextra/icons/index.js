@@ -1,3 +1,5 @@
+"use client"
+
 export { ArrowRightIcon } from './arrow-right'
 // export { WordWrapIcon } from './wordwrap'
 export { CheckIcon } from './check'
