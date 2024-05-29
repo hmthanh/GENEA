@@ -1,9 +1,12 @@
 export const runtime = 'edge';
 
 import { createClient } from '@/utils/supabase/server'
+// import { createClient } from '@/utils/supabase/client'
+import { redirect } from 'next/navigation'
 
 export async function GET(request) {
     const { searchParams } = new URL(request.url)
+    console.log("searchParams", searchParams)
     const token_hash = searchParams.get('token_hash')
     const type = searchParams.get('type')
     const next = searchParams.get('next') ?? '/'
@@ -22,11 +25,11 @@ export async function GET(request) {
         })
         if (!error) {
             redirectTo.searchParams.delete('next')
-            return NextResponse.redirect(redirectTo)
+            return redirect(redirectTo)
         }
     }
 
     // return the user to an error page with some instructions
     redirectTo.pathname = '/error'
-    return NextResponse.redirect(redirectTo)
+    return redirect(redirectTo)
 }

@@ -53,6 +53,7 @@ module.exports = {
       slate: colors.slate,
       neutral: colors.neutral,
       red: colors.red,
+      green:colors.green,
       orange: colors.orange,
       blue: colors.blue,
       yellow: colors.yellow,

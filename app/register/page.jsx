@@ -24,13 +24,13 @@ export default function RegisterPage() {
                     <input type="hidden" name="$ACTION_ID_701a4455ede9e1ad6f73c225388290b1fa671339" />
                     <div>
                         <label htmlFor="email" className="block text-xs text-gray-600 uppercase">Email Address</label>
-                        <input id="email" type="email" placeholder="user@acme.com" autoComplete="email" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="email" />
+                        <input id="email" type="email" placeholder="sample@gmail.com" autoComplete="email" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="email" />
                     </div>
                     <div>
                         <label htmlFor="current-password" className="block text-xs text-gray-600 uppercase">Password</label>
                         <input id="current-password" type="current-password" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="current-password" />
                     </div>
-                    <button type="submit" formAction={signup} aria-disabled="false" className="flex h-10 w-full items-center justify-center rounded-md border text-sm transition-all focus:outline-none">Sign Up<span aria-live="polite" className="sr-only" role="status">Submit form</span>
+                    <button type="submit" formAction={signup} aria-disabled="false" className="flex h-10 w-full items-center bg-primary-600 font-bold text-white justify-center rounded-md border text-sm transition-all focus:outline-none">Sign Up<span aria-live="polite" className="sr-only" role="status">Submit form</span>
                     </button>
                     <p className="text-center text-sm text-gray-600">Already have an account? <a className="font-semibold text-gray-800" href="/login">Sign in</a> instead.</p>
                 </form>

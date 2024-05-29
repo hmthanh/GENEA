@@ -3,6 +3,7 @@ export const runtime = 'edge';
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/utils/supabase/server'
+// import { createClient } from '@/utils/supabase/client'
 
 export default async function PrivatePage() {
     const supabase = createClient()
