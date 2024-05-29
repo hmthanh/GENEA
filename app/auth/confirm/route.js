@@ -6,7 +6,6 @@ import { redirect } from 'next/navigation'
 
 export async function GET(request) {
     const { searchParams } = new URL(request.url)
-    console.log("searchParams", searchParams)
     const token_hash = searchParams.get('token_hash')
     const type = searchParams.get('type')
     const next = searchParams.get('next') ?? '/'

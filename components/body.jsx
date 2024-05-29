@@ -6,7 +6,7 @@ export default function Body({children}) {
         <div className="mx-auto flex max-w-[90rem]">
             <div className="motion-reduce:transition-none [transition:background-color1.5sease] bg-transparent">
             </div>
-            <Sidebar/>
+            {/* <Sidebar/> */}
             {/* <nav className="nextra-toc order-last max-xl:hidden w-64 shrink-0 print:hidden px-4" aria-label="table of contents">
                 <div className="nextra-scrollbar sticky top-16 overflow-y-auto pr-4 pt-6 text-sm [hyphens:auto] max-h-[calc(100vh-var(--nextra-navbar-height)-env(safe-area-inset-bottom))] ltr:-mr-4 rtl:-ml-4">
                     <p className="mb-4 font-semibold tracking-tight">On This Page</p>

@@ -2,7 +2,7 @@ import "./globals.css";
 import "./index.css";
 import "../styles/custom.css"
 import 'katex/dist/katex.min.css'
-import Header from "@/components/header";
+
 import Footer from "@/components/footer";
 import Body from "@/components/body";
 import { ThemeProvider } from 'next-themes'

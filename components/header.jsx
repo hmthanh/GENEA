@@ -2,8 +2,10 @@ import React from 'react'
 import Github from './icons/github'
 import Twitter from './icons/twitter'
 import Navbar from './navbar'
+import AuthButton from './auth/auth-button'
 
 export default function Header() {
+    // console.log("go here")
     return (
 
         // <div className="nextra-nav-container sticky top-0 z-20 w-full bg-transparent print:hidden">
@@ -22,7 +24,7 @@ export default function Header() {
                 </svg>
                 <span className="max-md:hidden select-none font-extrabold ltr:ml-2 rtl:mr-2" title="GENEA: Gesture Generation Research Community">GENEA</span>
             </a>
-            <a className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-medium subpixel-antialiased" aria-current="true" href="/docs/getting-started">Docs</a>
+            {/* <a className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-medium subpixel-antialiased" aria-current="true" href="/docs/getting-started">Docs</a> */}
             {/* <div className="relative" data-headlessui-state="">
                 <button className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 max-md:hidden items-center whitespace-nowrap rounded flex gap-1" id="headlessui-menu-button-:R5596:" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="">About<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-[18px] min-w-[18px] rounded-sm p-0.5">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" className="origin-center transition-transform rotate-90">
@@ -32,7 +34,8 @@ export default function Header() {
             </div> */}
             {/* <a className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-current="false" href="/examples/basic">Examples</a> */}
             {/* <a className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-current="false" href="/blog">Blog</a> */}
-            <a href="https://genea-workshop.github.io/2024/" target="blank" rel="blank" className="mr-10 contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-current="false">GENEA 2024 ↗</a>
+            <AuthButton />
+
             {/* <div className="nextra-search relative md:w-64 max-md:hidden">
                     <div className="relative flex items-center text-gray-900 contrast-more:text-gray-800 dark:text-gray-300 contrast-more:dark:text-gray-300">
                         <input spellcheck="false" className="w-full appearance-none rounded-lg px-3 py-2 transition-colors text-base leading-tight md:text-sm bg-black/[.05] dark:bg-gray-50/10 focus:!bg-transparent placeholder:text-gray-500 dark:placeholder:text-gray-400 contrast-more:border contrast-more:border-current" type="search" placeholder="Search documentation…" value="" />
@@ -40,6 +43,7 @@ export default function Header() {
                             <span className="text-xs">⌘</span>K</kbd>
                     </div>
                 </div> */}
+            <a href="https://genea-workshop.github.io/2024/" target="blank" rel="blank" className=" contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-current="false">GENEA 2024 ↗</a>
             <a href="https://github.com/genea-workshop" target="blank" rel="noreferrer">
                 <Github />
                 <span className="sr-only">GitHub</span>
