@@ -1,9 +1,9 @@
-"use client"
+"use server"
 
-import React, { useCallback,  useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '@/components/loading/loading.jsx';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 import { Callout } from '@/nextra';
 
 export default function RegisterPage({ searchParams }) {
