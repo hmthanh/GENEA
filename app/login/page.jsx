@@ -40,7 +40,7 @@ export default function LoginPage({ searchParams }) {
             setLoading(false)
             router.push("/")
         }
-    }, [email, password]);
+    }, [email, password, router]);
 
     return (
         <>

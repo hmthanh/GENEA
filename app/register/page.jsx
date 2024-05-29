@@ -29,14 +29,13 @@ export default function RegisterPage({ searchParams }) {
         setLoading(false)
 
         if (error) {
-            // router.push('/error')
             console.log("error", error)
             setErrorMessage("Could not register with email " + email)
         } else {
             router.refresh();
             router.push("/login?info=Check email to continue sign in process")
         }
-    }, [email, password])
+    }, [email, password, router])
 
     return (
         <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
