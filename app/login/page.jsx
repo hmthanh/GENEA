@@ -75,4 +75,3 @@ export default function LoginPage({ searchParams }) {
 }
 
 
-export const runtime = 'edge'
