@@ -49,6 +49,7 @@ export default function Home() {
       </Body>
       <Footer />
     </>
-
   );
 }
+
+export const runtime = 'edge'

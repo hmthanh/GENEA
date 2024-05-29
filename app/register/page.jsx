@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback,  useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '@/components/loading/loading.jsx';
 import { createClient } from '@/utils/supabase/client';
@@ -66,3 +66,5 @@ export default function RegisterPage({ searchParams }) {
         </div>
     )
 }
+
+export const runtime = 'edge'

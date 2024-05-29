@@ -43,3 +43,5 @@ export async function GET(request) {
     redirectTo.searchParams.set("error", "Email link is invalid or has expired")
     return redirect(redirectTo)
 }
+
+export const runtime = 'edge'

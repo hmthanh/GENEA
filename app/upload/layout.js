@@ -3,7 +3,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   // const themeConfig = useThemeConfig()
   // <html lang="en" className="js-focus-visible light" suppressHydrationWarning={true} dir="ltr" style={{ colorScheme: "light" }} >
 
@@ -19,3 +19,5 @@ export default function RootLayout({ children }) {
     </>
   );
 }
+
+export const runtime = 'edge'
