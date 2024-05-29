@@ -1,5 +1,5 @@
-import { Callout } from "@/nextra/callout";
-import Image from "next/image";
+"use client"
+
 import Header from "@/components/header";
 import Body from "@/components/body";
 import Footer from "@/components/footer";
@@ -51,5 +51,3 @@ export default function Home() {
     </>
   );
 }
-
-export const runtime = 'edge'

@@ -1,10 +1,11 @@
-"use server"
+"use client"
 
 import { useCallback, useState } from 'react';
 import Loading from '@/components/loading/loading.jsx';
 import { useRouter } from "next/navigation";
-import { createClient } from '@/utils/supabase/server';
+// import { useRouter } from 'next/router';
 import { Callout } from '@/nextra';
+import { loginAction } from './actions';
 
 export default function LoginPage({ searchParams }) {
     const router = useRouter();
@@ -18,27 +19,25 @@ export default function LoginPage({ searchParams }) {
         e.preventDefault();
         setLoading(true)
 
-        const supabase = createClient()
-
         // type-casting here for convenience
         // in practice, you should validate your inputs
         const data = {
             email: email,
             password: password,
         }
-        const { error } = await supabase.auth.signInWithPassword(data)
-
-
-
-        if (error) {
-            console.log(error)
-            setLoading(false)
-            setErrorMessage("Could not authenticate user")
-
-            // redirect("/login?message=Could not authenticate user");
-        } else {
-            setLoading(false)
-            router.push("/")
+        try {
+            const { error } = await loginAction(data);
+            if (error) {
+                // console.log(error)
+                setErrorMessage("Could not authenticate user")
+                // redirect("/login?message=Could not authenticate user");
+            } else {
+                router.push("/")
+            }
+        } catch (error) {
+        }
+        finally {
+            setLoading(false);
         }
     }, [email, password, router]);
 

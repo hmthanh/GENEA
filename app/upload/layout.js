@@ -1,7 +1,8 @@
+"use client"
+
 import Body from "@/components/body";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import Sidebar from "@/components/sidebar";
 
 export default function Layout({ children }) {
   // const themeConfig = useThemeConfig()
@@ -15,9 +16,6 @@ export default function Layout({ children }) {
         {children}
       </Body>
       <Footer />
-
     </>
   );
 }
-
-export const runtime = 'edge'

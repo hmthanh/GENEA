@@ -1,9 +1,10 @@
-"use server"
+"use client"
 
 import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/router';
 import Loading from '@/components/loading/loading.jsx';
-import { createClient } from '@/utils/supabase/server';
+
 import { Callout } from '@/nextra';
 
 export default function RegisterPage({ searchParams }) {
@@ -15,26 +16,26 @@ export default function RegisterPage({ searchParams }) {
 
     const handleRegister = useCallback(async (e) => {
         e.preventDefault();
-        setLoading(true)
+        // setLoading(true)
 
-        const supabase = createClient()
+        // const supabase = createClient()
 
-        const data = {
-            email: email,
-            password: password,
-        }
+        // const data = {
+        //     email: email,
+        //     password: password,
+        // }
 
-        const { error } = await supabase.auth.signUp(data)
+        // const { error } = await supabase.auth.signUp(data)
 
-        setLoading(false)
+        // setLoading(false)
 
-        if (error) {
-            console.log("error", error)
-            setErrorMessage("Could not register with email " + email)
-        } else {
-            router.refresh();
-            router.push("/login?info=Check email to continue sign in process")
-        }
+        // if (error) {
+        //     console.log("error", error)
+        //     setErrorMessage("Could not register with email " + email)
+        // } else {
+        //     router.refresh();
+        //     router.push("/login?info=Check email to continue sign in process")
+        // }
     }, [email, password, router])
 
     return (
@@ -66,5 +67,3 @@ export default function RegisterPage({ searchParams }) {
         </div>
     )
 }
-
-export const runtime = 'edge'
