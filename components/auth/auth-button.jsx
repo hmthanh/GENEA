@@ -9,7 +9,7 @@ export default async function AuthButton() {
         data: { user },
     } = await supabase.auth.getUser();
 
-    const signOut = async () => {
+    const signOut = async (e) => {
         "use server";
 
         const supabase = createClient();
@@ -24,7 +24,7 @@ export default async function AuthButton() {
             <span className="text-sm font-medium subpixel-antialiased contrast-more:text-gray-700 contrast-more:dark:text-gray-100" aria-current="true">
                 Hi, {user.email}</span>
             <form action={signOut}>
-                <button className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-medium subpixel-antialiased  hover:underline" aria-current="true">
+                <button className="text-sm p-2 contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-medium subpixel-antialiased  hover:underline" aria-current="true">
                     Logout
                 </button>
             </form>

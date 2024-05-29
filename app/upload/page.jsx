@@ -1,3 +1,4 @@
+import AuthButton from "@/components/auth/auth-button";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -16,7 +17,6 @@ export default async function Page() {
         <>
             <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
                 Hello
-                <AuthButton />
             </div>
         </>
     )

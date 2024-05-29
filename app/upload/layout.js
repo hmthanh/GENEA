@@ -1,3 +1,4 @@
+import Sidebar from "@/components/sidebar";
 
 export default function RootLayout({ children }) {
   // const themeConfig = useThemeConfig()
@@ -6,7 +7,7 @@ export default function RootLayout({ children }) {
 
   return (
     <>
-    layout here
+      <Sidebar />
       {children}
     </>
   );

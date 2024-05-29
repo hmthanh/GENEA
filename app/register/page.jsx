@@ -1,18 +1,43 @@
 "use client"
 
-import React from 'react';
-import { signup } from './actions.js'
+import React, { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Loading from '@/components/loading/loading.jsx';
+import { createClient } from '@/utils/supabase/client';
+import { Callout } from '@/nextra';
 
-export default function RegisterPage() {
-    const encType = "multipart/form-data"
-    // : "application/x-www-form-urlencoded";
+export default function RegisterPage({ searchParams }) {
+    const router = useRouter();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(searchParams.error)
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        throw new Error("A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you're trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().");
-    }
-    {/* <form onSubmit={handleSubmit} className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16" encType="multipart/form-data" method="POST"> */ }
+    const handleRegister = useCallback(async (e) => {
+        e.preventDefault();
+        setLoading(true)
+
+        const supabase = createClient()
+
+        const data = {
+            email: email,
+            password: password,
+        }
+
+        const { error } = await supabase.auth.signUp(data)
+
+        setLoading(false)
+
+        if (error) {
+            // router.push('/error')
+            console.log("error", error)
+            setErrorMessage("Could not register with email " + email)
+        } else {
+            router.refresh();
+            router.push("/login?info=Check email to continue sign in process")
+        }
+    }, [email, password])
+
     return (
         <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
             <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
@@ -20,30 +45,25 @@ export default function RegisterPage() {
                     <h3 className="text-xl font-semibold">Sign Up</h3>
                     <p className="text-sm text-gray-500">Create an account with your email and password</p>
                 </div>
-                <form className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16" encType="multipart/form-data" method="POST">
+                <form onSubmit={handleRegister} className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16" encType="multipart/form-data" method="POST">
                     <input type="hidden" name="$ACTION_ID_701a4455ede9e1ad6f73c225388290b1fa671339" />
                     <div>
                         <label htmlFor="email" className="block text-xs text-gray-600 uppercase">Email Address</label>
-                        <input id="email" type="email" placeholder="sample@gmail.com" autoComplete="email" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="email" />
+                        <input id="email" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="sample@gmail.com" autoComplete="email" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="email" />
                     </div>
                     <div>
                         <label htmlFor="current-password" className="block text-xs text-gray-600 uppercase">Password</label>
-                        <input id="current-password" type="current-password" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="current-password" />
+                        <input id="current-password" value={password} onChange={(e) => setPassword(e.target.value)} type="current-password" required="" className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" name="current-password" />
                     </div>
-                    <button type="submit" formAction={signup} aria-disabled="false" className="flex h-10 w-full items-center bg-primary-600 font-bold text-white justify-center rounded-md border text-sm transition-all focus:outline-none">Sign Up<span aria-live="polite" className="sr-only" role="status">Submit form</span>
+                    <button type="submit" aria-disabled="false" className="flex h-10 w-full items-center bg-primary-600 font-bold text-white justify-center rounded-md border text-sm transition-all focus:outline-none">
+                        {loading ? <Loading color="#fff" /> : <>
+                            Sign Up<span aria-live="polite" className="sr-only" role="status">Submit form</span></>}
                     </button>
                     <p className="text-center text-sm text-gray-600">Already have an account? <a className="font-semibold text-gray-800" href="/login">Sign in</a> instead.</p>
+                    {errorMessage ? <Callout type='error'>{errorMessage}</Callout> : ""}
+
                 </form>
             </div>
         </div>
     )
 }
-
-{/* <form>
-                <label htmlFor="email">Email:</label>
-                <input id="email" name="email" type="email" required />
-                <label htmlFor="current-password">Password:</label>
-                <input id="current-password" name="current-password" type="current-password" required />
-                <button formAction={login}>Log in</button>
-                <button formAction={signup}>Sign up</button>
-            </form> */}

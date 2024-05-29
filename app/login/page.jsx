@@ -1,20 +1,46 @@
 "use client"
 
-import { SpinnerIcon } from '@/nextra/icons/index.js';
-import { login } from './actions.js'
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Loading from '@/components/loading/loading.jsx';
+import { useRouter } from "next/navigation";
+import { createClient } from '@/utils/supabase/client';
+import { Callout } from '@/nextra';
 
-export default function LoginPage() {
-    const [loading, setLoading] = useState(true);
+export default function LoginPage({ searchParams }) {
+    const router = useRouter();
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(searchParams.error)
+    const [inforMessage, setInforMessage] = useState(searchParams.info)
 
-    async function handleLogin() {
+    const handleSubmit = useCallback(async (e) => {
+        e.preventDefault();
         setLoading(true)
 
-        await login()
+        const supabase = createClient()
+
+        // type-casting here for convenience
+        // in practice, you should validate your inputs
+        const data = {
+            email: email,
+            password: password,
+        }
+        const { error } = await supabase.auth.signInWithPassword(data)
 
         setLoading(false)
-    }
+
+        if (error) {
+            console.log(error)
+            router.refresh();
+            setErrorMessage("Could not authenticate user")
+
+            // redirect("/login?message=Could not authenticate user");
+        } else {
+            router.refresh();
+            router.push("/")
+        }
+    }, [email, password]);
 
     return (
         <>
@@ -24,28 +50,27 @@ export default function LoginPage() {
                         <h3 className="text-xl font-semibold">Sign In</h3>
                         <p className="text-sm text-gray-500">Use your email and password to sign in</p>
                     </div>
-                    <form className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16">
+                    <form className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="email" className="block text-xs text-gray-600 uppercase">Email Address</label>
-                            <input id="email" placeholder="sample@gmail.com" autoComplete="email" required className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" type="email" name="email" />
+                            <input id="email" value={email} disabled={loading} onChange={(e) => setEmail(e.target.value)} placeholder="sample@gmail.com" autoComplete="email" required className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" type="email" name="email" />
                         </div>
                         <div>
                             <label htmlFor="current-password" className="block text-xs text-gray-600 uppercase">Password</label>
-                            <input id="current-password" required className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" type="current-password" name="current-password" />
+                            <input id="current-password" disabled={loading} value={password} onChange={(e) => setPassword(e.target.value)} required className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm" type="current-password" name="current-password" />
                         </div>
-                        <button type="submit" formAction={handleLogin} aria-disabled="false" className="flex h-10 w-full font-bold text-white bg-green-500 items-center justify-center rounded-md border text-sm transition-all focus:outline-none">
-                            {/* <SpinnerIcon/> */}
-
+                        <button type="submit" disabled={loading} aria-disabled="false" className="flex h-10 w-full font-bold text-white bg-green-500 items-center justify-center rounded-md border text-sm transition-all focus:outline-none">
                             {loading ? <Loading color="#fff" /> : <>
                                 Sign in
                                 <span aria-live="polite" className="sr-only" role="status">Submit form</span></>}
-
-
                         </button>
                         <p className="text-center text-sm text-gray-600">Don&apos;t have an account? <a className="font-semibold text-gray-800" href="/register">Sign up</a> for free.</p>
+                        {errorMessage ? <Callout type='error'>{errorMessage}</Callout> : ""}
+                        {inforMessage ? <Callout type='info'>{inforMessage}</Callout> : ""}
                     </form>
                 </div>
             </div>
         </>
     )
 }
+
