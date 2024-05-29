@@ -1,3 +1,6 @@
+import Body from "@/components/body";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 
 export default function RootLayout({ children }) {
@@ -7,8 +10,12 @@ export default function RootLayout({ children }) {
 
   return (
     <>
-      <Sidebar />
-      {children}
+      <Header />
+      <Body>
+        {children}
+      </Body>
+      <Footer />
+
     </>
   );
 }

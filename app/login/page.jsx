@@ -28,16 +28,16 @@ export default function LoginPage({ searchParams }) {
         }
         const { error } = await supabase.auth.signInWithPassword(data)
 
-        setLoading(false)
+
 
         if (error) {
             console.log(error)
-            router.refresh();
+            setLoading(false)
             setErrorMessage("Could not authenticate user")
 
             // redirect("/login?message=Could not authenticate user");
         } else {
-            router.refresh();
+            setLoading(false)
             router.push("/")
         }
     }, [email, password]);
