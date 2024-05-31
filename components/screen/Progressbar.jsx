@@ -22,7 +22,7 @@ export default function Progressbar({ value = 25 }) {
       </div>
 
       */}
-      <div className="w-1/3 flex flex-start bg-blue-gray-50 overflow-hidden mx-auto border border-black font-sans rounded-full text-xs font-medium h-3">
+      <div className="md:w-1/3 w-1/2 flex flex-start bg-blue-gray-50 overflow-hidden mx-auto border border-black font-sans rounded-full text-xs font-medium h-3">
         <div
           className="flex justify-center items-center h-full overflow-hidden break-all rounded-full bg-gray-900 text-white"
           style={{ width: value + '%' }}
