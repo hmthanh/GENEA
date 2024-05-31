@@ -1,0 +1,16 @@
+import { Callout } from '@/nextra'
+import React from 'react'
+
+export default function ScreenMessage() {
+  return (
+    // <Callout>
+    <div className="text-center text-zinc-800 text-[14.88px] font-normal font-['Inter'] leading-tight">
+      Welcome to WebMUSHRA, a MUSHRA listening test where you are asked to rate
+      the Basic Audio Quality (BAQ) of each condition.
+      <br />
+      Basic Audio Quality is a single and global attribute that is used to judge
+      any and all detected differences between the reference and the condition.
+    </div>
+    // </Callout>
+  )
+}
