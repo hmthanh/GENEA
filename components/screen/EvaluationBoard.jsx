@@ -195,20 +195,20 @@ export default function EvaluationBoard() {
     //   </div>
     // </div>
 
-    <div className="flex-col justify-center items-center">
-      <div className="w-full justify-center mx-auto gap-12 flex flex-row">
-        <div className=" bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <button className="px-8 py-3 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight shadow-sm">
+    <div className="flex-col justify-between items-center">
+      <div className="w-full justify-evenly mx-auto flex flex-row">
+        <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border border-zinc-300">
+          <button className="px-4 py-2 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
             Left Better
           </button>
         </div>
-        <div className="bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <button className="px-8 py-3 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight shadow-sm">
+        <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border  border-zinc-300">
+          <button className="px-4 py-2 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
             Equal
           </button>
         </div>
-        <div className="bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <button className="px-8 py-3 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight shadow-sm">
+        <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border  border-zinc-300">
+          <button className="px-4 py-2 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
             Right Better
           </button>
         </div>

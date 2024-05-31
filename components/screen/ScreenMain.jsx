@@ -9,7 +9,7 @@ export default function ScreenMain() {
 
   return (
     <div className="w-full h-full overflow-hidden">
-      <div className="w-full h-full flex justify-center align-middle gap-4 ">
+      <div className="w-full h-full flex justify-center align-middle gap-2 ">
         <div className="flex-1 h-full">
           {/* <img
             src="https://static.vecteezy.com/system/resources/previews/025/067/762/non_2x/4k-beautiful-colorful-abstract-wallpaper-photo.jpg"

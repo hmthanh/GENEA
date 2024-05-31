@@ -131,14 +131,14 @@ export default function Experiment({ params, searchParams }) {
      </div>
     </div>
    </div> */}
-      <div className="w-full max-h-screen h-screen relative bg-white ">
+      <div className="w-full max-h-screen h-screen relative bg-gray-100 ">
         <div className="w-full max-h-screen h-screen flex flex-col bg-stone-50">
           {/* Header */}
           <ScreenHeader />
-          <div className="w-full h-screen px-[7%] gap-4 p-4 flex flex-col bg-stone-50">
-            <Progressbar />
+          <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
+            <Progressbar value={45} />
             <ScreenTitle />
-            <div className="w-full flex-grow bg-white p-4 rounded-[9.60px] border border-zinc-300 flex flex-col gap-4">
+            <div className="w-full flex-grow bg-white p-0 py-2 sm:p-4 border-none rounded-xl sm:border sm:border-zinc-300 flex flex-col gap-4">
               <ScreenMain />
               <EvaluationBoard />
               {/* <ScreenMessage /> */}
@@ -151,12 +151,12 @@ export default function Experiment({ params, searchParams }) {
               className="w-full flex flex-row justify-between"
               // border border-zinc-300
             >
-              <button className="py-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2  ">
+              <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2  ">
                 <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
                 Previous
               </button>
 
-              <button className="py-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 ">
+              <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 ">
                 Next
                 <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
               </button>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-export default function Progressbar() {
+export default function Progressbar({ value = 25 }) {
   return (
     <>
       {/* <div
@@ -22,10 +22,10 @@ export default function Progressbar() {
       </div>
 
       */}
-      <div className="w-1/3 flex flex-start bg-blue-gray-50 overflow-hidden mx-auto border border-black font-sans rounded-full text-xs font-medium h-3.5">
+      <div className="w-1/3 flex flex-start bg-blue-gray-50 overflow-hidden mx-auto border border-black font-sans rounded-full text-xs font-medium h-3">
         <div
           className="flex justify-center items-center h-full overflow-hidden break-all rounded-full bg-gray-900 text-white"
-          style={{ width: '75%' }}
+          style={{ width: value + '%' }}
         ></div>
       </div>
       {/* <div className="w-[32em] h-[1em]  mx-auto bg-white rounded-2xl border border-black" /> */}
