@@ -130,20 +130,22 @@ export default function Experiment({ params, searchParams }) {
      </div>
     </div>
    </div> */}
-      <div className="w-full h-full relative bg-white ">
-        <div className="w-full h-full flex flex-col bg-stone-50">
+      <div className="w-full h-screen relative bg-white ">
+        <div className="w-full h-screen flex flex-col bg-stone-50">
           {/* Header */}
           <ScreenHeader />
 
-          <div className="w-full h-full px-[7%] gap-4 p-4 flex flex-col bg-stone-50">
+          <div className="w-full h-screen px-[7%] gap-4 p-4 flex flex-col bg-stone-50">
             <Progressbar />
             <ScreenTitle />
-            <div className="w-full bg-white rounded-[9.60px] border border-zinc-300">
+            <div className="w-full bg-white p-4 rounded-[9.60px] border border-zinc-300">
               <ScreenMessage />
               <ScreenMain />
               <EvaluationBoard />
             </div>
+
             <Navigation />
+
             <PopupDialog />
             <PopupError />
             {/* <div className="w-px h-px left-[-1px] top-[-1px] ">

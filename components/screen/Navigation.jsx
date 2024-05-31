@@ -8,9 +8,14 @@ export default function Navigation() {
     //     <PreviousButton />
     //     <NextButton />
     // </div>
-    <div className="w-full h-[73.95px]  bg-white rounded-[9.60px] border border-zinc-300">
-      <div className="w-[66.69px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-        <div className="w-[34.89px] h-[20.80px] text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
+    <div className="w-full flex flex-row justify-center p-3 bg-white rounded-[9.60px] border border-zinc-300">
+      <div className="bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
+        <div className="p-4 text-center text-zinc-800 text-base font-bold leading-tight">
+          Previous
+        </div>
+      </div>
+      <div className="bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
+        <div className="p-4 text-center text-zinc-800 text-base font-bold leading-tight">
           Next
         </div>
       </div>

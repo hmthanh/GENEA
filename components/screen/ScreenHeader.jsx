@@ -6,7 +6,7 @@ export default function ScreenHeader() {
     //     webMUSHRA Example
     // </div>
     <div className="w-full p-4 bg-gradient-to-b from-neutral-700 to-neutral-900 border border-zinc-800">
-      <div className="w-full h-6 justify-center text-center text-white text-lg font-bold font-['Inter'] leading-6">
+      <div className="w-full h-6 justify-center text-center text-white text-xl font-bold leading-6">
         webMUSHRA Example
       </div>
     </div>
