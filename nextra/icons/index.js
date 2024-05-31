@@ -1,6 +1,7 @@
 "use client"
 
 export { ArrowRightIcon } from './arrow-right'
+export { ArrowLeftIcon } from './arrow-left'
 export { CheckIcon } from './check'
 export { CopyIcon } from './copy'
 export { DiscordIcon } from './discord'
@@ -29,4 +30,4 @@ export { MoveIcon } from './move'
 export { CardsIcon } from './cards'
 export { WarningIcon } from './warning'
 export { BoxIcon } from "./box"
-export{StarsIcon} from "./stars"
+export { StarsIcon } from "./stars"

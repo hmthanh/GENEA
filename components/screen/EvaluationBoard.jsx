@@ -195,42 +195,22 @@ export default function EvaluationBoard() {
     //   </div>
     // </div>
 
-    <div className="p-1.5 flex-col justify-start items-start gap-2.5 inline-flex">
-      <div className="w-[859.61px] h-[47.17px] flex flex-row relative">
-        <div className="w-[86px] h-[43.17px]   bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]   text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
+    <div className="flex-col justify-center items-center">
+      <div className="w-full justify-center mx-auto gap-12 flex flex-row">
+        <div className=" bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
+          <button className="px-8 py-3 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight shadow-sm">
+            Left Better
+          </button>
         </div>
-        <div className="w-[86px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]   text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
+        <div className="bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
+          <button className="px-8 py-3 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight shadow-sm">
+            Equal
+          </button>
         </div>
-        <div className="w-[86px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]   text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
-        </div>
-        <div className="w-[86px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]   text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
-        </div>
-        <div className="w-[86px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]   text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
-        </div>
-        <div className="w-[86px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]  text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
-        </div>
-        <div className="w-[86px] h-[43.17px]  bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
-          <div className="w-[33.12px] h-[20.80px]   text-center text-zinc-800 text-base font-bold font-['Inter'] leading-tight">
-            Play
-          </div>
+        <div className="bg-neutral-100 rounded-[5px] shadow border border-zinc-300">
+          <button className="px-8 py-3 justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight shadow-sm">
+            Right Better
+          </button>
         </div>
       </div>
     </div>

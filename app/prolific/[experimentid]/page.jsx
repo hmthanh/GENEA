@@ -12,6 +12,7 @@ import PopupDialog from '@/components/screen/PopupDialog'
 import ScreenMessage from '@/components/screen/ScreenMessage'
 import ScreenMain from '@/components/screen/ScreenMain'
 import EvaluationBoard from '@/components/screen/EvaluationBoard'
+import { ArrowLeftIcon, ArrowRightIcon } from '@/nextra/icons'
 // import { useRouter } from 'next/navigation';
 
 export default function Experiment({ params, searchParams }) {
@@ -130,21 +131,36 @@ export default function Experiment({ params, searchParams }) {
      </div>
     </div>
    </div> */}
-      <div className="w-full h-screen relative bg-white ">
-        <div className="w-full h-screen flex flex-col bg-stone-50">
+      <div className="w-full max-h-screen h-screen relative bg-white ">
+        <div className="w-full max-h-screen h-screen flex flex-col bg-stone-50">
           {/* Header */}
           <ScreenHeader />
-
           <div className="w-full h-screen px-[7%] gap-4 p-4 flex flex-col bg-stone-50">
             <Progressbar />
             <ScreenTitle />
-            <div className="w-full bg-white p-4 rounded-[9.60px] border border-zinc-300">
-              <ScreenMessage />
+            <div className="w-full flex-grow bg-white p-4 rounded-[9.60px] border border-zinc-300 flex flex-col gap-4">
               <ScreenMain />
               <EvaluationBoard />
+              {/* <ScreenMessage /> */}
             </div>
 
-            <Navigation />
+            {/* <Navigation /> */}
+
+            <div
+              id="page_navigation"
+              className="w-full flex flex-row justify-between"
+              // border border-zinc-300
+            >
+              <button className="py-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2  ">
+                <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
+                Previous
+              </button>
+
+              <button className="py-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 ">
+                Next
+                <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
+              </button>
+            </div>
 
             <PopupDialog />
             <PopupError />
