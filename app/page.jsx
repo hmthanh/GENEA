@@ -5,17 +5,17 @@ import Body from "@/components/body";
 import Footer from "@/components/footer";
 
 export default function Home() {
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
-  const isSupabaseConnected = canInitSupabaseClient();
+  // const canInitSupabaseClient = () => {
+  //   // This function is just for the interactive tutorial.
+  //   // Feel free to remove it once you have Supabase connected.
+  //   try {
+  //     createClient();
+  //     return true;
+  //   } catch (e) {
+  //     return false;
+  //   }
+  // };
+  // const isSupabaseConnected = canInitSupabaseClient();
 
 
   //   <div className="">
