@@ -39,8 +39,6 @@ export default function Home() {
     //       {/* {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />} */}
     //     </main>
     //   </div>
-
-
     // </div>
     <>
       <Header />
