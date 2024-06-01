@@ -1,7 +1,7 @@
-import React from 'react'
-import PreviousButton from './PreviousButton'
-import NextButton from './NextButton'
-import { ArrowLeftIcon, ArrowRightIcon } from '@/nextra/icons'
+import React from "react"
+import PreviousButton from "./PreviousButton"
+import NextButton from "./NextButton"
+import { ArrowLeftIcon, ArrowRightIcon } from "@/nextra/icons"
 
 export default function Navigation() {
   return (

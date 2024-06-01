@@ -1,4 +1,5 @@
-import React from 'react'
+import Image from "next/image"
+import React from "react"
 
 export default function ScreenFooter() {
   return (
@@ -7,7 +8,7 @@ export default function ScreenFooter() {
         <div>
           <div
             className="logo"
-            style={{ verticalAlign: 'top', paddingight: '0px' }}
+            style={{ verticalAlign: "top", paddingight: "0px" }}
           >
             <small>
               <strong>
@@ -19,17 +20,17 @@ export default function ScreenFooter() {
           </div>
           <div className="logo">
             <a href="https://www.audiolabs-erlangen.de/" className="ui-link">
-              <img src="design/images/alabs_new.png" className="logo" />
+              <Image src="design/images/alabs_new.png" className="logo" />
             </a>
           </div>
           <div className="logo">
             <a href="http://www.iis.fraunhofer.de/" className="ui-link">
-              <img src="design/images/iis.svg" className="logo" />
+              <Image src="design/images/iis.svg" className="logo" />
             </a>
           </div>
           <div className="logo">
             <a href="https://www.fau.eu/" className="ui-link">
-              <img src="design/images/techfak.svg" className="logo" />
+              <Image src="design/images/techfak.svg" className="logo" />
             </a>
           </div>
         </div>

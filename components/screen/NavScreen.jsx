@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-export default function ScreenHeader({ name = 'webMUSHRA Example' }) {
+export default function NavScreen({ name = "webMUSHRA Example" }) {
   return (
     // <div className="header" id="header" >
     //     webMUSHRA Example

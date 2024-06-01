@@ -14,16 +14,16 @@
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
     "@popperjs/core": "^2.11.8",
-    "@shikijs/twoslash": "^1.6.0",
+    "@shikijs/twoslash": "^1.6.1",
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.4",
     "@theguild/remark-mermaid": "^0.0.6",
     "@types/mdx": "^2.0.13",
-    "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "cssnano": "^7.0.1",
     "estree-util-value-to-estree": "^3.1.1",
+    "framer-motion": "^11.2.10",
     "github-slugger": "^2.0.0",
     "hast-util-to-estree": "^3.1.0",
     "highcharts": "^11.4.3",
@@ -49,13 +49,14 @@
     "yaml": "^2.4.2"
   },
   "devDependencies": {
-    "@shikijs/rehype": "^1.6.0",
+    "autoprefixer": "^10.4.19",
+    "@shikijs/rehype": "^1.6.1",
     "daisyui": "^4.11.1",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "prettier": "^3.2.5",
-    "shiki": "^1.6.0",
+    "shiki": "^1.6.1",
     "tailwindcss": "^3.4.3"
   }
 }

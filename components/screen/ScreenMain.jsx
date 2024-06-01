@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import Video from '@/nextra/video'
-import React, { useEffect, useRef } from 'react'
-import cn from 'clsx'
+import Video from "@/nextra/video"
+import React, { useEffect, useRef } from "react"
+import cn from "clsx"
 
 export default function ScreenMain() {
   const video1Ref = useRef()
@@ -25,10 +25,10 @@ export default function ScreenMain() {
               loop
               controls
               className={cn(
-                'absolute inset-0 h-full w-full object-contain sm:rounded-xl sm:border dark:border-zinc-800'
+                "absolute inset-0 h-full w-full object-contain sm:rounded-xl sm:border dark:border-zinc-800"
               )}
             >
-              <source src={'/gesture_video.mp4'} type="video/mp4" />
+              <source src={"/gesture_video.mp4"} type="video/mp4" />
             </video>
           </div>
           {/* <Video src={'/gesture_video.mp4'} className="object-contain" /> */}
@@ -47,10 +47,10 @@ export default function ScreenMain() {
               loop
               controls
               className={cn(
-                'absolute inset-0 h-full  w-full object-contain sm:rounded-xl sm:border dark:border-zinc-800'
+                "absolute inset-0 h-full  w-full object-contain sm:rounded-xl sm:border dark:border-zinc-800"
               )}
             >
-              <source src={'/gesture_video.mp4'} type="video/mp4" />
+              <source src={"/gesture_video.mp4"} type="video/mp4" />
             </video>
           </div>
           {/* <Video src={'/gesture_video.mp4'} className="object-contain" /> */}
