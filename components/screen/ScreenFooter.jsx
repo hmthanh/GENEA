@@ -1,7 +1,7 @@
 import Image from "next/image"
 import React from "react"
 
-export default function ScreenFooter() {
+export function ScreenFooter() {
   return (
     <div align="right" className="logo">
       <div>

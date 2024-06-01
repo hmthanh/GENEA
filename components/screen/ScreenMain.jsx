@@ -4,7 +4,7 @@ import Video from "@/nextra/video"
 import React, { useEffect, useRef } from "react"
 import cn from "clsx"
 
-export default function ScreenMain() {
+export function ScreenMain() {
   const video1Ref = useRef()
 
   useEffect(() => {}, [video1Ref])

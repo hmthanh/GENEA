@@ -1,7 +1,7 @@
 import { Callout } from "@/nextra"
 import React from "react"
 
-export default function ScreenMessage() {
+export function ScreenMessage() {
   return (
     // <Callout>
     // <div className="text-center text-zinc-800 text-base font-medium leading-tight p-4">
