@@ -1,3 +1,5 @@
+'use client'
+
 import Video from '@/nextra/video'
 import React, { useEffect, useRef } from 'react'
 import cn from 'clsx'
