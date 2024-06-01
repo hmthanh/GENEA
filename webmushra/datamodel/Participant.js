@@ -11,8 +11,9 @@ This source code is protected by copyright law and international treaties. This 
  * @property {String[]} name - Variable names of the configured questions of the finish page.
  * @property {String[]} response  - Responses of the configured questions of the finish page. "response[i]" is the response to the question with variable name "name[i]".
  */
-export function Participant() {
-  // todo => array questionnaire name => antwort
-  this.name = []
-  this.response = []
+export class Participant {
+  constructor() {
+    this.name = []
+    this.response = []
+  }
 }

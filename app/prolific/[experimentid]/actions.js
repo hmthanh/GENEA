@@ -58,7 +58,7 @@ export async function fetchJSONStudy(url) {
     pageTemplateRenderer.refresh.bind(pageTemplateRenderer)
   )
 
-  console.log(config.pages)
+  // console.log(config.pages)
 
   addPagesToPageManager(
     pageManager,

@@ -12,9 +12,11 @@ This source code is protected by copyright law and international treaties. This 
  * @property {Number} score - Mushra score that was given by the participant (0-100).
  * @property {Number} time - Time that the stimulus was visible in total.
  */
-export function MUSHRARating() {
-  this.stimulus = null
-  this.score = null
-  this.comment = null
-  this.time = null
+export class MUSHRARating {
+  constructor() {
+    this.stimulus = null
+    this.score = null
+    this.comment = null
+    this.time = null
+  }
 }
