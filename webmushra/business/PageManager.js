@@ -1,181 +1,149 @@
-/*************************************************************************
-         (C) Copyright AudioLabs 2017 
+class PageManager {
+  constructor(variableName, htmlParentElementId, localizer) {
+    this.pages = []
+    this.pagesIndex = -1
+    this.parentElementId = htmlParentElementId
+    this.varName = variableName
+    this.callbacksPageEventChanged = []
+    this.localizer = localizer
+  }
 
-This source code is protected by copyright law and international treaties. This source code is made available to You subject to the terms and conditions of the Software License for the webMUSHRA.js Software. Said terms and conditions have been made available to You prior to Your download of this source code. By downloading this source code You agree to be bound by the above mentionend terms and conditions, which can also be found here: https://www.audiolabs-erlangen.de/resources/webMUSHRA. Any unauthorised use of this source code may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under law. 
+  addCallbackPageEventChanged(callback) {
+    this.callbacksPageEventChanged.push(callback)
+  }
 
-Portions Copyright (C) Patrik Jonell and contributors 2021.
+  addPage(page) {
+    this.pages.push(page)
+  }
 
-This file was edited 2021-09-02 by Patrik Jonell. All rights reserved.
-These contributions are licensed under the MIT license. See LICENSE.txt for details.
+  getNextPage() {
+    return this.pages[this.pagesIndex + 1]
+  }
 
-**************************************************************************/
+  getPageIndex() {
+    return this.pagesIndex
+  }
 
-function PageManager(_variableName, _htmlParenElementId, _localizer) {
-  this.pages = []
-  this.pagesIndex = -1
-  this.parentElementId = _htmlParenElementId
-  this.varName = _variableName
-  this.callbacksPageEventChanged = []
-  this.localizer = _localizer
-}
+  getNumPages() {
+    return this.pages.length
+  }
 
-PageManager.prototype.addCallbackPageEventChanged = function (_callback) {
-  this.callbacksPageEventChanged[this.callbacksPageEventChanged.length] =
-    _callback
-}
+  getPage(index) {
+    return this.pages[index]
+  }
 
-PageManager.prototype.addPage = function (_page) {
-  this.pages[this.pages.length] = _page
-}
+  getCurrentPage() {
+    return this.pages[this.pagesIndex]
+  }
 
-PageManager.prototype.getNextPage = function () {
-  return this.pages[this.pagesIndex + 1]
-}
+  async nextPage() {
+    this.pagesIndex++
 
-PageManager.prototype.getPageIndex = function () {
-  return this.pagesIndex
-}
+    if (this.pagesIndex <= this.pages.length) {
+      let postCheck = Promise.resolve()
 
-PageManager.prototype.getNumPages = function () {
-  return this.pages.length
-}
+      if (
+        this.pages[this.pagesIndex - 1] &&
+        this.pages[this.pagesIndex - 1].postCheck
+      ) {
+        postCheck = this.pages[this.pagesIndex - 1].postCheck()
+      }
 
-PageManager.prototype.getPage = function (_index) {
-  return this.pages[_index]
-}
+      await postCheck
 
-PageManager.prototype.getCurrentPage = function () {
-  return this.pages[this.pagesIndex]
-}
+      if (
+        this.pages[this.pagesIndex - 1] &&
+        this.pages[this.pagesIndex - 1].save
+      ) {
+        this.pages[this.pagesIndex - 1].save()
+      }
 
-PageManager.prototype.nextPage = function () {
-  ++this.pagesIndex
-
-  if (this.pagesIndex <= this.pages.length) {
-    var postCheck = function () {
-      return Promise.resolve()
-    }
-
-    if (
-      this.pages[this.pagesIndex - 1] !== undefined &&
-      this.pages[this.pagesIndex - 1].postCheck !== undefined
-    ) {
-      postCheck = this.pages[this.pagesIndex - 1].postCheck.bind(
-        this.pages[this.pagesIndex - 1]
-      )
-    }
-
-    postCheck()
-      .then(
-        function () {
-          if (
-            this.pages[this.pagesIndex - 1] !== undefined &&
-            this.pages[this.pagesIndex - 1].save !== undefined
-          ) {
-            this.pages[this.pagesIndex - 1].save()
+      if (
+        this.pagesIndex >= this.pages.length - 1 &&
+        this.getCurrentPage() instanceof FinishPage
+      ) {
+        // last page will be rendered
+        for (let i = 0; i < this.pages.length; ++i) {
+          if (this.pages[i].store) {
+            this.pages[i].store()
           }
+        }
+      }
 
-          if (
-            this.pagesIndex >= this.pages.length - 1 &&
-            pageManager.getCurrentPage() instanceof FinishPage
-          ) {
-            // last page will be rendered
-            for (var i = 0; i < this.pages.length; ++i) {
-              if (this.pages[i].store !== undefined) {
-                this.pages[i].store()
-              }
-            }
-          }
+      const id = this.parentElementId
+      document.getElementById(id).innerHTML = ""
+      this.pages[this.pagesIndex].render(document.getElementById(id))
+      this.pageEventChanged()
 
-          var id = this.parentElementId
-          $("#" + id).empty()
-          this.pages[this.pagesIndex].render($("#" + id))
-          this.pageEventChanged()
-          if (this.getCurrentPage().load !== undefined) {
-            $("#" + id).append(
-              $(
-                "<script> " +
-                  this.getPageVariableName(this.getCurrentPage()) +
-                  ".load();</script>"
-              )
-            )
-          }
-          window.scrollTo(0, 0)
-        }.bind(this)
-      )
-      .catch(
-        function () {
-          --this.pagesIndex
-        }.bind(this)
-      )
-  } else {
-    --this.pagesIndex
-  }
-}
+      if (this.getCurrentPage().load) {
+        const script = document.createElement("script")
+        script.textContent = `${this.getPageVariableName(this.getCurrentPage())}.load();`
+        document.getElementById(id).appendChild(script)
+      }
 
-PageManager.prototype.previousPage = function () {
-  --this.pagesIndex
-  if (this.pagesIndex <= this.pages.length) {
-    if (
-      this.pages[this.pagesIndex + 1] !== null &&
-      this.pages[this.pagesIndex + 1].save !== null
-    ) {
-      this.pages[this.pagesIndex + 1].save()
-    }
-    var id = this.parentElementId
-    $("#" + id).empty()
-    this.pages[this.pagesIndex].render($("#" + id))
-    this.pageEventChanged()
-    if (this.getCurrentPage().load !== undefined) {
-      $("#" + id).append(
-        $(
-          "<script> " +
-            this.getPageVariableName(this.getCurrentPage()) +
-            ".load();</script>"
-        )
-      )
-    }
-    window.scrollTo(0, 0)
-  } else {
-    ++this.pagesIndex
-  }
-}
-
-PageManager.prototype.start = function () {
-  for (var i = 0; i < this.pages.length; ++i) {
-    if (this.pages[i].init !== undefined) {
-      this.pages[i].init()
+      window.scrollTo(0, 0)
+    } else {
+      this.pagesIndex--
     }
   }
-  this.nextPage()
-}
 
-PageManager.prototype.restart = function () {
-  this.pagesIndex = -1
-  this.start()
-}
-
-PageManager.prototype.getPageVariableName = function (_page) {
-  for (var i = 0; i < this.pages.length; ++i) {
-    if (this.pages[i] == _page) {
-      return this.varName + ".pages[" + i + "]"
+  previousPage() {
+    this.pagesIndex--
+    if (this.pagesIndex <= this.pages.length) {
+      if (
+        this.pages[this.pagesIndex + 1] &&
+        this.pages[this.pagesIndex + 1].save
+      ) {
+        this.pages[this.pagesIndex + 1].save()
+      }
+      const id = this.parentElementId
+      document.getElementById(id).innerHTML = ""
+      this.pages[this.pagesIndex].render(document.getElementById(id))
+      this.pageEventChanged()
+      if (this.getCurrentPage().load) {
+        const script = document.createElement("script")
+        script.textContent = `${this.getPageVariableName(this.getCurrentPage())}.load();`
+        document.getElementById(id).appendChild(script)
+      }
+      window.scrollTo(0, 0)
+    } else {
+      this.pagesIndex++
     }
   }
-  return false
-}
 
-PageManager.prototype.getPageManagerVariableName = function () {
-  return this.varName
-}
-
-PageManager.prototype.pageEventChanged = function () {
-  for (var i = 0; i < this.callbacksPageEventChanged.length; ++i) {
-    this.callbacksPageEventChanged[i]()
+  start() {
+    for (let i = 0; i < this.pages.length; ++i) {
+      if (this.pages[i].init) {
+        this.pages[i].init()
+      }
+    }
+    this.nextPage()
   }
-}
 
-PageManager.prototype.getLocalizer = function () {
-  return this.localizer
+  restart() {
+    this.pagesIndex = -1
+    this.start()
+  }
+
+  getPageVariableName(page) {
+    const index = this.pages.indexOf(page)
+    if (index !== -1) {
+      return `${this.varName}.pages[${index}]`
+    }
+    return false
+  }
+
+  getPageManagerVariableName() {
+    return this.varName
+  }
+
+  pageEventChanged() {
+    this.callbacksPageEventChanged.forEach((callback) => callback())
+  }
+
+  getLocalizer() {
+    return this.localizer
+  }
 }
 
 export default PageManager
