@@ -15,3 +15,6 @@ export { Summary } from './summary'
 export { Details } from './detail'
 export { OptionTable } from "./option-table"
 export { Screenshot } from "./screenshot"
+
+export { Select } from "./select"
+export { ThemeSwitch } from "./themeswitch"

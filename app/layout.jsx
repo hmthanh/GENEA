@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   // <html lang="en" className="js-focus-visible light" suppressHydrationWarning={true} dir="ltr" style={{ colorScheme: "light" }} >
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning dir="ltr">
       <body className="nextra-banner-hidden">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <div dir="ltr">

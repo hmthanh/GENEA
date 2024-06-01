@@ -1,4 +1,4 @@
-export const DEFAULTTHEME = {
+export const DEFAULT_THEME = {
     // backgroundColor: {
     //     dark: '17,17,17',
     //     light: '250,250,250'
