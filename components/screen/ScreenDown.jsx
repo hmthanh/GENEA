@@ -1,5 +1,5 @@
-import React from 'react'
-import EvaluationBoard from './EvaluationBoard'
+import React from "react"
+import EvaluationBoard from "./EvaluationBoard"
 
 export default function ScreenDown() {
   const handleOnClick = () => {}
@@ -29,7 +29,7 @@ export default function ScreenDown() {
                       data-role="button"
                       className="audioControlElement ui-btn ui-btn-a ui-shadow ui-corner-all"
                       onclick={btnCallbackReference}
-                      styles={{ margin: '0 auto' }}
+                      styles={{ margin: "0 auto" }}
                     >
                       Play
                     </button>

@@ -12,11 +12,7 @@ import PopupDialog from "@/components/screen/PopupDialog"
 import ScreenMessage from "@/components/screen/ScreenMessage"
 import ScreenMain from "@/components/screen/ScreenMain"
 import EvaluationBoard from "@/components/screen/EvaluationBoard"
-import { ArrowLeftIcon, ArrowRightIcon } from "@/nextra/icons"
-import { fetchJSONStudy } from "@/server/action/fetch-study"
-import { Suspense } from "react"
-import axios from "axios"
-// import { fetchJSONStudy } from './actions'
+import { fetchJSONStudy } from "./actions"
 
 export default async function Page({ params, searchParams }) {
   const { experimentid } = params
@@ -34,116 +30,8 @@ export default async function Page({ params, searchParams }) {
       <div>{PROLIFIC_PID}</div>
       {STUDY_ID}
       {SESSION_ID} */}
-      {/* <div
-    data-role="page"
-    data-url="/webMUSHRA/"
-    tabIndex="0"
-    className="ui-page ui-page-theme-a ui-page-active "
-   >
-    <ScreenHeader />
-
-    <div id="container">
-     <Progressbar />
-     <ScreenTitle />
-     <div className="ui-body ui-body-a ui-corner-all" id="page_content">
-      <div>
-       <p>
-        Due to randomization, this page will be either the second MUSHRA
-        page or the third MUSHRA page.
-       </p>
-       <ScreenUp />
-       <ScreenDown />
-      </div>
-     </div>
-     <br />
-     <Navigation />
-
-     <ScreenFooter />
-    </div>
-
-    <PopupError />
-    <PopupDialog />
-
-    <div
-     className="ui-screen-hidden ui-popup-screen ui-overlay-inherit"
-     id="popupErrors-screen"
-    ></div>
-    <div
-     className="ui-popup-container ui-popup-hidden ui-popup-truncate flip"
-     id="popupErrors-popup"
-    >
-     <div
-      data-role="popup"
-      data-dismissible="false"
-      data-history="false"
-      data-transition="flip"
-      positionto="window"
-      id="popupErrors"
-      className="ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all"
-      style={{ borderRadius: 'all', boxShadow: 'ui-overlay-shadow' }}
-     >
-      <div id="popupErrorsContent">
-       Errors:
-       <br />
-      </div>
-     </div>
-    </div>
-    <div
-     className="ui-screen-hidden ui-popup-screen ui-overlay-a"
-     id="popupDialog-screen"
-    ></div>
-    <div
-     className="ui-popup-container ui-popup-hidden ui-popup-truncate slidedown"
-     id="popupDialog-popup"
-     style={{ display: 'none' }}
-    >
-     <div
-      data-role="popup"
-      data-history="false"
-      data-position-to="#page_content"
-      data-transition="slidedown"
-      id="popupDialog"
-      data-overlay-theme="a"
-      data-theme="c"
-      data-dismissible="false"
-      className="ui-corner-all ui-popup ui-body-c ui-overlay-shadow"
-      style={{ borderRadius: 'all', boxShadow: 'ui-overlay-shadow' }}
-     >
-      <div
-       data-role="header"
-       className="ui-corner-top ui-header ui-bar-inherit"
-       style={{
-        width: '57.5em',
-        backgroundColor: '#FFb500',
-        borderTopLeftRadius: 'inherit',
-        borderTopRightRadius: 'inherit',
-       }}
-       role="banner"
-      >
-       <h1
-        id="popHeader"
-        className="ui-title"
-        role="heading"
-        aria-level="1"
-       ></h1>
-      </div>
-      <div
-       id="popupResultsContent"
-       style={{
-        backgroundColor: 'white',
-        borderBottomLeftRadius: 'inherit',
-        borderBottomRightRadius: 'inherit',
-       }}
-       className="ui-corner-bottom ui-content"
-      ></div>
-     </div>
-    </div>
-   </div> */}
-      {/* <Playlists artistID={artist.id} /> */}
-
       <div className="w-full max-h-screen h-screen relative bg-gray-100 ">
         <div className="w-full max-h-screen h-screen flex flex-col bg-stone-50">
-          {/* Header */}
           <ScreenHeader name={config.testname} />
           <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
             <Progressbar value={45} />

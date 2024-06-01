@@ -10,30 +10,63 @@ These contributions are licensed under the MIT license. See LICENSE.txt for deta
 
 **************************************************************************/
 
-function DataSender(config) {
-  this.target = config.remoteService
-}
+// function DataSender(config) {
+//   this.target = config.remoteService
+// }
 
-DataSender.prototype.send = function (_session) {
-  var sessionJSON = JSON.stringify(_session)
-  var httpReq = new XMLHttpRequest()
-  var params = "sessionJSON=" + sessionJSON
-  try {
-    httpReq.open("POST", config.remoteService, false) // synchron
-    httpReq.setRequestHeader(
-      "Content-type",
-      "application/x-www-form-urlencoded"
-    )
-    httpReq.send(params)
-  } catch (e) {
-    console.log(httpReq.responseText)
-    return false
+// DataSender.prototype.send = function (_session) {
+//   var sessionJSON = JSON.stringify(_session)
+//   var httpReq = new XMLHttpRequest()
+//   var params = "sessionJSON=" + sessionJSON
+//   try {
+//     httpReq.open("POST", config.remoteService, false) // synchron
+//     httpReq.setRequestHeader(
+//       "Content-type",
+//       "application/x-www-form-urlencoded"
+//     )
+//     httpReq.send(params)
+//   } catch (e) {
+//     console.log(httpReq.responseText)
+//     return false
+//   }
+//   if (httpReq.status != 200) {
+//     console.log(httpReq.responseText)
+//     return false
+//   } else {
+//     return httpReq.responseText
+//   }
+// }
+
+class DataSender {
+  constructor(config) {
+    this.target = config.remoteService
   }
-  if (httpReq.status != 200) {
-    console.log(httpReq.responseText)
-    return false
-  } else {
-    return httpReq.responseText
+
+  async send(session) {
+    const sessionJSON = JSON.stringify(session)
+    const params = new URLSearchParams()
+    params.append("sessionJSON", sessionJSON)
+
+    try {
+      const response = await fetch(this.target, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params,
+      })
+
+      if (!response.ok) {
+        const errorMessage = await response.text()
+        console.error(errorMessage)
+        return false
+      }
+
+      return await response.text()
+    } catch (error) {
+      console.error(error)
+      return false
+    }
   }
 }
 

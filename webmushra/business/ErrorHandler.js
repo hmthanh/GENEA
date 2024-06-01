@@ -5,21 +5,42 @@ This source code is protected by copyright law and international treaties. This 
 
 **************************************************************************/
 
-function ErrorHandler() {
-  this.errors = []
-}
+// function ErrorHandler() {
+//   this.errors = []
+// }
 
-ErrorHandler.prototype.sendError = function (_message) {
-  this.errors[this.errors.length] = _message
-  console.log("ERROR: " + _message)
-}
+// ErrorHandler.prototype.sendError = function (_message) {
+//   this.errors[this.errors.length] = _message
+//   console.log("ERROR: " + _message)
+// }
 
-ErrorHandler.prototype.errorOccurred = function () {
-  return this.errors.length > 0
-}
+// ErrorHandler.prototype.errorOccurred = function () {
+//   return this.errors.length > 0
+// }
 
-ErrorHandler.prototype.getErrors = function () {
-  return this.errors
+// ErrorHandler.prototype.getErrors = function () {
+//   return this.errors
+// }
+
+// export default ErrorHandler
+
+class ErrorHandler {
+  constructor() {
+    this.errors = []
+  }
+
+  sendError(message) {
+    this.errors.push(message)
+    console.error("ERROR: " + message)
+  }
+
+  errorOccurred() {
+    return this.errors.length > 0
+  }
+
+  getErrors() {
+    return this.errors
+  }
 }
 
 export default ErrorHandler
