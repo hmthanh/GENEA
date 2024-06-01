@@ -11,7 +11,7 @@ function ErrorHandler() {
 
 ErrorHandler.prototype.sendError = function (_message) {
   this.errors[this.errors.length] = _message
-  console.log('ERROR: ' + _message)
+  console.log("ERROR: " + _message)
 }
 
 ErrorHandler.prototype.errorOccurred = function () {

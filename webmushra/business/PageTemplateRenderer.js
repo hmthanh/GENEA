@@ -36,8 +36,8 @@ PageTemplateRenderer.prototype.eventRefreshed = function () {
 PageTemplateRenderer.prototype.renderProgressBar = function (_parentId) {
   this.progressbarId = _parentId
   TolitoProgressBar(this.progressbarId)
-    .setOuterTheme('a')
-    .setInnerTheme('b')
+    .setOuterTheme("a")
+    .setInnerTheme("b")
     .isMini(true)
     .setMax(100)
     .setStartFrom(0)
@@ -48,7 +48,7 @@ PageTemplateRenderer.prototype.renderProgressBar = function (_parentId) {
 
 PageTemplateRenderer.prototype.renderHeader = function (_parentId) {
   this.headerId = _parentId
-  $('#' + this.headerId).append(this.pageManager.getCurrentPage().getName())
+  $("#" + this.headerId).append(this.pageManager.getCurrentPage().getName())
 }
 
 PageTemplateRenderer.prototype.renderNavigation = function (_parentId) {
@@ -66,10 +66,10 @@ PageTemplateRenderer.prototype.renderNavigation = function (_parentId) {
         ".previousPage();'>" +
         this.pageManager
           .getLocalizer()
-          .getFragment(this.language, 'previousButton') +
-        '</button>'
+          .getFragment(this.language, "previousButton") +
+        "</button>"
     )
-    $('#' + this.navigationId).append(buttonPrevious)
+    $("#" + this.navigationId).append(buttonPrevious)
     renderedSomething = true
   }
 
@@ -80,49 +80,49 @@ PageTemplateRenderer.prototype.renderNavigation = function (_parentId) {
         ".nextPage();'>" +
         this.pageManager
           .getLocalizer()
-          .getFragment(this.language, 'nextButton') +
-        '</button>'
+          .getFragment(this.language, "nextButton") +
+        "</button>"
     )
     if (this.lockNextButtonQueued) {
-      buttonNext.attr('disabled', 'disabled')
+      buttonNext.attr("disabled", "disabled")
     }
-    $('#' + this.navigationId).append(buttonNext)
+    $("#" + this.navigationId).append(buttonNext)
     renderedSomething = true
   }
 
   if (!renderedSomething) {
-    $('#' + this.navigationId).remove()
+    $("#" + this.navigationId).remove()
   }
   this.lockNextButtonQueued = false
 }
 
 PageTemplateRenderer.prototype.lockNextButton = function () {
-  if ($('#__button_next').length > 0) {
-    $('#__button_next').attr('disabled', 'disabled')
+  if ($("#__button_next").length > 0) {
+    $("#__button_next").attr("disabled", "disabled")
   } else {
     this.lockNextButtonQueued = true
   }
 }
 
 PageTemplateRenderer.prototype.unlockNextButton = function () {
-  $('#__button_next').removeAttr('disabled')
+  $("#__button_next").removeAttr("disabled")
 }
 
 PageTemplateRenderer.prototype.refresh = function () {
-  $('#' + this.progressbarId).progressbar(
-    'option',
-    'value',
+  $("#" + this.progressbarId).progressbar(
+    "option",
+    "value",
     (this.pageManager.getPageIndex() / (this.pageManager.getNumPages() - 1)) *
       100
   )
-  $('#' + this.headerId).empty()
+  $("#" + this.headerId).empty()
   this.renderHeader(this.headerId)
 
-  $('#' + this.navigationId).empty()
+  $("#" + this.navigationId).empty()
   this.renderNavigation(this.navigationId)
 
   if ($.mobile.activePage) {
-    $.mobile.activePage.trigger('create')
+    $.mobile.activePage.trigger("create")
   }
   setTimeout(
     function () {
@@ -134,11 +134,11 @@ PageTemplateRenderer.prototype.refresh = function () {
 
 PageTemplateRenderer.prototype.clear = function () {
   if (this.headerId != null) {
-    $('#' + this.headerId).empty()
+    $("#" + this.headerId).empty()
   }
 
   if (this.navigationId != null) {
-    $('#' + this.navigationId).empty()
+    $("#" + this.navigationId).empty()
   }
 }
 

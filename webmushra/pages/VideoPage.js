@@ -5,7 +5,7 @@ Licensed under the MIT license. See LICENSE.txt file in the project root for det
 
 **************************************************************************/
 
-import Stimulus from '../datamodel/Stimulus'
+import Stimulus from "../datamodel/Stimulus"
 
 function shuffle(a) {
   var j, x, i
@@ -46,14 +46,14 @@ function VideoPage(
   this.conditions = []
 
   var colors = shuffle([
-    'orange',
-    'red',
-    'green',
-    'yellow',
-    'blue',
-    'purple',
-    'fuchsia',
-    'aqua',
+    "orange",
+    "red",
+    "green",
+    "yellow",
+    "blue",
+    "purple",
+    "fuchsia",
+    "aqua",
   ])
 
   function newStimulus(i, key, video, atVal) {
@@ -70,7 +70,7 @@ function VideoPage(
   for (var item in this.pageConfig.stimuli) {
     let key = this.pageConfig.stimuli[item][0]
     let stimuli = this.pageConfig.stimuli[item][1]
-    if (key == 'at') {
+    if (key == "at") {
       var stimulus = newStimulus(
         i,
         key,
@@ -101,58 +101,58 @@ VideoPage.prototype.init = function () {
   }
 }
 function createXPathFromElement(elm) {
-  var allNodes = document.getElementsByTagName('*')
+  var allNodes = document.getElementsByTagName("*")
   for (var segs = []; elm && elm.nodeType == 1; elm = elm.parentNode) {
-    if (elm.hasAttribute('id')) {
+    if (elm.hasAttribute("id")) {
       var uniqueIdCount = 0
       for (var n = 0; n < allNodes.length; n++) {
-        if (allNodes[n].hasAttribute('id') && allNodes[n].id == elm.id)
+        if (allNodes[n].hasAttribute("id") && allNodes[n].id == elm.id)
           uniqueIdCount++
         if (uniqueIdCount > 1) break
       }
       if (uniqueIdCount == 1) {
-        segs.unshift('id(' + elm.getAttribute('id') + ')')
-        return segs.join('/')
+        segs.unshift("id(" + elm.getAttribute("id") + ")")
+        return segs.join("/")
       } else {
         segs.unshift(
-          elm.localName.toLowerCase() + '[@id=' + elm.getAttribute('id') + ']'
+          elm.localName.toLowerCase() + "[@id=" + elm.getAttribute("id") + "]"
         )
       }
-    } else if (elm.hasAttribute('class')) {
+    } else if (elm.hasAttribute("class")) {
       segs.unshift(
         elm.localName.toLowerCase() +
-          '[@class=' +
-          elm.getAttribute('class') +
-          ']'
+          "[@class=" +
+          elm.getAttribute("class") +
+          "]"
       )
     } else {
       for (i = 1, sib = elm.previousSibling; sib; sib = sib.previousSibling) {
         if (sib.localName == elm.localName) i++
       }
-      segs.unshift(elm.localName.toLowerCase() + '[' + i + ']')
+      segs.unshift(elm.localName.toLowerCase() + "[" + i + "]")
     }
   }
-  return segs.length ? '/' + segs.join('/') : null
+  return segs.length ? "/" + segs.join("/") : null
 }
 VideoPage.prototype.render = function (_parent) {
-  var div = $('<div></div>')
+  var div = $("<div></div>")
   _parent.append(div)
   var content
   if (this.pageConfig.content === null) {
-    content = ''
+    content = ""
   } else {
     content = this.pageConfig.content
   }
 
-  var p = $('<p>' + content + '</p>')
+  var p = $("<p>" + content + "</p>")
   div.append(p)
 
   var tableUp = $("<div id='mainUp'></div>")
   var tableDown = $("<table id='mainDown' align = 'center'></table>")
   div.append(tableUp)
-  div.append($('<p><b><i>' + this.pageConfig.question + '<i></b></p>'))
+  div.append($("<p><b><i>" + this.pageConfig.question + "<i></b></p>"))
   div.append(tableDown)
-  var trMushra = $('<tr></tr>')
+  var trMushra = $("<tr></tr>")
   tableDown.append(trMushra)
   var tdMushra = $("<td id='td_Mushra' colspan='2'></td>")
   trMushra.append(tdMushra)
@@ -160,10 +160,10 @@ VideoPage.prototype.render = function (_parent) {
   var tableMushra = $("<table id='mushra_items'></table>")
   tdMushra.append(tableMushra)
 
-  var trConditionNames = $('<tr></tr>')
+  var trConditionNames = $("<tr></tr>")
   tableMushra.append(trConditionNames)
 
-  var tdConditionNamesReference = $('<td></td>')
+  var tdConditionNamesReference = $("<td></td>")
 
   trConditionNames.append(tdConditionNamesReference)
 
@@ -173,43 +173,43 @@ VideoPage.prototype.render = function (_parent) {
   var conditions = this.conditions
   var i
   for (i = 0; i < conditions.length; ++i) {
-    var str = ''
+    var str = ""
     if (this.pageConfig.showConditionNames === true) {
-      str = '<br/>' + conditions[i].id
+      str = "<br/>" + conditions[i].id
     }
     td = $(
-      '<td>' +
-        this.pageManager.getLocalizer().getFragment(this.language, 'cond') +
+      "<td>" +
+        this.pageManager.getLocalizer().getFragment(this.language, "cond") +
         (i + 1) +
         str +
-        '</td>'
+        "</td>"
     )
     trConditionNames.append(td)
   }
 
-  var trConditionPlay = $('<tr></tr>')
+  var trConditionPlay = $("<tr></tr>")
   tableMushra.append(trConditionPlay)
 
-  var tdConditionPlayReference = $('<td></td>')
+  var tdConditionPlayReference = $("<td></td>")
   trConditionPlay.append(tdConditionPlayReference)
 
-  var tdConditionPlayScale = $('<td></td>')
+  var tdConditionPlayScale = $("<td></td>")
   trConditionPlay.append(tdConditionPlayScale)
 
   for (i = 0; i < conditions.length; ++i) {
-    td = $('<td></td>')
+    td = $("<td></td>")
     var buttonPlay = $(
       "<button data-role='button' class='center audioControlElement' onclick='" +
         this.pageManager.getPageVariableName(this) +
-        '.btnCallbackCondition(' +
+        ".btnCallbackCondition(" +
         i +
         ");'>" +
         this.pageManager
           .getLocalizer()
-          .getFragment(this.language, 'playButton') +
-        '</button>'
+          .getFragment(this.language, "playButton") +
+        "</button>"
     )
-    buttonPlay.attr('id', 'buttonConditions' + i)
+    buttonPlay.attr("id", "buttonConditions" + i)
     td.append(buttonPlay)
     trConditionPlay.append(td)
     // (function(i) {
@@ -237,7 +237,7 @@ VideoPage.prototype.render = function (_parent) {
         "' class='scales' value='0' min='0' max='100' data-vertical='true' data-highlight='true' style='display : inline-block; float : none;'/></span> \
     </td>"
     )
-    $('.ui-slider-handle').unbind('keydown')
+    $(".ui-slider-handle").unbind("keydown")
     trConditionRatings.append(td)
   }
   var interactionTracker = this.interactionTracker
@@ -251,56 +251,56 @@ VideoPage.prototype.render = function (_parent) {
     track(e.type, createXPathFromElement(e.target))
   }
 
-  $(div).on('click', recordEvent)
+  $(div).on("click", recordEvent)
 
   this.videoVisualizer = new VideoVisualizer(tableUp, this.conditions)
   this.videoVisualizer.addEventListener(
     function (_event) {
-      if (_event.name == 'playConditionTriggered') {
+      if (_event.name == "playConditionTriggered") {
         var index = _event.index
-        track('play_video', 'video_' + index, _event.seconds)
-        var activeSlider = $('.scales').get(index)
-        var selector = '#buttonConditions' + index
+        track("play_video", "video_" + index, _event.seconds)
+        var activeSlider = $(".scales").get(index)
+        var selector = "#buttonConditions" + index
 
         this.playedStimuli.push(index)
         // if (new Set(this.playedStimuli).size == $(".scales").length) {
         //   this.pageTemplateRenderer.unlockNextButton();
         // }
 
-        if ($('#buttonStop').attr('active') == 'true') {
+        if ($("#buttonStop").attr("active") == "true") {
           $.mobile.activePage
-            .find('#buttonStop') //remove color from Stop
-            .removeClass('ui-btn-b')
-            .addClass('ui-btn-a')
-            .attr('data-theme', 'a')
-          $('#buttonStop').attr('active', 'false')
+            .find("#buttonStop") //remove color from Stop
+            .removeClass("ui-btn-b")
+            .addClass("ui-btn-a")
+            .attr("data-theme", "a")
+          $("#buttonStop").attr("active", "false")
         }
 
         var k
         for (k = 0; k < _event.length; k++) {
-          active = '#buttonConditions' + k
-          if ($(active).attr('active') == 'true') {
+          active = "#buttonConditions" + k
+          if ($(active).attr("active") == "true") {
             $.mobile.activePage
               .find(active) // remove color from conditions
-              .removeClass('ui-btn-b')
-              .addClass('ui-btn-a')
-              .attr('data-theme', 'a')
-            $(active).attr('active', 'false')
+              .removeClass("ui-btn-b")
+              .addClass("ui-btn-a")
+              .attr("data-theme", "a")
+            $(active).attr("active", "false")
             break
           }
         }
 
-        $(activeSlider).slider('enable')
-        $(activeSlider).attr('active', 'true')
+        $(activeSlider).slider("enable")
+        $(activeSlider).attr("active", "true")
         $.mobile.activePage
           .find(selector) //add color to conditions
-          .removeClass('ui-btn-a')
-          .addClass('ui-btn-b')
-          .attr('data-theme', 'b')
+          .removeClass("ui-btn-a")
+          .addClass("ui-btn-b")
+          .attr("data-theme", "b")
         $.mobile.activePage.find(selector).focus()
-        $(selector).attr('active', 'true')
-      } else if (_event.name == 'pauseTriggered') {
-        track('pause_video', 'video_' + _event.index, _event.seconds)
+        $(selector).attr("active", "true")
+      } else if (_event.name == "pauseTriggered") {
+        track("pause_video", "video_" + _event.index, _event.seconds)
       }
     }.bind(this)
   )
@@ -313,72 +313,72 @@ VideoPage.prototype.pause = function () {
 VideoPage.prototype.btnCallbackCondition = function (_index) {
   this.currentItem = _index
 
-  var label = $('#buttonConditions' + _index).text()
+  var label = $("#buttonConditions" + _index).text()
   if (
     label ==
-    this.pageManager.getLocalizer().getFragment(this.language, 'pauseButton')
+    this.pageManager.getLocalizer().getFragment(this.language, "pauseButton")
   ) {
     this.videoVisualizer.pause()
-    $('#buttonConditions' + _index).text(
-      this.pageManager.getLocalizer().getFragment(this.language, 'playButton')
+    $("#buttonConditions" + _index).text(
+      this.pageManager.getLocalizer().getFragment(this.language, "playButton")
     )
   } else if (
     label ==
-    this.pageManager.getLocalizer().getFragment(this.language, 'playButton')
+    this.pageManager.getLocalizer().getFragment(this.language, "playButton")
   ) {
-    $('.audioControlElement').text(
-      this.pageManager.getLocalizer().getFragment(this.language, 'playButton')
+    $(".audioControlElement").text(
+      this.pageManager.getLocalizer().getFragment(this.language, "playButton")
     )
     this.videoVisualizer.playCondition(_index)
-    $('#buttonConditions' + _index).text(
-      this.pageManager.getLocalizer().getFragment(this.language, 'pauseButton')
+    $("#buttonConditions" + _index).text(
+      this.pageManager.getLocalizer().getFragment(this.language, "pauseButton")
     )
   }
 }
 
 VideoPage.prototype.renderCanvas = function (_parentId) {
-  $('#mushra_canvas').remove()
-  parent = $('#' + _parentId)
-  var canvas = document.createElement('canvas')
-  canvas.style.position = 'absolute'
+  $("#mushra_canvas").remove()
+  parent = $("#" + _parentId)
+  var canvas = document.createElement("canvas")
+  canvas.style.position = "absolute"
   canvas.style.left = 0
   canvas.style.top = 0
   canvas.style.zIndex = 0
-  canvas.setAttribute('id', 'mushra_canvas')
+  canvas.setAttribute("id", "mushra_canvas")
   parent.get(0).appendChild(canvas)
-  $('#mushra_canvas').offset({
-    top: $('#refCanvas').offset().top,
-    left: $('#refCanvas').offset().left,
+  $("#mushra_canvas").offset({
+    top: $("#refCanvas").offset().top,
+    left: $("#refCanvas").offset().left,
   })
   canvas.height =
     parent.get(0).offsetHeight -
-    (parent.get(0).offsetHeight - $('#tr_ConditionRatings').height())
+    (parent.get(0).offsetHeight - $("#tr_ConditionRatings").height())
   canvas.width = parent.get(0).offsetWidth
 
-  $('.scales').siblings().css('zIndex', '1')
+  $(".scales").siblings().css("zIndex", "1")
 
-  var canvasContext = canvas.getContext('2d')
+  var canvasContext = canvas.getContext("2d")
 
   var YfreeCanvasSpace =
-    $('.scales').prev().offset().top - $('.scales').parent().offset().top
+    $(".scales").prev().offset().top - $(".scales").parent().offset().top
   var YfirstLine =
-    $('.scales').parent().get(0).offsetTop +
-    parseInt($('.scales').css('borderTopWidth'), 10) +
+    $(".scales").parent().get(0).offsetTop +
+    parseInt($(".scales").css("borderTopWidth"), 10) +
     YfreeCanvasSpace
-  var prevScalesHeight = $('.scales').prev().height()
+  var prevScalesHeight = $(".scales").prev().height()
   var xDrawingStart =
-    $('#spaceForScale').offset().left -
-    $('#spaceForScale').parent().offset().left +
-    canvasContext.measureText('100 ').width * 1.5
+    $("#spaceForScale").offset().left -
+    $("#spaceForScale").parent().offset().left +
+    canvasContext.measureText("100 ").width * 1.5
   var xAbsTableOffset =
-    -$('#mushra_items').offset().left -
-    ($('#mushra_canvas').offset().left - $('#mushra_items').offset().left)
+    -$("#mushra_items").offset().left -
+    ($("#mushra_canvas").offset().left - $("#mushra_items").offset().left)
   var xDrawingBeforeScales =
-    $('.scales').first().prev().children().eq(0).offset().left + xAbsTableOffset
+    $(".scales").first().prev().children().eq(0).offset().left + xAbsTableOffset
   var xDrawingEnd =
-    $('.scales').last().offset().left -
-    $('#mushra_items').offset().left +
-    $('.scales').last().width() / 2
+    $(".scales").last().offset().left -
+    $("#mushra_items").offset().left +
+    $(".scales").last().width() / 2
 
   canvasContext.beginPath()
   canvasContext.moveTo(xDrawingStart, YfirstLine)
@@ -400,7 +400,7 @@ VideoPage.prototype.renderCanvas = function (_parentId) {
     canvasContext.stroke()
 
     var predecessorXEnd = null
-    $('.scales').each(function (index) {
+    $(".scales").each(function (index) {
       var sliderElement = $(this).prev().first()
       if (index > 0) {
         canvasContext.beginPath()
@@ -427,84 +427,84 @@ VideoPage.prototype.renderCanvas = function (_parentId) {
   canvasContext.lineTo(xDrawingEnd, prevScalesHeight + YfirstLine)
   canvasContext.stroke()
 
-  canvasContext.font = '1.25em Calibri'
-  canvasContext.textBaseline = 'middle'
-  canvasContext.textAlign = 'center'
+  canvasContext.font = "1.25em Calibri"
+  canvasContext.textBaseline = "middle"
+  canvasContext.textAlign = "center"
   var xLetters =
-    $('#refCanvas').width() +
-    ($('#spaceForScale').width() + canvasContext.measureText('1 ').width) / 2.0
+    $("#refCanvas").width() +
+    ($("#spaceForScale").width() + canvasContext.measureText("1 ").width) / 2.0
 
   canvasContext.fillText(
-    this.pageManager.getLocalizer().getFragment(this.language, 'excellent'),
+    this.pageManager.getLocalizer().getFragment(this.language, "excellent"),
     xLetters,
     prevScalesHeight * 0.1 + YfirstLine
   )
   canvasContext.fillText(
-    this.pageManager.getLocalizer().getFragment(this.language, 'good'),
+    this.pageManager.getLocalizer().getFragment(this.language, "good"),
     xLetters,
     prevScalesHeight * 0.3 + YfirstLine
   )
   canvasContext.fillText(
-    this.pageManager.getLocalizer().getFragment(this.language, 'fair'),
+    this.pageManager.getLocalizer().getFragment(this.language, "fair"),
     xLetters,
     prevScalesHeight * 0.5 + YfirstLine
   )
   canvasContext.fillText(
-    this.pageManager.getLocalizer().getFragment(this.language, 'poor'),
+    this.pageManager.getLocalizer().getFragment(this.language, "poor"),
     xLetters,
     prevScalesHeight * 0.7 + YfirstLine
   )
   canvasContext.fillText(
-    this.pageManager.getLocalizer().getFragment(this.language, 'bad'),
+    this.pageManager.getLocalizer().getFragment(this.language, "bad"),
     xLetters,
     prevScalesHeight * 0.9 + YfirstLine
   )
 
-  canvasContext.font = '1em Calibri'
-  canvasContext.textAlign = 'right'
+  canvasContext.font = "1em Calibri"
+  canvasContext.textAlign = "right"
   var xTextScoreRanges =
-    xDrawingStart - canvasContext.measureText('100 ').width * 0.25 // $("#refCanvas").width()
-  canvasContext.fillText('100', xTextScoreRanges, YfirstLine)
+    xDrawingStart - canvasContext.measureText("100 ").width * 0.25 // $("#refCanvas").width()
+  canvasContext.fillText("100", xTextScoreRanges, YfirstLine)
   canvasContext.fillText(
-    '80',
+    "80",
     xTextScoreRanges,
     prevScalesHeight * 0.2 + YfirstLine
   )
   canvasContext.fillText(
-    '60',
+    "60",
     xTextScoreRanges,
     prevScalesHeight * 0.4 + YfirstLine
   )
   canvasContext.fillText(
-    '40',
+    "40",
     xTextScoreRanges,
     prevScalesHeight * 0.6 + YfirstLine
   )
   canvasContext.fillText(
-    '20',
+    "20",
     xTextScoreRanges,
     prevScalesHeight * 0.8 + YfirstLine
   )
-  canvasContext.fillText('0', xTextScoreRanges, prevScalesHeight + YfirstLine)
+  canvasContext.fillText("0", xTextScoreRanges, prevScalesHeight + YfirstLine)
 }
 
 VideoPage.prototype.load = function () {
   this.startTimeOnPage = new Date()
   // this.pageTemplateRenderer.lockNextButton();
-  this.renderCanvas('mushra_items')
+  this.renderCanvas("mushra_items")
 
   if (this.ratings.length !== 0) {
-    var scales = $('.scales')
+    var scales = $(".scales")
     var i
     for (i = 0; i < scales.length; ++i) {
-      $('.scales').eq(i).val(this.ratings[i].value).slider('refresh')
+      $(".scales").eq(i).val(this.ratings[i].value).slider("refresh")
     }
   }
 }
 
 VideoPage.prototype.save = function () {
   this.time += new Date() - this.startTimeOnPage
-  var scales = $('.scales')
+  var scales = $(".scales")
   this.ratings = []
 
   for (var i = 0; i < scales.length; ++i) {
@@ -512,7 +512,7 @@ VideoPage.prototype.save = function () {
   }
 
   $.post(
-    '/partial',
+    "/partial",
     (data = {
       ratings: JSON.stringify(this.ratings),
       user_id: this.config.userId,
@@ -527,7 +527,7 @@ VideoPage.prototype.save = function () {
 VideoPage.prototype.postCheck = function () {
   var atKey = null
   var atVal = null
-  var scales = $('.scales')
+  var scales = $(".scales")
   var remoteFailService = this.config.remoteFailService
   var userId = this.config.userId
   var testId = this.config.testId
@@ -547,9 +547,9 @@ VideoPage.prototype.postCheck = function () {
           atVal < parseInt(scales[i].value) - 3 ||
           atVal > parseInt(scales[i].value) + 3
         ) {
-          errorHandler.sendError('Failed!!')
+          errorHandler.sendError("Failed!!")
           $.ajax({
-            type: 'POST',
+            type: "POST",
             url: remoteFailService,
             data: {
               user_id: userId,
@@ -558,8 +558,8 @@ VideoPage.prototype.postCheck = function () {
             },
             success: function (data) {
               if (data === true) {
-                errorHandler.sendError('Failed!!')
-                location.href = '/failed_task'
+                errorHandler.sendError("Failed!!")
+                location.href = "/failed_task"
                 reject()
               }
             },
@@ -591,7 +591,7 @@ VideoPage.prototype.store = function () {
 
 VideoPage.prototype.checkNumConditions = function (_conditions) {
   if (_conditions.length > 8) {
-    this.errorHandler.sendError('Number of conditions must be no more than 6.')
+    this.errorHandler.sendError("Number of conditions must be no more than 6.")
     return false
   }
   return true

@@ -27,7 +27,7 @@ function VideoVisualizer(_parent, _conditions) {
       '<div id="vimeo_video_player_' + i + '" class="video-element"></div>'
     ).get(0)
 
-    videoElement.style.border = '5px solid ' + condition.color
+    videoElement.style.border = "5px solid " + condition.color
     mainDiv.append(videoElement)
     _videoElements.push(videoElement)
 
@@ -37,18 +37,18 @@ function VideoVisualizer(_parent, _conditions) {
       dnt: true,
     })
 
-    player.on('pause', function (e) {
+    player.on("pause", function (e) {
       self.sendEvent({
-        name: 'pauseTriggered',
+        name: "pauseTriggered",
         index: self.currentVideoIndex,
         conditionLength: self.conditions.length,
         seconds: e.seconds,
       })
     })
 
-    player.on('play', function (e) {
+    player.on("play", function (e) {
       var event = {
-        name: 'playConditionTriggered',
+        name: "playConditionTriggered",
         index: self.currentVideoIndex,
         length: self.conditions.length,
         seconds: e.seconds,
@@ -62,10 +62,10 @@ function VideoVisualizer(_parent, _conditions) {
 }
 
 VideoVisualizer.prototype.playCondition = function (_index) {
-  this.videoPlaceholder.get(0).style.display = 'none'
+  this.videoPlaceholder.get(0).style.display = "none"
   this.videoElements.forEach(function (videoElement, i) {
     if (i == _index) {
-      videoElement.style.display = 'block'
+      videoElement.style.display = "block"
     } else {
       var player = new Vimeo.Player(videoElement)
       player.getPaused().then(function (paused) {
@@ -74,7 +74,7 @@ VideoVisualizer.prototype.playCondition = function (_index) {
           player.setCurrentTime(0)
         }
       })
-      videoElement.style.display = 'none'
+      videoElement.style.display = "none"
     }
   })
   this.currentVideo = this.videoElements[_index]

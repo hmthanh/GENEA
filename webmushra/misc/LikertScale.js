@@ -15,7 +15,7 @@ function LikertScale(_responseConfig, _prefix, _initDisabled, _callback) {
 }
 
 LikertScale.prototype.enable = function () {
-  $('input[name=' + this.prefix + '_response]').checkboxradio('enable')
+  $("input[name=" + this.prefix + "_response]").checkboxradio("enable")
 }
 
 LikertScale.prototype.render = function (_parent) {
@@ -29,12 +29,12 @@ LikertScale.prototype.render = function (_parent) {
   if (this.responseConfig != null) {
     for (i = 0; i < this.responseConfig.length; ++i) {
       var responseValueConfig = this.responseConfig[i]
-      var img = ''
+      var img = ""
       if (responseValueConfig.img) {
         img =
           "<img id='" +
           this.prefix +
-          '_response_img_' +
+          "_response_img_" +
           i +
           "' src='" +
           responseValueConfig.img +
@@ -47,19 +47,19 @@ LikertScale.prototype.render = function (_parent) {
           this.prefix +
           "_response' id='" +
           this.prefix +
-          '_response_' +
+          "_response_" +
           i +
           "'/> \
       <label for='" +
           this.prefix +
-          '_response_' +
+          "_response_" +
           i +
           "'><center>" +
           img +
-          '' +
+          "" +
           responseValueConfig.label +
-          '</center></label> \
-    '
+          "</center></label> \
+    "
       )
       this.elements[this.elements.length] = element
       this.group.append(element)
@@ -70,20 +70,20 @@ LikertScale.prototype.render = function (_parent) {
         var set = false
         for (i = 0; i < this.elements.length; ++i) {
           if (set === true) {
-            $('#' + this.prefix + '_response_img_' + i).attr(
-              'src',
+            $("#" + this.prefix + "_response_img_" + i).attr(
+              "src",
               this.responseConfig[i].img
             )
           } else {
-            if ($('#' + this.prefix + '_response_' + i + ':checked').val()) {
+            if ($("#" + this.prefix + "_response_" + i + ":checked").val()) {
               set = true
-              $('#' + this.prefix + '_response_img_' + i).attr(
-                'src',
+              $("#" + this.prefix + "_response_img_" + i).attr(
+                "src",
                 this.responseConfig[i].imgSelected
               )
             } else {
-              $('#' + this.prefix + '_response_img_' + i).attr(
-                'src',
+              $("#" + this.prefix + "_response_img_" + i).attr(
+                "src",
                 this.responseConfig[i].imgHigherResponseSelected
               )
             }
@@ -97,7 +97,7 @@ LikertScale.prototype.render = function (_parent) {
     )
   }
   if (this.initDisabled) {
-    this.group.children().attr('disabled', 'disabled')
+    this.group.children().attr("disabled", "disabled")
   }
 }
 

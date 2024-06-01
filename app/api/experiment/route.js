@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from "axios"
 
 export async function GET() {
   const res = await axios.get(
-    'https://raw.githubusercontent.com/hmthanh/GENEA/main/public/my_first_experiment/1234567.json',
+    "https://raw.githubusercontent.com/hmthanh/GENEA/main/public/my_first_experiment/1234567.json",
     {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     }
   )

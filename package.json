@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
-    "prettier": "prettier --write \"**/*.js\"",
+    "prettier": "prettier --write \"**/*.{js, jsx}\"",
     "build": "next build",
     "lint": "next lint"
   },

@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { createContext, useContext, useRef } from 'react'
+import { createContext, useContext, useRef } from "react"
 
 const ExperimentConfigContext = createContext({})
-ExperimentConfigContext.displayName = 'ExperimentConfig'
+ExperimentConfigContext.displayName = "ExperimentConfig"
 export const useExperimentConfig = () => useContext(ExperimentConfigContext)
 
 export function ExperimentConfigProvider({ value, children }) {
@@ -14,7 +14,7 @@ export function ExperimentConfigProvider({ value, children }) {
       Object.fromEntries(
         Object.entries(value).map(([key, value]) => [
           key,
-          value && typeof value === 'object' && DEEP_OBJECT_KEYS.includes(key)
+          value && typeof value === "object" && DEEP_OBJECT_KEYS.includes(key)
             ? { ...DEFAULT_Experiment[key], ...value }
             : value,
         ])

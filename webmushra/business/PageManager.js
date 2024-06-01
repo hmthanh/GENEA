@@ -88,15 +88,15 @@ PageManager.prototype.nextPage = function () {
           }
 
           var id = this.parentElementId
-          $('#' + id).empty()
-          this.pages[this.pagesIndex].render($('#' + id))
+          $("#" + id).empty()
+          this.pages[this.pagesIndex].render($("#" + id))
           this.pageEventChanged()
           if (this.getCurrentPage().load !== undefined) {
-            $('#' + id).append(
+            $("#" + id).append(
               $(
-                '<script> ' +
+                "<script> " +
                   this.getPageVariableName(this.getCurrentPage()) +
-                  '.load();</script>'
+                  ".load();</script>"
               )
             )
           }
@@ -123,15 +123,15 @@ PageManager.prototype.previousPage = function () {
       this.pages[this.pagesIndex + 1].save()
     }
     var id = this.parentElementId
-    $('#' + id).empty()
-    this.pages[this.pagesIndex].render($('#' + id))
+    $("#" + id).empty()
+    this.pages[this.pagesIndex].render($("#" + id))
     this.pageEventChanged()
     if (this.getCurrentPage().load !== undefined) {
-      $('#' + id).append(
+      $("#" + id).append(
         $(
-          '<script> ' +
+          "<script> " +
             this.getPageVariableName(this.getCurrentPage()) +
-            '.load();</script>'
+            ".load();</script>"
         )
       )
     }
@@ -158,7 +158,7 @@ PageManager.prototype.restart = function () {
 PageManager.prototype.getPageVariableName = function (_page) {
   for (var i = 0; i < this.pages.length; ++i) {
     if (this.pages[i] == _page) {
-      return this.varName + '.pages[' + i + ']'
+      return this.varName + ".pages[" + i + "]"
     }
   }
   return false

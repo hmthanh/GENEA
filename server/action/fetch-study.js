@@ -1,14 +1,14 @@
-'use server'
+"use server"
 
-import DataSender from '@/webmushra/business/DataSender'
-import ErrorHandler from '@/webmushra/business/ErrorHandler'
-import PageManager from '@/webmushra/business/PageManager'
-import Localizer from '@/webmushra/misc/Localizer'
-import axios from 'axios'
-import dataConfig from '../../public/my_first_experiment/1234567.json'
-import Session from '@/webmushra/datamodel/Session'
-import PageTemplateRenderer from '@/webmushra/business/PageTemplateRenderer'
-import { addPagesToPageManager } from './page-manager'
+import DataSender from "@/webmushra/business/DataSender"
+import ErrorHandler from "@/webmushra/business/ErrorHandler"
+import PageManager from "@/webmushra/business/PageManager"
+import Localizer from "@/webmushra/misc/Localizer"
+import axios from "axios"
+import dataConfig from "../../public/my_first_experiment/1234567.json"
+import Session from "@/webmushra/datamodel/Session"
+import PageTemplateRenderer from "@/webmushra/business/PageTemplateRenderer"
+import { addPagesToPageManager } from "./page-manager"
 
 export async function fetchJSONStudy(url) {
   // const data = await axios.get("https://raw.githubusercontent.com/hmthanh/GENEA/main/public/my_first_experiment/1234567.json")
@@ -35,7 +35,7 @@ export async function fetchJSONStudy(url) {
 
   var nls = new Object()
   localizer.initializeNLSFragments(nls)
-  pageManager = new PageManager('pageManager', 'page_content', localizer)
+  pageManager = new PageManager("pageManager", "page_content", localizer)
 
   dataSender = new DataSender(config)
 
@@ -45,7 +45,7 @@ export async function fetchJSONStudy(url) {
   session.config = url
 
   if (config.language == undefined) {
-    config.language = 'en'
+    config.language = "en"
   }
 
   pageTemplateRenderer = new PageTemplateRenderer(

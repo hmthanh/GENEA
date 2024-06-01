@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { createPopper } from '@popperjs/core'
-import { useCallback, useMemo, useRef } from 'react'
+import { createPopper } from "@popperjs/core"
+import { useCallback, useMemo, useRef } from "react"
 
 /**
  * https://github.com/tailwindlabs/headlessui/issues/59

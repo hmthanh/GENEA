@@ -5,7 +5,7 @@ This source code is protected by copyright law and international treaties. This 
 
 **************************************************************************/
 
-import { Participant } from './Participant'
+import { Participant } from "./Participant"
 
 /**
  * Represents a session.

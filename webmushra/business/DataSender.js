@@ -17,12 +17,12 @@ function DataSender(config) {
 DataSender.prototype.send = function (_session) {
   var sessionJSON = JSON.stringify(_session)
   var httpReq = new XMLHttpRequest()
-  var params = 'sessionJSON=' + sessionJSON
+  var params = "sessionJSON=" + sessionJSON
   try {
-    httpReq.open('POST', config.remoteService, false) // synchron
+    httpReq.open("POST", config.remoteService, false) // synchron
     httpReq.setRequestHeader(
-      'Content-type',
-      'application/x-www-form-urlencoded'
+      "Content-type",
+      "application/x-www-form-urlencoded"
     )
     httpReq.send(params)
   } catch (e) {

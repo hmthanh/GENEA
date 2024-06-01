@@ -23,7 +23,7 @@ export const DEFAULT_THEME = {
   //     saturation: 100
   // },
   darkMode: true,
-  direction: 'ltr',
+  direction: "ltr",
   // docsRepositoryBase: 'https://github.com/genea/genea',
   // editLink: {
   //     component: function EditLink({ className, filePath, children }) {

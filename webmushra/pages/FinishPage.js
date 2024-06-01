@@ -44,10 +44,10 @@ FinishPage.prototype.storeParticipantData = function () {
 
     this.session.participant.name[this.session.participant.name.length] =
       element.name
-    if ($('#' + element.name).val()) {
+    if ($("#" + element.name).val()) {
       this.session.participant.response[
         this.session.participant.response.length
-      ] = $('#' + element.name).val()
+      ] = $("#" + element.name).val()
     } else {
       this.session.participant.response[
         this.session.participant.response.length
@@ -60,7 +60,7 @@ FinishPage.prototype.sendResults = function () {
   var data = this.dataSender.send(this.session)
   if (data == false) {
     this.errorDiv.text(
-      'An error occured while sending your data to the server! Please contact the experimenter.'
+      "An error occured while sending your data to the server! Please contact the experimenter."
     )
   }
   clearInterval(this.interval)
@@ -76,60 +76,60 @@ FinishPage.prototype.render = function (_parent) {
   var i
   for (i = 0; i < this.pageConfig.questionnaire.length; ++i) {
     var element = this.pageConfig.questionnaire[i]
-    if (element.type === 'text') {
+    if (element.type === "text") {
       table.append(
         $(
-          '<tr><td><strong>' +
-          element.label +
-          "</strong></td><td><input id='" +
-          element.name +
-          "' /></td></tr>"
+          "<tr><td><strong>" +
+            element.label +
+            "</strong></td><td><input id='" +
+            element.name +
+            "' /></td></tr>"
         )
       )
-    } else if (element.type === 'number') {
+    } else if (element.type === "number") {
       table.append(
         $(
-          '<tr><td><strong>' +
-          element.label +
-          "</strong></td><td><input id='" +
-          element.name +
-          "' min='" +
-          element.min +
-          "' max='" +
-          element.max +
-          "' value='" +
-          element.default +
-          "' data-inline='true'/></td></tr>"
+          "<tr><td><strong>" +
+            element.label +
+            "</strong></td><td><input id='" +
+            element.name +
+            "' min='" +
+            element.min +
+            "' max='" +
+            element.max +
+            "' value='" +
+            element.default +
+            "' data-inline='true'/></td></tr>"
         )
       )
-    } else if (element.type === 'likert') {
-      this.likert = new LikertScale(element.response, element.name + '_')
-      var td = $('<td></td>')
+    } else if (element.type === "likert") {
+      this.likert = new LikertScale(element.response, element.name + "_")
+      var td = $("<td></td>")
       table.append(
-        $('<tr></tr>').append(
-          $('<td><strong>' + element.label + '</strong></td>'),
+        $("<tr></tr>").append(
+          $("<td><strong>" + element.label + "</strong></td>"),
           td
         )
       )
       this.likert.render(td)
-    } else if (element.type === 'long_text') {
+    } else if (element.type === "long_text") {
       table.append(
         $(
           "<tr><td id='labeltd' style=' padding-top:" +
-          $('#feedback').css('margin-top') +
-          "'><strong>" +
-          element.label +
-          "</strong></td><td><textarea name='" +
-          element.name +
-          "' id='" +
-          element.name +
-          "'></textarea></td></tr>"
+            $("#feedback").css("margin-top") +
+            "'><strong>" +
+            element.label +
+            "</strong></td><td><textarea name='" +
+            element.name +
+            "' id='" +
+            element.name +
+            "'></textarea></td></tr>"
         )
       )
-    } else if (element.type === 'options') {
+    } else if (element.type === "options") {
       var options = element.response
         .map(function (el, i) {
-          var id_ = element.name + '_id_' + i
+          var id_ = element.name + "_id_" + i
           return (
             '<input type="radio" name="' +
             element.name +
@@ -141,33 +141,33 @@ FinishPage.prototype.render = function (_parent) {
             id_ +
             '">' +
             el.label +
-            '</label>'
+            "</label>"
           )
         })
-        .join('')
+        .join("")
       table.append(
         $(
-          '<tr><td><strong>' +
-          element.label +
-          "</strong></td><td><fieldset data-role='controlgroup'>" +
-          options +
-          '</fieldset></td></tr>'
+          "<tr><td><strong>" +
+            element.label +
+            "</strong></td><td><fieldset data-role='controlgroup'>" +
+            options +
+            "</fieldset></td></tr>"
         )
       )
     }
   }
   var button = $(
     "<button id='send_results' data-role='button' data-inline='true' disabled='disabled'>" +
-    this.pageManager.getLocalizer().getFragment(this.language, 'sendButton') +
-    '</button>'
+      this.pageManager.getLocalizer().getFragment(this.language, "sendButton") +
+      "</button>"
   )
   var thSecondContent = $("<th colspan='2' align='center'> </th>")
   button.bind(
-    'click',
+    "click",
     function (event, ui) {
       if (!this.sentDataToServer) {
-        $(thSecondContent).append('Thank you. Redirecting to Prolific...')
-        $('#popupDialog').popup('open')
+        $(thSecondContent).append("Thank you. Redirecting to Prolific...")
+        $("#popupDialog").popup("open")
 
         this.sentDataToServer = true
         this.storeParticipantData()
@@ -178,12 +178,12 @@ FinishPage.prototype.render = function (_parent) {
   )
   _parent.append(button)
 
-  $('#popHeader').text(
-    this.pageManager.getLocalizer().getFragment(this.language, 'attending')
+  $("#popHeader").text(
+    this.pageManager.getLocalizer().getFragment(this.language, "attending")
   )
 
   var table = $("<table align='center'> </table>")
-  var trHeader = document.createElement('tr')
+  var trHeader = document.createElement("tr")
   var trT
   var trRatings
 
@@ -199,11 +199,11 @@ FinishPage.prototype.render = function (_parent) {
 
     $(th).append(
       $(
-        '<h3>' +
-        this.pageManager
-          .getLocalizer()
-          .getFragment(this.language, 'results') +
-        '</h3>'
+        "<h3>" +
+          this.pageManager
+            .getLocalizer()
+            .getFragment(this.language, "results") +
+          "</h3>"
       )
     )
     $(trHeader).append(th)
@@ -211,25 +211,25 @@ FinishPage.prototype.render = function (_parent) {
     var trials = this.session.trials
     for (i = 0; i < trials.length; ++i) {
       var trial = trials[i]
-      if (trial.type === 'video') {
-        trT = document.createElement('tr')
+      if (trial.type === "video") {
+        trT = document.createElement("tr")
         thT = $("<th colspan='2'></th>")
-        $(thT).append(trial.id + ' (MUSHRA)')
+        $(thT).append(trial.id + " (MUSHRA)")
         $(trT).append(thT)
         $(table).append(trT)
 
         var ratings = trial.responses
         for (var j = 0; j < ratings.length; ++j) {
-          trRatings = document.createElement('tr')
-          tdRatingStimulus = document.createElement('td')
-          tdRatingScore = document.createElement('td')
+          trRatings = document.createElement("tr")
+          tdRatingStimulus = document.createElement("td")
+          tdRatingScore = document.createElement("td")
 
-          tdRatingStimulus.width = '50%'
-          tdRatingScore.width = '50%'
+          tdRatingStimulus.width = "50%"
+          tdRatingScore.width = "50%"
 
           var rating = ratings[j]
 
-          $(tdRatingStimulus).append(rating.stimulus + ': ')
+          $(tdRatingStimulus).append(rating.stimulus + ": ")
           $(tdRatingScore).append(rating.score)
           $(trRatings).append(tdRatingStimulus)
           $(trRatings).append(tdRatingScore)
@@ -242,14 +242,14 @@ FinishPage.prototype.render = function (_parent) {
   }
 
   if (this.pageConfig.showErrors == true) {
-    $('#popupResultsContent').append(this.errorDiv)
+    $("#popupResultsContent").append(this.errorDiv)
   }
 
-  $('#popupResultsContent').append(table)
+  $("#popupResultsContent").append(table)
 }
 
 FinishPage.prototype.load = function () {
-  $('#labeltd').css('padding-top', $('#feedback').css('margin-top'))
+  $("#labeltd").css("padding-top", $("#feedback").css("margin-top"))
   if (this.pageConfig.questionnaire.length > 0) {
     this.interval = setInterval(
       function () {
@@ -257,15 +257,15 @@ FinishPage.prototype.load = function () {
         var i
         for (i = 0; i < this.pageConfig.questionnaire.length; ++i) {
           var element = this.pageConfig.questionnaire[i]
-          if (element.type === 'text') {
-            if ($('#' + element.name).val() || element.optional == true) {
+          if (element.type === "text") {
+            if ($("#" + element.name).val() || element.optional == true) {
               ++counter
             }
-          } else if (element.type === 'number') {
-            if ($('#' + element.name).val() || element.optional == true) {
+          } else if (element.type === "number") {
+            if ($("#" + element.name).val() || element.optional == true) {
               ++counter
             }
-          } else if (element.type === 'likert') {
+          } else if (element.type === "likert") {
             if (
               (this.likert &&
                 $(
@@ -275,34 +275,34 @@ FinishPage.prototype.load = function () {
             ) {
               ++counter
             }
-          } else if (element.type === 'options') {
+          } else if (element.type === "options") {
             if (
               $("input[name='" + element.name + "__response']:checked").val() ||
               element.optional == true
             ) {
               ++counter
             }
-          } else if (element.type === 'long_text') {
-            if ($('#' + element.name).val() || element.optional == true) {
+          } else if (element.type === "long_text") {
+            if ($("#" + element.name).val() || element.optional == true) {
               ++counter
             }
           }
           // console.log(counter, this.pageConfig.questionnaire.length, element.type)
           if (counter == this.pageConfig.questionnaire.length) {
-            $('#send_results').removeAttr('disabled')
+            $("#send_results").removeAttr("disabled")
           } else if (
             i + 1 == this.pageConfig.questionnaire.length &&
             counter != this.pageConfig.questionnaire.length &&
-            $('#send_results').is(':enabled')
+            $("#send_results").is(":enabled")
           ) {
-            $('#send_results').attr('disabled', true)
+            $("#send_results").attr("disabled", true)
           }
         }
       }.bind(this),
       50
     )
   } else {
-    $('#send_results').removeAttr('disabled')
+    $("#send_results").removeAttr("disabled")
   }
 }
 

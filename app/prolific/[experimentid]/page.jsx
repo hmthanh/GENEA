@@ -1,28 +1,28 @@
-'use server'
+"use server"
 
-import ScreenDown from '@/components/screen/ScreenDown'
-import ScreenUp from '@/components/screen/ScreenUp'
-import Progressbar from '@/components/screen/Progressbar'
-import ScreenHeader from '@/components/screen/ScreenHeader'
-import ScreenTitle from '@/components/screen/ScreenTitle'
-import Navigation from '@/components/screen/Navigation'
-import ScreenFooter from '@/components/screen/ScreenFooter'
-import PopupError from '@/components/screen/PopupError'
-import PopupDialog from '@/components/screen/PopupDialog'
-import ScreenMessage from '@/components/screen/ScreenMessage'
-import ScreenMain from '@/components/screen/ScreenMain'
-import EvaluationBoard from '@/components/screen/EvaluationBoard'
-import { ArrowLeftIcon, ArrowRightIcon } from '@/nextra/icons'
-import { fetchJSONStudy } from '@/server/action/fetch-study'
-import { Suspense } from 'react'
-import axios from 'axios'
+import ScreenDown from "@/components/screen/ScreenDown"
+import ScreenUp from "@/components/screen/ScreenUp"
+import Progressbar from "@/components/screen/Progressbar"
+import ScreenHeader from "@/components/screen/ScreenHeader"
+import ScreenTitle from "@/components/screen/ScreenTitle"
+import Navigation from "@/components/screen/Navigation"
+import ScreenFooter from "@/components/screen/ScreenFooter"
+import PopupError from "@/components/screen/PopupError"
+import PopupDialog from "@/components/screen/PopupDialog"
+import ScreenMessage from "@/components/screen/ScreenMessage"
+import ScreenMain from "@/components/screen/ScreenMain"
+import EvaluationBoard from "@/components/screen/EvaluationBoard"
+import { ArrowLeftIcon, ArrowRightIcon } from "@/nextra/icons"
+import { fetchJSONStudy } from "@/server/action/fetch-study"
+import { Suspense } from "react"
+import axios from "axios"
 // import { fetchJSONStudy } from './actions'
 
 export default async function Page({ params, searchParams }) {
   const { experimentid } = params
   const { PROLIFIC_PID, STUDY_ID, SESSION_ID } = searchParams
   // console.log(experimentid, PROLIFIC_PID, STUDY_ID, SESSION_ID)
-  const url = ''
+  const url = ""
 
   const { status, error, config } = await fetchJSONStudy(url)
   // console.log('config', config)
@@ -154,23 +154,7 @@ export default async function Page({ params, searchParams }) {
               {/* <ScreenMessage /> */}
             </div>
 
-            {/* <Navigation /> */}
-
-            <div
-              id="page_navigation"
-              className="w-full flex flex-row justify-between"
-              // border border-zinc-300
-            >
-              <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2  ">
-                <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
-                Previous
-              </button>
-
-              <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 ">
-                Next
-                <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-              </button>
-            </div>
+            <Navigation />
 
             <PopupDialog />
             <PopupError />

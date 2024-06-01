@@ -18,7 +18,7 @@ These contributions are licensed under the MIT license. See LICENSE.txt for deta
  * @property {Object[]} responses - Responses given by the participant. The class depends on the type.
  */
 export function Trial() {
-  this.id = ''
+  this.id = ""
   this.type = null
   this.responses = []
 }
