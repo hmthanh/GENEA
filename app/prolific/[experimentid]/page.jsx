@@ -139,50 +139,48 @@ export default async function Page({ params, searchParams }) {
      </div>
     </div>
    </div> */}
-      <Suspense fallback={<div>Loading...</div>}>
-        {/* <Playlists artistID={artist.id} /> */}
+      {/* <Playlists artistID={artist.id} /> */}
 
-        <div className="w-full max-h-screen h-screen relative bg-gray-100 ">
-          <div className="w-full max-h-screen h-screen flex flex-col bg-stone-50">
-            {/* Header */}
-            <ScreenHeader name={config.testname} />
-            <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
-              <Progressbar value={45} />
-              <ScreenTitle />
-              <div className="w-full flex-grow bg-white p-0 py-2 sm:p-4 border-none rounded-xl sm:border sm:border-zinc-300 flex flex-col gap-4">
-                <ScreenMain />
-                <EvaluationBoard />
-                {/* <ScreenMessage /> */}
-              </div>
+      <div className="w-full max-h-screen h-screen relative bg-gray-100 ">
+        <div className="w-full max-h-screen h-screen flex flex-col bg-stone-50">
+          {/* Header */}
+          <ScreenHeader name={config.testname} />
+          <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
+            <Progressbar value={45} />
+            <ScreenTitle />
+            <div className="w-full flex-grow bg-white p-0 py-2 sm:p-4 border-none rounded-xl sm:border sm:border-zinc-300 flex flex-col gap-4">
+              <ScreenMain />
+              <EvaluationBoard />
+              {/* <ScreenMessage /> */}
+            </div>
 
-              {/* <Navigation /> */}
+            {/* <Navigation /> */}
 
-              <div
-                id="page_navigation"
-                className="w-full flex flex-row justify-between"
-                // border border-zinc-300
-              >
-                <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2  ">
-                  <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
-                  Previous
-                </button>
+            <div
+              id="page_navigation"
+              className="w-full flex flex-row justify-between"
+              // border border-zinc-300
+            >
+              <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2  ">
+                <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
+                Previous
+              </button>
 
-                <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 ">
-                  Next
-                  <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-                </button>
-              </div>
+              <button className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 ">
+                Next
+                <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
+              </button>
+            </div>
 
-              <PopupDialog />
-              <PopupError />
-              {/* <div className="w-px h-px left-[-1px] top-[-1px] ">
+            <PopupDialog />
+            <PopupError />
+            {/* <div className="w-px h-px left-[-1px] top-[-1px] ">
               <div className="w-0.5 h-[22.80px] left-0 top-0 bg-white/opacity-0 shadow" />
             </div> */}
-              {/* <ScreenFooter /> */}
-            </div>
+            {/* <ScreenFooter /> */}
           </div>
         </div>
-      </Suspense>
+      </div>
     </>
   )
 }

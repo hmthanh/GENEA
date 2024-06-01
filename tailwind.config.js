@@ -1,24 +1,24 @@
 const colors = require('tailwindcss/colors')
 
 const makePrimaryColor =
-  l =>
-    ({ opacityValue }) => {
-      return (
-        `hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) ${l}%` +
-        (opacityValue ? ` / ${opacityValue})` : ')')
-      )
-    }
+  (l) =>
+  ({ opacityValue }) => {
+    return (
+      `hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) ${l}%` +
+      (opacityValue ? ` / ${opacityValue})` : ')')
+    )
+  }
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./nextra/**/*.{js,ts,jsx,tsx,mdx}",
-    "./config/**/*.{js,jsx}",
-    "./contexts/**/*.{js,jsx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./mdx-components.jsx"
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './nextra/**/*.{js,ts,jsx,tsx,mdx}',
+    './config/**/*.{js,jsx}',
+    './contexts/**/*.{js,jsx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './mdx-components.jsx',
   ],
   theme: {
     screens: {
@@ -26,7 +26,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      '2xl': '1536px'
+      '2xl': '1536px',
     },
     fontSize: {
       xs: '.75rem',
@@ -38,10 +38,10 @@ module.exports = {
       '3xl': '1.875rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
-      '6xl': '4rem'
+      '6xl': '4rem',
     },
     letterSpacing: {
-      tight: '-0.015em'
+      tight: '-0.015em',
     },
     colors: {
       transparent: 'transparent',
@@ -68,15 +68,15 @@ module.exports = {
         700: makePrimaryColor(39),
         750: makePrimaryColor(35),
         800: makePrimaryColor(32),
-        900: makePrimaryColor(24)
-      }
+        900: makePrimaryColor(24),
+      },
     },
     extend: {
       colors: {
-        dark: '#111'
-      }
-    }
+        dark: '#111',
+      },
+    },
   },
   darkMode: ['class', 'html[class~="dark"]'],
   plugins: [],
-};
+}

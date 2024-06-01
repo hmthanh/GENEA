@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 export { ArrowRightIcon } from './arrow-right'
 export { ArrowLeftIcon } from './arrow-left'
@@ -29,5 +29,5 @@ export { TerraformIcon } from './terraform'
 export { MoveIcon } from './move'
 export { CardsIcon } from './cards'
 export { WarningIcon } from './warning'
-export { BoxIcon } from "./box"
-export { StarsIcon } from "./stars"
+export { BoxIcon } from './box'
+export { StarsIcon } from './stars'

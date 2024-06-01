@@ -11,28 +11,30 @@ These contributions are licensed under the MIT license. See LICENSE.txt for deta
 **************************************************************************/
 
 function DataSender(config) {
-  this.target = config.remoteService;
+  this.target = config.remoteService
 }
 
 DataSender.prototype.send = function (_session) {
-  var sessionJSON = JSON.stringify(_session);
-  var httpReq = new XMLHttpRequest();
-  var params = "sessionJSON=" + sessionJSON;
+  var sessionJSON = JSON.stringify(_session)
+  var httpReq = new XMLHttpRequest()
+  var params = 'sessionJSON=' + sessionJSON
   try {
-    httpReq.open("POST", config.remoteService, false);  // synchron
-    httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send(params);
-  }
-  catch (e) {
-    console.log(httpReq.responseText);
-    return false;
+    httpReq.open('POST', config.remoteService, false) // synchron
+    httpReq.setRequestHeader(
+      'Content-type',
+      'application/x-www-form-urlencoded'
+    )
+    httpReq.send(params)
+  } catch (e) {
+    console.log(httpReq.responseText)
+    return false
   }
   if (httpReq.status != 200) {
-    console.log(httpReq.responseText);
-    return false;
+    console.log(httpReq.responseText)
+    return false
   } else {
-    return httpReq.responseText;
+    return httpReq.responseText
   }
-};
+}
 
 export default DataSender

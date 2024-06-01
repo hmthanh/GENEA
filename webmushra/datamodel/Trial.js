@@ -15,10 +15,10 @@ These contributions are licensed under the MIT license. See LICENSE.txt for deta
  * @constructor
  * @property {String} id - Identifier of the trial.
  * @property {String} type - Type of the trial (e.g. video)
- * @property {Object[]} responses - Responses given by the participant. The class depends on the type.  
+ * @property {Object[]} responses - Responses given by the participant. The class depends on the type.
  */
 export function Trial() {
-  this.id = "";
-  this.type = null;
-  this.responses = [];
+  this.id = ''
+  this.type = null
+  this.responses = []
 }

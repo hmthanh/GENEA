@@ -5,32 +5,36 @@ This source code is protected by copyright law and international treaties. This 
 
 **************************************************************************/
 
-function PageTemplateRenderer(_pageManager, _showButtonPreviousPage, _language) {
-  this.progressbarId = null;
-  this.headerId = null;
-  this.navigationId = 0;
-  this.showButtonPreviousPage = _showButtonPreviousPage;
-  this.language = _language;
-  this.pageManager = _pageManager;
-  this.lockNextButtonQueued = false;
+function PageTemplateRenderer(
+  _pageManager,
+  _showButtonPreviousPage,
+  _language
+) {
+  this.progressbarId = null
+  this.headerId = null
+  this.navigationId = 0
+  this.showButtonPreviousPage = _showButtonPreviousPage
+  this.language = _language
+  this.pageManager = _pageManager
+  this.lockNextButtonQueued = false
 
-  this.callbacksEventRefreshed = [];
+  this.callbacksEventRefreshed = []
 }
 
-PageTemplateRenderer.prototype.addCallbackEventRefreshed = function (_callback) {
-  this.callbacksEventRefreshed[this.callbacksEventRefreshed.length] = _callback;
-};
+PageTemplateRenderer.prototype.addCallbackEventRefreshed = function (
+  _callback
+) {
+  this.callbacksEventRefreshed[this.callbacksEventRefreshed.length] = _callback
+}
 
 PageTemplateRenderer.prototype.eventRefreshed = function () {
   for (var i = 0; i < this.callbacksEventRefreshed.length; ++i) {
-    this.callbacksEventRefreshed[i]();
+    this.callbacksEventRefreshed[i]()
   }
-};
-
-
+}
 
 PageTemplateRenderer.prototype.renderProgressBar = function (_parentId) {
-  this.progressbarId = _parentId;
+  this.progressbarId = _parentId
   TolitoProgressBar(this.progressbarId)
     .setOuterTheme('a')
     .setInnerTheme('b')
@@ -39,77 +43,103 @@ PageTemplateRenderer.prototype.renderProgressBar = function (_parentId) {
     .setStartFrom(0)
     .setInterval(0)
     .showCounter(false)
-    .build();
-};
+    .build()
+}
 
 PageTemplateRenderer.prototype.renderHeader = function (_parentId) {
-  this.headerId = _parentId;
-  $('#' + this.headerId).append(this.pageManager.getCurrentPage().getName());
-};
+  this.headerId = _parentId
+  $('#' + this.headerId).append(this.pageManager.getCurrentPage().getName())
+}
 
 PageTemplateRenderer.prototype.renderNavigation = function (_parentId) {
-  this.navigationId = _parentId;
-  var renderedSomething = false;
+  this.navigationId = _parentId
+  var renderedSomething = false
 
-  if (this.pageManager.getPageIndex() > 0 && this.showButtonPreviousPage && this.pageManager.getPageIndex() < (this.pageManager.getNumPages() - 1)) {
-    var buttonPrevious = $("<button data-role='button' data-inline='true' onclick='" + this.pageManager.getPageManagerVariableName() + ".previousPage();'>" + this.pageManager.getLocalizer().getFragment(this.language, "previousButton") + "</button>");
-    $('#' + this.navigationId).append(buttonPrevious);
-    renderedSomething = true;
+  if (
+    this.pageManager.getPageIndex() > 0 &&
+    this.showButtonPreviousPage &&
+    this.pageManager.getPageIndex() < this.pageManager.getNumPages() - 1
+  ) {
+    var buttonPrevious = $(
+      "<button data-role='button' data-inline='true' onclick='" +
+        this.pageManager.getPageManagerVariableName() +
+        ".previousPage();'>" +
+        this.pageManager
+          .getLocalizer()
+          .getFragment(this.language, 'previousButton') +
+        '</button>'
+    )
+    $('#' + this.navigationId).append(buttonPrevious)
+    renderedSomething = true
   }
 
-
-  if (this.pageManager.getPageIndex() < (this.pageManager.getNumPages() - 1)) {
-    var buttonNext = $("<button id='__button_next' data-role='button' data-inline='true' onclick='" + this.pageManager.getPageManagerVariableName() + ".nextPage();'>" + this.pageManager.getLocalizer().getFragment(this.language, "nextButton") + "</button>");
+  if (this.pageManager.getPageIndex() < this.pageManager.getNumPages() - 1) {
+    var buttonNext = $(
+      "<button id='__button_next' data-role='button' data-inline='true' onclick='" +
+        this.pageManager.getPageManagerVariableName() +
+        ".nextPage();'>" +
+        this.pageManager
+          .getLocalizer()
+          .getFragment(this.language, 'nextButton') +
+        '</button>'
+    )
     if (this.lockNextButtonQueued) {
-      buttonNext.attr('disabled', 'disabled');
+      buttonNext.attr('disabled', 'disabled')
     }
-    $('#' + this.navigationId).append(buttonNext);
-    renderedSomething = true;
+    $('#' + this.navigationId).append(buttonNext)
+    renderedSomething = true
   }
 
   if (!renderedSomething) {
-    $('#' + this.navigationId).remove();
+    $('#' + this.navigationId).remove()
   }
-  this.lockNextButtonQueued = false;
-};
+  this.lockNextButtonQueued = false
+}
 
 PageTemplateRenderer.prototype.lockNextButton = function () {
   if ($('#__button_next').length > 0) {
-    $('#__button_next').attr('disabled', 'disabled');
+    $('#__button_next').attr('disabled', 'disabled')
   } else {
-    this.lockNextButtonQueued = true;
+    this.lockNextButtonQueued = true
   }
-};
+}
 
 PageTemplateRenderer.prototype.unlockNextButton = function () {
-  $('#__button_next').removeAttr('disabled');
-};
-
-
+  $('#__button_next').removeAttr('disabled')
+}
 
 PageTemplateRenderer.prototype.refresh = function () {
-  $('#' + this.progressbarId).progressbar('option', 'value', ((this.pageManager.getPageIndex()) / (this.pageManager.getNumPages() - 1)) * 100);
-  $('#' + this.headerId).empty();
-  this.renderHeader(this.headerId);
+  $('#' + this.progressbarId).progressbar(
+    'option',
+    'value',
+    (this.pageManager.getPageIndex() / (this.pageManager.getNumPages() - 1)) *
+      100
+  )
+  $('#' + this.headerId).empty()
+  this.renderHeader(this.headerId)
 
-  $('#' + this.navigationId).empty();
-  this.renderNavigation(this.navigationId);
+  $('#' + this.navigationId).empty()
+  this.renderNavigation(this.navigationId)
 
   if ($.mobile.activePage) {
-    $.mobile.activePage.trigger('create');
+    $.mobile.activePage.trigger('create')
   }
-  setTimeout((function () { this.eventRefreshed() }).bind(this), 1);
-};
-
+  setTimeout(
+    function () {
+      this.eventRefreshed()
+    }.bind(this),
+    1
+  )
+}
 
 PageTemplateRenderer.prototype.clear = function () {
   if (this.headerId != null) {
-    $('#' + this.headerId).empty();
+    $('#' + this.headerId).empty()
   }
 
   if (this.navigationId != null) {
-    $('#' + this.navigationId).empty();
+    $('#' + this.navigationId).empty()
   }
-};
+}
 
 export default PageTemplateRenderer

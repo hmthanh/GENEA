@@ -1,11 +1,11 @@
-"use server"
+'use server'
 
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from '@/utils/supabase/server'
 
 export async function loginAction(data) {
-    const supabase = createClient()
+  const supabase = createClient()
 
-    const { error } = await supabase.auth.signInWithPassword(data)
+  const { error } = await supabase.auth.signInWithPassword(data)
 
-    return { error }
+  return { error }
 }

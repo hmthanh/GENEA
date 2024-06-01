@@ -13,8 +13,8 @@ export { Th } from './th'
 export { Tr } from './tr'
 export { Summary } from './summary'
 export { Details } from './detail'
-export { OptionTable } from "./option-table"
-export { Screenshot } from "./screenshot"
+export { OptionTable } from './option-table'
+export { Screenshot } from './screenshot'
 
-export { Select } from "./select"
-export { ThemeSwitch } from "./themeswitch"
+export { Select } from './select'
+export { ThemeSwitch } from './themeswitch'

@@ -5,14 +5,14 @@ This source code is protected by copyright law and international treaties. This 
 
 **************************************************************************/
 
-import { Participant } from "./Participant";
+import { Participant } from './Participant'
 
 /**
  * Represents a session.
  * @constructor
  * @property {Participant} participant - Participant who has done the session.
  * @property {Trial[]} trials - Trials the participant has done within the session.
- * 
+ *
  */
 function Session() {
   /*
@@ -20,20 +20,19 @@ function Session() {
   this.endTime = null;
   NOTE: not yet
   */
-  this.testId = null;
-  this.participant = new Participant();
-  this.trials = [];
+  this.testId = null
+  this.participant = new Participant()
+  this.trials = []
 }
 
 Session.prototype.getTrial = function (_type, _id) {
-
   for (var i = 0; i < this.trials.length; ++i) {
-    var trial = this.trials[i];
+    var trial = this.trials[i]
     if (trial.type === _type && trial.id === _id) {
-      return trial;
+      return trial
     }
   }
-  return null;
-};
+  return null
+}
 
 export default Session
