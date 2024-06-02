@@ -1,5 +1,5 @@
 import React from "react"
 
 export default function FinishScreen() {
-  return <div></div>
+  return <div>FinishScreen</div>
 }

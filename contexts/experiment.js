@@ -21,11 +21,6 @@ export const useCurrentPage = (index) => {
   }
 }
 
-export const useTotalPageNumber = () => {
-  const pages = usePages()
-  return pages.length
-}
-
 export function ExperimentConfigProvider({ value, children }) {
   const storeRef = useRef()
   storeRef.current ||= {

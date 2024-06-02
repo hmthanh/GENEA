@@ -9,6 +9,7 @@ import { fetchJSONStudy } from "./actions"
 import { ExperimentConfigProvider } from "@/contexts/experiment"
 import { ScreenControlProvider } from "@/contexts/screencontroll"
 import { ActionRecorderProvider } from "@/contexts/action-recorder"
+import PreventRefreshPage from "@/components/PreventRefreshPage"
 
 export default async function Page({ params, searchParams }) {
   const { experimentid } = params
@@ -17,6 +18,7 @@ export default async function Page({ params, searchParams }) {
   const url = ""
 
   const { status, error, config } = await fetchJSONStudy(url)
+
   // console.log('config', config)
 
   return (
@@ -28,13 +30,14 @@ export default async function Page({ params, searchParams }) {
       {SESSION_ID} */}
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
         <ExperimentConfigProvider value={config}>
-          <ScreenControlProvider>
+          <ScreenControlProvider min={0} max={config.pages.length - 1}>
             <ActionRecorderProvider>
               <Screen />
             </ActionRecorderProvider>
           </ScreenControlProvider>
         </ExperimentConfigProvider>
       </div>
+      {/* <PreventRefreshPage /> */}
       {/* <PaginationScreen /> */}
     </>
   )

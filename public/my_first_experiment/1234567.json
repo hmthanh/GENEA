@@ -44,23 +44,6 @@
             ]
         },
         {
-            "type": "video",
-            "id": "subject_3",
-            "name": "Page 3 of Y",
-            "content": "Which from the two videos is the best?",
-            "question": "Which from the two videos is the best",
-            "stimuli": [
-                {
-                    "id": "C1",
-                    "url": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4"
-                },
-                {
-                    "id": "C2",
-                    "url": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4"
-                }
-            ]
-        },
-        {
             "type": "finish",
             "name": "Thank you",
             "content": "Thank You!",

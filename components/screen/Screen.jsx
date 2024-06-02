@@ -9,10 +9,13 @@ import { AnimatePresence, motion } from "framer-motion"
 import { NavScreen, PopupDialog, PopupError, Progressbar } from "."
 import { useExperimentConfig } from "@/contexts/experiment"
 import { useScreenControl } from "@/contexts/screencontroll"
+import StartupScreen from "./StartupScreen"
+import FinishScreen from "./FinishScreen"
 
 export function Screen() {
   const config = useExperimentConfig()
-  const { currentPage, setPrev, setNext } = useScreenControl()
+  const { currentPage, isStartPage, isEndPage, setPrev, setNext } =
+    useScreenControl()
 
   if (!config) {
     return <></>
@@ -64,9 +67,13 @@ export function Screen() {
                   }}
                   className="absolute w-full h-full overflow-hidden flex flex-col gap-2 justify-center align-middle"
                 >
-                  <ScreenMain currentPage={currentPage} />
-                  <EvaluationBoard />
-                  <ScreenMessage />
+                  {isStartPage ? (
+                    <StartupScreen />
+                  ) : isEndPage ? (
+                    <FinishScreen />
+                  ) : (
+                    <ScreenMain currentPage={currentPage} />
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>

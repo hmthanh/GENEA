@@ -1,13 +1,14 @@
 import React from "react"
-import { useCurrentPage, useTotalPageNumber } from "@/contexts/experiment"
+import { useCurrentPage } from "@/contexts/experiment"
 import { ArrowLeftIcon, ArrowRightIcon } from "@/nextra/icons"
 import { useActionRecorder } from "@/contexts/action-recorder"
 import { DEFAULT_ACTION_STRING } from "@/config/constants"
+import { useScreenControl } from "@/contexts/screencontroll"
 
 export function ScreenHeader({ currentPage, setPrev, setNext }) {
   const page = useCurrentPage(currentPage)
-  const totalPage = useTotalPageNumber()
   const { addAction } = useActionRecorder()
+  const { isStartPage, isEndPage } = useScreenControl()
 
   const finishPage = () => {
     addAction(DEFAULT_ACTION_STRING.clickFinish)
@@ -27,11 +28,10 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
     //     MUSHRA - Random 2
     // </h3>
     <div className="w-full flex flex-row items-center justify-between py-1 px-4 bg-gradient-to-b from-slate-200 to-gray-200 shadow border-gray-300  border rounded-lg border-zinc-300">
-      {currentPage === 0 ? (
+      {isStartPage ? (
         <div></div>
       ) : (
         <button
-          disabled={currentPage === 0}
           data-role="button"
           data-inline="true"
           onClick={prevPage}
@@ -46,7 +46,7 @@ export function ScreenHeader({ currentPage, setPrev, setNext }) {
         {page.name}
       </h3>
 
-      {currentPage === totalPage - 1 ? (
+      {isEndPage ? (
         <button
           data-role="button"
           data-inline="true"
