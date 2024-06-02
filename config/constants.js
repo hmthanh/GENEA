@@ -15,9 +15,19 @@ export const DEFAULT_ACTION_STRING = {
   clickLeft: "Click Left Better",
   clickEqual: "Click Equal",
   clickRight: "Click Right Better",
+
   clickPrev: "Click Previous",
   clickNext: "Click Next",
   clickFinish: "Click Finish",
+
+  playVideoLeft: "Click Play Video Left",
+  playVideoRight: "Click Play Video Right",
+
+  pauseVideoLeft: "Pause Video Left",
+  pauseVideoRight: "Pause Video Right",
+
+  seekedVideoLeft: "Seeked Video Left",
+  seekedVideoRight: "Seeked Video Right",
 }
 
 export const DEFAULT_SCREEN_CONFIG = {

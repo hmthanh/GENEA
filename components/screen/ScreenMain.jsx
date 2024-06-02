@@ -5,6 +5,8 @@ import React, { useEffect, useRef } from "react"
 import cn from "clsx"
 import { useCurrentPage, useExperimentConfig } from "@/contexts/experiment"
 import { useScreenControl } from "@/contexts/screencontroll"
+import { useActionRecorder } from "@/contexts/action-recorder"
+import { DEFAULT_ACTION_STRING } from "@/config/constants"
 
 export function ScreenMain({ currentPage }) {
   const page = useCurrentPage(currentPage)
@@ -12,6 +14,32 @@ export function ScreenMain({ currentPage }) {
     page.type == "video" ? page.stimuli[0].url : "/gesture_video.mp4"
   const video2URL =
     page.type == "video" ? page.stimuli[1].url : "/gesture_video.mp4"
+  const { addAction } = useActionRecorder()
+
+  // Play
+  const playLeft = () => {
+    addAction(DEFAULT_ACTION_STRING.playVideoLeft)
+  }
+
+  const playRight = () => {
+    addAction(DEFAULT_ACTION_STRING.playVideoRight)
+  }
+
+  // Pause
+  const pauseLeft = () => {
+    addAction(DEFAULT_ACTION_STRING.pauseVideoLeft)
+  }
+  const pauseRight = () => {
+    addAction(DEFAULT_ACTION_STRING.pauseVideoRight)
+  }
+
+  // Scroll video change
+  const seekedVideoLeft = () => {
+    addAction(DEFAULT_ACTION_STRING.seekedVideoLeft)
+  }
+  const seekedVideoRight = () => {
+    addAction(DEFAULT_ACTION_STRING.seekedVideoRight)
+  }
 
   return (
     <div className="w-full h-full overflow-hidden">
@@ -21,6 +49,9 @@ export function ScreenMain({ currentPage }) {
             <video
               muted={false}
               autoPlay={false}
+              onPlay={playLeft}
+              onSeeked={seekedVideoLeft}
+              onPause={pauseLeft}
               playsInline
               loop
               controls
@@ -38,6 +69,9 @@ export function ScreenMain({ currentPage }) {
             <video
               muted={false}
               autoPlay={false}
+              onPause={pauseRight}
+              onPlay={playRight}
+              onSeeked={seekedVideoRight}
               playsInline
               loop
               controls

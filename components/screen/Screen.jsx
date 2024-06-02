@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { ScreenTitle } from "./ScreenTitle"
+import { ScreenHeader } from "./ScreenHeader"
 import { ScreenMain } from "./ScreenMain"
 import { EvaluationBoard } from "./EvaluationBoard"
 import { ScreenMessage } from "./ScreenMessage"
@@ -13,7 +13,7 @@ import { useScreenControl } from "@/contexts/screencontroll"
 
 export function Screen() {
   const config = useExperimentConfig()
-  const { currentPage } = useScreenControl()
+  const { currentPage, setPrev, setNext } = useScreenControl()
 
   if (!config) {
     return <></>
@@ -24,8 +24,12 @@ export function Screen() {
       <NavScreen name={config.testname} />
       <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
         <Progressbar value={process} />
-        <div className="flex flex-col  w-full h-full gap-2">
-          <ScreenTitle currentPage={currentPage} />
+        <div className="flex flex-col w-full h-full gap-2">
+          <ScreenHeader
+            currentPage={currentPage}
+            setPrev={setPrev}
+            setNext={setNext}
+          />
 
           <div className="flex-grow w-full h-full bg-white p-0 py-2 sm:p-4 border-none rounded-xl sm:border sm:border-zinc-300 flex flex-col gap-4">
             <div className="relative h-full w-full  flex justify-center align-middle">
@@ -69,7 +73,6 @@ export function Screen() {
               </AnimatePresence>
             </div>
           </div>
-          <Navigation />
         </div>
 
         <PopupDialog />
