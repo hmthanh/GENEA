@@ -5,6 +5,21 @@ export const DEFAULT_THEME = {
   direction: "ltr",
 }
 
+export const DEFAULT_OPTION = {
+  left: "Left Better",
+  equal: "Equal",
+  right: "Right Better",
+}
+
+export const DEFAULT_ACTION_STRING = {
+  clickLeft: "Click Left Better",
+  clickEqual: "Click Equal",
+  clickRight: "Click Right Better",
+  clickPrev: "Click Previous",
+  clickNext: "Click Next",
+  clickFinish: "Click Finish",
+}
+
 export const DEFAULT_SCREEN_CONFIG = {
   testname: "Gesture Generation Experiment",
   stopOnErrors: true,

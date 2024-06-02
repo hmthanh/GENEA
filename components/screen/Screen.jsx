@@ -9,11 +9,11 @@ import { Navigation } from "./Navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import { NavScreen, PopupDialog, PopupError, Progressbar } from "."
 import { useExperimentConfig } from "@/contexts/experiment"
-import { usePage } from "@/contexts/page"
+import { useScreenControl } from "@/contexts/screencontroll"
 
 export function Screen() {
   const config = useExperimentConfig()
-  const { currentPage, setNext, setPrev } = usePage()
+  const { currentPage } = useScreenControl()
 
   if (!config) {
     return <></>
@@ -25,7 +25,7 @@ export function Screen() {
       <div className="w-full h-screen px-[7%] gap-2 p-2 flex flex-col bg-stone-50">
         <Progressbar value={process} />
         <div className="flex flex-col  w-full h-full gap-2">
-          <ScreenTitle name={"Sample"} />
+          <ScreenTitle currentPage={currentPage} />
 
           <div className="flex-grow w-full h-full bg-white p-0 py-2 sm:p-4 border-none rounded-xl sm:border sm:border-zinc-300 flex flex-col gap-4">
             <div className="relative h-full w-full  flex justify-center align-middle">
@@ -62,10 +62,7 @@ export function Screen() {
                   className="absolute w-full h-full overflow-hidden flex flex-col gap-2 justify-center align-middle"
                   // className="absolute bg-red-500 w-[93%] h-[83%] overflow-hidden"
                 >
-                  <ScreenMain
-                    content={config.pages[currentPage]}
-                    id={currentPage}
-                  />
+                  <ScreenMain currentPage={currentPage} />
                   <EvaluationBoard />
                   <ScreenMessage />
                 </motion.div>

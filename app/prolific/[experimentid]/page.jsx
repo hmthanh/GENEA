@@ -7,7 +7,8 @@ import { Screen } from "@/components/screen"
 import { NavScreen } from "@/components/screen"
 import { fetchJSONStudy } from "./actions"
 import { ExperimentConfigProvider } from "@/contexts/experiment"
-import { PageProvider } from "@/contexts/page"
+import { ScreenControlProvider } from "@/contexts/screencontroll"
+import { ActionRecorderProvider } from "@/contexts/action-recorder"
 
 export default async function Page({ params, searchParams }) {
   const { experimentid } = params
@@ -27,12 +28,13 @@ export default async function Page({ params, searchParams }) {
       {SESSION_ID} */}
       <div className="w-full max-h-screen h-screen bg-gray-100 overflow-hidden">
         <ExperimentConfigProvider value={config}>
-          <PageProvider>
-            <Screen />
-          </PageProvider>
+          <ScreenControlProvider>
+            <ActionRecorderProvider>
+              <Screen />
+            </ActionRecorderProvider>
+          </ScreenControlProvider>
         </ExperimentConfigProvider>
       </div>
-
       {/* <PaginationScreen /> */}
     </>
   )

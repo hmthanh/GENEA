@@ -1,6 +1,21 @@
+import { DEFAULT_ACTION_STRING } from "@/config/constants"
+import { useActionRecorder } from "@/contexts/action-recorder"
 import React from "react"
 
 export function EvaluationBoard() {
+  const { addAction } = useActionRecorder()
+
+  const handleLeft = () => {
+    addAction(DEFAULT_ACTION_STRING.clickLeft)
+  }
+
+  const handleEqual = () => {
+    addAction(DEFAULT_ACTION_STRING.clickEqual)
+  }
+
+  const handleRight = () => {
+    addAction(DEFAULT_ACTION_STRING.clickRight)
+  }
   return (
     // <div id="tr_ConditionRatings">
     //   <div id="refCanvas"></div>
@@ -198,17 +213,26 @@ export function EvaluationBoard() {
     <div className="flex-col justify-between items-center">
       <div className="w-full justify-evenly mx-auto flex flex-row">
         <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border border-zinc-300 hover:bg-neutral-200">
-          <button className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
+          <button
+            className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight"
+            onClick={handleLeft}
+          >
             Left Better
           </button>
         </div>
         <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border  border-zinc-300 hover:bg-neutral-200">
-          <button className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
+          <button
+            className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight"
+            onClick={handleEqual}
+          >
             Equal
           </button>
         </div>
         <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border  border-zinc-300 hover:bg-neutral-200">
-          <button className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
+          <button
+            className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight"
+            onClick={handleRight}
+          >
             Right Better
           </button>
         </div>

@@ -12,6 +12,15 @@ export const usePages = () => {
   return config.pages
 }
 
+export const useCurrentPage = (index) => {
+  const pages = usePages()
+  if (index < 0 || index >= pages.length) {
+    return {}
+  } else {
+    return pages[index]
+  }
+}
+
 export const useTotalPageNumber = () => {
   const pages = usePages()
   return pages.length

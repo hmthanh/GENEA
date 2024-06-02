@@ -1,18 +1,26 @@
 import React from "react"
 import { ArrowLeftIcon, ArrowRightIcon } from "@/nextra/icons"
-import { usePage } from "@/contexts/page"
+import { useScreenControl } from "@/contexts/screencontroll"
 import { useTotalPageNumber } from "@/contexts/experiment"
+import { useActionRecorder } from "@/contexts/action-recorder"
+import { DEFAULT_ACTION_STRING } from "@/config/constants"
 
 export function Navigation() {
-  const { currentPage, setPrev, setNext } = usePage()
+  const { currentPage, setPrev, setNext } = useScreenControl()
   const totalPage = useTotalPageNumber()
-  // console.log("currentPage  ", currentPage)
-  const previousPage = () => {
-    setPrev()
+  const { addAction } = useActionRecorder()
+  const finishPage = () => {
+    addAction(DEFAULT_ACTION_STRING.clickFinish)
   }
 
-  const nextePage = () => {
+  const prevPage = () => {
+    setPrev()
+    addAction(DEFAULT_ACTION_STRING.clickPrev)
+  }
+
+  const nextPage = () => {
     setNext()
+    addAction(DEFAULT_ACTION_STRING.clickNext)
   }
 
   return (
@@ -37,23 +45,34 @@ export function Navigation() {
         disabled={currentPage === 0}
         data-role="button"
         data-inline="true"
-        className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
-        onClick={previousPage}
+        className="py-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
+        onClick={prevPage}
       >
         <ArrowLeftIcon className="h-5 inline shrink-0 ltr:rotate-180" />
         Previous
       </button>
 
-      <button
-        disabled={currentPage === totalPage - 1}
-        data-role="button"
-        data-inline="true"
-        className="pb-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
-        onClick={nextePage}
-      >
-        Next
-        <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
-      </button>
+      {currentPage === totalPage - 1 ? (
+        <button
+          data-role="button"
+          data-inline="true"
+          className="py-3 px-5 text-center text-white bg-green-600 rounded-xl text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
+          onClick={finishPage}
+        >
+          Finish
+          <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
+        </button>
+      ) : (
+        <button
+          data-role="button"
+          data-inline="true"
+          className="py-3 px-5 text-center text-zinc-800 font-bold leading-5 flex align-middle gap-2 disabled:text-gray-400"
+          onClick={nextPage}
+        >
+          Next
+          <ArrowRightIcon className="h-5 inline shrink-0 rtl:rotate-180" />
+        </button>
+      )}
     </div>
   )
 }
