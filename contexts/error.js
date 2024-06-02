@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react"
 
 const ErrorContext = createContext({
-  error: [],
+  error: ["Sample eror 1", "Sample eror 2"],
   setError: () => {},
 })
 

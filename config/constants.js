@@ -1,169 +1,150 @@
+import { isValidElement } from "react"
+
 export const DEFAULT_THEME = {
-  // backgroundColor: {
-  //     dark: '17,17,17',
-  //     light: '250,250,250'
-  // },
-  // banner: {
-  //     dismissible: true,
-  //     key: 'nextra-banner'
-  // },
-  // chat: {
-  //     icon: (
-  //         <>
-  //             <DiscordIcon />
-  //             <span className="sr-only">Discord</span>
-  //         </>
-  //     )
-  // },
-  // color: {
-  //     hue: {
-  //         dark: 204,
-  //         light: 212
-  //     },
-  //     saturation: 100
-  // },
   darkMode: true,
   direction: "ltr",
-  // docsRepositoryBase: 'https://github.com/genea/genea',
-  // editLink: {
-  //     component: function EditLink({ className, filePath, children }) {
-  //         const editUrl = useGitEditUrl(filePath)
-  //         if (!editUrl) {
-  //             return null
-  //         }
-  //         return (
-  //             <Anchor className={className} href={editUrl}>
-  //                 {children}
-  //             </Anchor>
-  //         )
-  //     },
-  //     content: 'Edit this page'
-  // },
-  // feedback: {
-  //     content: 'Question? Give us feedback →',
-  //     labels: 'feedback',
-  //     useLink() {
-  //         const config = useConfig()
-  //         const themeConfig = useThemeConfig()
-  //         return getGitIssueUrl({
-  //             labels: themeConfig.feedback.labels,
-  //             repository: themeConfig.docsRepositoryBase,
-  //             title: `Feedback for “${config.title}”`
-  //         })
-  //     }
-  // },
-  // footer: {
-  //     component: Footer,
-  //     content: `MIT ${new Date().getFullYear()} © Nextra.`
-  // },
-  // gitTimestamp: function GitTimestamp({ timestamp }) {
-  //     const { locale = DEFAULTLOCALE } = useRouter()
-  //     return (
-  //         <>
-  //             Last updated on{' '}
-  //             <time dateTime={timestamp.toISOString()}>
-  //                 {timestamp.toLocaleDateString(locale, {
-  //                     day: 'numeric',
-  //                     month: 'long',
-  //                     year: 'numeric'
-  //                 })}
-  //             </time>
-  //         </>
-  //     )
-  // },
-  // head: function useHead() {
-  //     const { frontMatter, title: pageTitle } = useConfig()
-
-  //     const title = `${pageTitle} – Nextra`
-  //     const { description, canonical, image } = frontMatter
-  //     return (
-  //         <>
-  //             <title>{title}</title>
-  //             <meta property="og:title" content={title} />
-  //             {description && (
-  //                 <>
-  //                     <meta name="description" content={description} />
-  //                     <meta property="og:description" content={description} />
-  //                 </>
-  //             )}
-  //             {canonical && <link rel="canonical" href={canonical} />}
-  //             {image && <meta name="og:image" content={image} />}
-  //         </>
-  //     )
-  // },
-  // i18n: [],
-  // logo: (
-  //     <>
-  //         <span className="font-extrabold">Nextra</span>
-  //         <span className="ml-2 max-md:hidden font-normal text-gray-600">
-  //             The Next Docs Builder
-  //         </span>
-  //     </>
-  // ),
-  // logoLink: true,
-  // navbar: {
-  //     component: Navbar
-  // },
-  // navigation: true,
-  // nextThemes: {
-  //     defaultTheme: 'system',
-  //     storageKey: 'theme'
-  // },
-  // notFound: {
-  //     content: 'Submit an issue about broken link →',
-  //     labels: 'bug'
-  // },
-  // project: {
-  //     icon: (
-  //         <>
-  //             <GitHubIcon />
-  //             <span className="sr-only">GitHub</span>
-  //         </>
-  //     )
-  // },
-  // search: {
-  //     component: Flexsearch,
-  //     emptyResult: (
-  //         <span className="block select-none p-8 text-center text-sm text-gray-400">
-  //             No results found.
-  //         </span>
-  //     ),
-  //     error: 'Failed to load search index.',
-  //     loading: function useLoading() {
-  //         const { locale, defaultLocale = DEFAULTLOCALE } = useRouter()
-  //         const text =
-  //             (locale && LOADINGLOCALES[locale]) || LOADINGLOCALES[defaultLocale]
-  //         return <>{text}…</>
-  //     },
-  //     placeholder: function usePlaceholder() {
-  //         const { locale, defaultLocale = DEFAULTLOCALE } = useRouter()
-  //         const text =
-  //             (locale && PLACEHOLDERLOCALES[locale]) ||
-  //             PLACEHOLDERLOCALES[defaultLocale]
-  //         return `${text}…`
-  //     }
-  // },
-  // sidebar: {
-  //     defaultMenuCollapseLevel: 2,
-  //     toggleButton: true
-  // },
-  // themeSwitch: {
-  //     component: ThemeSwitch,
-  //     useOptions() {
-  //         const { locale } = useRouter()
-
-  //         if (locale === 'zh-CN') {
-  //             return { dark: '深色主题', light: '浅色主题', system: '系统默认' }
-  //         }
-  //         return { dark: 'Dark', light: 'Light', system: 'System' }
-  //     }
-  // },
-  // toc: {
-  //     backToTop: true,
-  //     component: TOC,
-  //     float: true,
-  //     title: 'On This Page'
-  // }
 }
 
-export const DEFAULT_SCREEN = {}
+export const DEFAULT_SCREEN_CONFIG = {
+  testname: "Gesture Generation Experiment",
+  stopOnErrors: true,
+  remoteService: "/save",
+  pages: [
+    {
+      type: "generic",
+      id: "first_page",
+      name: "Name of the first page, used as heading on the page.",
+      content: "Content of the page, usage of HTML tags allowed.",
+    },
+    {
+      type: "video",
+      id: "subject_x",
+      name: "Page 1 of Y",
+      content: "Rate the videos shown below",
+      question: "How human-like was the agent in this video?",
+      stimuli: [
+        {
+          id: "C1",
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+        {
+          id: "C2",
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+      ],
+    },
+    {
+      type: "video",
+      id: "subject_x",
+      name: "Page 2 of Y",
+      content: "Which from the two videos is the best?",
+      question: "Which from the two videos is the best",
+      stimuli: [
+        {
+          id: "C1",
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+        {
+          id: "C2",
+          url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+        },
+      ],
+    },
+    {
+      type: "finish",
+      name: "Thank you",
+      content: "Thank You!",
+      showResults: false,
+      writeResults: true,
+      questionnaire: [
+        {
+          type: "number",
+          label: "*What's your age in years?",
+          name: "age",
+          min: 0,
+          max: 100,
+          default: 0,
+        },
+        {
+          type: "options",
+          name: "gender",
+          label: "*How would you identify yourself (gender)?",
+          response: [
+            {
+              value: "female",
+              label: "Female",
+            },
+            {
+              value: "male",
+              label: "Male",
+            },
+            {
+              value: "other",
+              label: "Other",
+            },
+          ],
+        },
+        {
+          type: "text",
+          label: "*What's your nationality?",
+          name: "nationality",
+        },
+        {
+          type: "likert",
+          label: "How skilled are you with computers?",
+          name: "video_games",
+          response: [
+            {
+              value: "1",
+              label: "1 - Not at all",
+            },
+            {
+              value: "2",
+              label: "2",
+            },
+            {
+              value: "3",
+              label: "3",
+            },
+            {
+              value: "4",
+              label: "4 - Moderately",
+            },
+            {
+              value: "5",
+              label: "5",
+            },
+            {
+              value: "6",
+              label: "6",
+            },
+            {
+              value: "7",
+              label: "7 - Extremely",
+            },
+          ],
+        },
+        {
+          type: "long_text",
+          label:
+            "How do you feel today about yourself and the state of the world?",
+          name: "feeling",
+        },
+      ],
+      remoteFailService: "/fail",
+    },
+  ],
+}
+
+export const DEEP_OBJECT_KEYS = Object.entries(DEFAULT_SCREEN_CONFIG)
+  .map(([key, value]) => {
+    const isObject =
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value) &&
+      !isValidElement(value)
+    if (isObject) {
+      return key
+    }
+  })
+  .filter(Boolean)

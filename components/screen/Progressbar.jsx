@@ -1,8 +1,17 @@
 "use client"
 
+import { useExperimentConfig } from "@/contexts/experiment"
+import { usePage } from "@/contexts/page"
 import React from "react"
 
-export function Progressbar({ value = 25 }) {
+export function Progressbar({ value = 0 }) {
+  const config = useExperimentConfig()
+  // const totalPages = config.pages.length
+  const { currentPage, setNext, setPrev } = usePage()
+  // console.log("currentPage", currentPage)
+
+  const process = (currentPage / config.pages.length) * 100
+
   return (
     <>
       {/* <div
@@ -25,7 +34,7 @@ export function Progressbar({ value = 25 }) {
       <div className="md:w-1/3 w-1/2 flex flex-start bg-blue-gray-50 overflow-hidden mx-auto border border-black font-sans rounded-full text-xs font-medium h-3">
         <div
           className="flex justify-center items-center h-full overflow-hidden break-all rounded-full bg-gray-900 text-white"
-          style={{ width: value + "%" }}
+          style={{ width: process + "%" }}
         ></div>
       </div>
       {/* <div className="w-[32em] h-[1em]  mx-auto bg-white rounded-2xl border border-black" /> */}

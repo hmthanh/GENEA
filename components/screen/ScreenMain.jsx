@@ -4,10 +4,16 @@ import Video from "@/nextra/video"
 import React, { useEffect, useRef } from "react"
 import cn from "clsx"
 
-export function ScreenMain() {
+export function ScreenMain({ content, id }) {
   const video1Ref = useRef()
 
   useEffect(() => {}, [video1Ref])
+  // {
+  //   config.pages.find((page, index) => index === currentPage)
+  //     ?.content
+  // }
+  // console.log("content", content)
+  // console.log("id", id)
 
   return (
     <div className="w-full h-full overflow-hidden">

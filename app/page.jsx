@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import Header from '@/components/header'
-import Body from '@/components/body'
-import Footer from '@/components/footer'
+import Header from "@/components/header"
+import Body from "@/components/body"
+import Footer from "@/components/footer"
 
 export default function Home() {
   // const canInitSupabaseClient = () => {
@@ -40,9 +40,10 @@ export default function Home() {
     //   </div>
     // </div>
     <>
-      <Header />
-      <Body>hello</Body>
-      <Footer />
+      {/* <Header /> */}
+      {/* <Body>hello</Body> */}
+      hello
+      {/* <Footer /> */}
     </>
   )
 }

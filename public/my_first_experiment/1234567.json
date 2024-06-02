@@ -1,5 +1,5 @@
 {
-    "testname": "Experiment",
+    "testname": "Gesture Generation Experiment",
     "stopOnErrors": true,
     "remoteService": "/save",
     "pages": [
@@ -30,6 +30,23 @@
             "type": "video",
             "id": "subject_x",
             "name": "Page 2 of Y",
+            "content": "Which from the two videos is the best?",
+            "question": "Which from the two videos is the best",
+            "stimuli": [
+                {
+                    "id": "C1",
+                    "url": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4"
+                },
+                {
+                    "id": "C2",
+                    "url": "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4"
+                }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "subject_3",
+            "name": "Page 3 of Y",
             "content": "Which from the two videos is the best?",
             "question": "Which from the two videos is the best",
             "stimuli": [
