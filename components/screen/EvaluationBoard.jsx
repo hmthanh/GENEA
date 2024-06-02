@@ -198,17 +198,17 @@ export function EvaluationBoard() {
     <div className="flex-col justify-between items-center">
       <div className="w-full justify-evenly mx-auto flex flex-row">
         <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border border-zinc-300 hover:bg-neutral-200">
-          <button className="px-4 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
+          <button className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
             Left Better
           </button>
         </div>
         <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border  border-zinc-300 hover:bg-neutral-200">
-          <button className="px-4 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
+          <button className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
             Equal
           </button>
         </div>
         <div className="bg-neutral-100 rounded-lg min-w-[15%] flex justify-center align-middle shadow border  border-zinc-300 hover:bg-neutral-200">
-          <button className="px-4 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
+          <button className="sm:px-4 px-2 py-2 w-full justify-center items-center text-center text-zinc-800 text-base font-bold leading-tight">
             Right Better
           </button>
         </div>

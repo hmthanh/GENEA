@@ -11,6 +11,7 @@ import { NavScreen, PopupDialog, PopupError, Progressbar } from "."
 
 export function Screen({ config }) {
   const [currentPage, setCurrentPage] = useState(1)
+  console.log(config)
 
   const nextPage = () => {
     console.log("object")
@@ -67,7 +68,7 @@ export function Screen({ config }) {
                     x: { type: "linear", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 },
                   }}
-                  className="absolute bg-primary-500 w-full h-full overflow-hidden flex flex-col gap-2 justify-center align-middle"
+                  className="absolute  w-full h-full overflow-hidden flex flex-col gap-2 justify-center align-middle"
                   // className="absolute bg-red-500 w-[93%] h-[83%] overflow-hidden"
                 >
                   {pages.find((page) => page.id === currentPage)?.content}
