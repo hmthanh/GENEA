@@ -5,7 +5,6 @@ import { ScreenHeader } from "./ScreenHeader"
 import { ScreenMain } from "./ScreenMain"
 import { EvaluationBoard } from "./EvaluationBoard"
 import { ScreenMessage } from "./ScreenMessage"
-import { Navigation } from "./Navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import { NavScreen, PopupDialog, PopupError, Progressbar } from "."
 import { useExperimentConfig } from "@/contexts/experiment"
@@ -64,7 +63,6 @@ export function Screen() {
                     opacity: { duration: 0.2 },
                   }}
                   className="absolute w-full h-full overflow-hidden flex flex-col gap-2 justify-center align-middle"
-                  // className="absolute bg-red-500 w-[93%] h-[83%] overflow-hidden"
                 >
                   <ScreenMain currentPage={currentPage} />
                   <EvaluationBoard />
