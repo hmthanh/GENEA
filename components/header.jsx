@@ -14,7 +14,7 @@ export default function Header() {
     //     <nav className="mx-auto flex h-[var(--nextra-navbar-height)] max-w-[90rem] items-center justify-end gap-4 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
     <Navbar>
       <a
-        className="flex items-center hovesr:opacity-75 ltr:mr-auto rtl:ml-auto"
+        className="flex items-center px-24 hovesr:opacity-75 ltr:mr-auto rtl:ml-auto"
         href="/"
       >
         <Image src="/logo.png" width={225} height={30} />
@@ -35,7 +35,7 @@ export default function Header() {
             </div> */}
       {/* <a className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-current="false" href="/examples/basic">Examples</a> */}
       {/* <a className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-current="false" href="/blog">Blog</a> */}
-      {/* <AuthButton /> */}
+      <AuthButton />
 
       {/* <div className="nextra-search relative md:w-64 max-md:hidden">
                     <div className="relative flex items-center text-gray-900 contrast-more:text-gray-800 dark:text-gray-300 contrast-more:dark:text-gray-300">

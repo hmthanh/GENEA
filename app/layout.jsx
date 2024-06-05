@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <div dir="ltr">
             <Header />
-            <Body>{children}</Body>
+            {children}
             <Footer />
           </div>
         </ThemeProvider>
