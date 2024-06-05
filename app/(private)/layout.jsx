@@ -4,7 +4,6 @@ import { File } from "@/nextra/sidebar"
 import React from "react"
 
 export default function Layout({ children }) {
-
   return (
     <div className="mx-auto flex max-w-[90rem]">
       <Sidebar />
