@@ -6,6 +6,7 @@ import "katex/dist/katex.min.css"
 import Footer from "@/components/footer"
 import Body from "@/components/body"
 import { ThemeProvider } from "next-themes"
+import Header from "@/components/header"
 // import { useThemeConfig } from "@/contexts/theme";
 
 export const metadata = {
@@ -19,14 +20,22 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning dir="ltr">
+      <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>GENEA 2024</title>
+      </head>
       <body className="nextra-banner-hidden">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <div dir="ltr">
-            {/* <Header /> */}
-            {/* <Body> */}
-            {children}
-            {/* </Body> */}
-            {/* <Footer /> */}
+            <Header />
+            <Body>{children}</Body>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

@@ -1,15 +1,15 @@
-// "use client"
+"use client"
 
-import { Button } from "@/nextra"
 // import { createClient } from "@/utils/supabase/server"
 import { redirect } from "next/navigation"
 // Import FilePond styles
-import "filepond/dist/filepond.min.css"
+// import "filepond/dist/filepond.min.css"
 // import { FilePond, registerPlugin } from "react-filepond"
 // import { useState } from "react"
-import FilePond from "@/components/filepond/customfilepond"
-import NewFilePond from "@/components/filepond/newfilepond"
-import Upload from "@/components/upload/Upload"
+// import FilePond from "@/components/filepond/customfilepond"
+// import NewFilePond from "@/components/filepond/newfilepond"
+import { upload } from "./actions"
+import Upload from "./upload"
 
 // import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation"
 // import FilePondPluginImagePreview from "filepond-plugin-image-preview"
@@ -17,7 +17,7 @@ import Upload from "@/components/upload/Upload"
 
 // registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
-export default async function Page() {
+export default function Page() {
   //   const supabase = createClient()
 
   //   const {
@@ -31,7 +31,8 @@ export default async function Page() {
   return (
     <>
       <div className="">
-        <Upload />
+        <Upload handleUpload={upload} />
+        {/* <button onClick={handleThis}>Sample</button> */}
       </div>
     </>
   )
