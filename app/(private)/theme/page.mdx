@@ -1,7 +1,7 @@
 import { Screenshot } from "@/nextra/screenshot"
 
 import { Callout } from "@/nextra"
-import titleSuffixImage from "../../public/title-suffix.png"
+import titleSuffixImage from "../../../public/title-suffix.png"
 
 # Theme Configuration
 
@@ -29,7 +29,11 @@ import { OptionTable } from "@/nextra"
 Set the repository URL of the documentation. It’s used to generate the
 “[Edit this page](#edit-link)” link and the “[Feedback](#feedback-link)” link.
 
-<OptionTable options={[["docsRepositoryBase", "string", "URL of the documentation repository."]]} />
+<OptionTable
+  options={[
+    ["docsRepositoryBase", "string", "URL of the documentation repository."],
+  ]}
+/>
 
 #### Specify a Path
 
@@ -55,7 +59,13 @@ It is also a hook, so you can use APIs like `useRouter` inside to return values
 conditionally.
 
 <OptionTable
-  options={[["useNextSeoProps", "() => NextSeoProps", "A React hook function that returns options for Next SEO."]]}
+  options={[
+    [
+      "useNextSeoProps",
+      "() => NextSeoProps",
+      "A React hook function that returns options for Next SEO.",
+    ],
+  ]}
 />
 
 For example, we can have all pages rendering the same suffix for `<title>`:
@@ -139,13 +149,18 @@ export default {
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
-    const url = "https://my-app.com" + (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+    const url =
+      "https://my-app.com" +
+      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
 
     return (
       <>
         <meta property="og:url" content={url} />
         <meta property="og:title" content={frontMatter.title || "Nextra"} />
-        <meta property="og:description" content={frontMatter.description || "The next site builder"} />
+        <meta
+          property="og:description"
+          content={frontMatter.description || "The next site builder"}
+        />
       </>
     )
   },
@@ -167,7 +182,10 @@ Customize the theme behavior of the website.
       "object",
       <>
         Configuration for the{" "}
-        <a href="https://github.com/pacocoursey/next-themes#themeprovider" target="_blank">
+        <a
+          href="https://github.com/pacocoursey/next-themes#themeprovider"
+          target="_blank"
+        >
           next-themes
         </a>{" "}
         package.
@@ -183,8 +201,16 @@ saturation values for light and dark themes.
 
 <OptionTable
   options={[
-    ["primaryHue", "number | { dark: number; light: number }", "The hue of the primary theme color."],
-    ["primarySaturation", "number | { dark: number; light: number }", "The saturation of the primary theme color."],
+    [
+      "primaryHue",
+      "number | { dark: number; light: number }",
+      "The hue of the primary theme color.",
+    ],
+    [
+      "primarySaturation",
+      "number | { dark: number; light: number }",
+      "The saturation of the primary theme color.",
+    ],
   ]}
 />
 
@@ -211,7 +237,8 @@ function component.
 <Screenshot src={titleSuffixImage} alt="Customized Logo" />
 
 <div className="mt-8 text-center text-sm">
-  [Live example on StackBlitz ↗](https://stackblitz.com/edit/nextra-2-docs-yrlccm?file=theme.config.jsx)
+  [Live example on StackBlitz
+  ↗](https://stackblitz.com/edit/nextra-2-docs-yrlccm?file=theme.config.jsx)
 </div>
 
 ```jsx
@@ -224,7 +251,9 @@ export default {
           d="M14.683 14.828a4.055 4.055 0 0 1-1.272.858a4.002 4.002 0 0 1-4.875-1.45l-1.658 1.119a6.063 6.063 0 0 0 1.621 1.62a5.963 5.963 0 0 0 2.148.903a6.035 6.035 0 0 0 3.542-.35a6.048 6.048 0 0 0 1.907-1.284c.272-.271.52-.571.734-.889l-1.658-1.119a4.147 4.147 0 0 1-.489.592z M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm0 2c2.953 0 5.531 1.613 6.918 4H5.082C6.469 5.613 9.047 4 12 4zm0 16c-4.411 0-8-3.589-8-8c0-.691.098-1.359.264-2H5v1a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2h2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1h.736c.166.641.264 1.309.264 2c0 4.411-3.589 8-8 8z"
         />
       </svg>
-      <span style={{ marginLeft: ".4em", fontWeight: 800 }}>My Cool Project</span>
+      <span style={{ marginLeft: ".4em", fontWeight: 800 }}>
+        My Cool Project
+      </span>
     </>
   ),
 }
@@ -238,7 +267,11 @@ it links to Nextra’s GitHub repository.
 <OptionTable
   options={[
     ["project.link", "string", "URL of the project homepage."],
-    ["project.icon", "React.ReactNode | React.FC", "Icon or element of the project link."],
+    [
+      "project.icon",
+      "React.ReactNode | React.FC",
+      "Icon or element of the project link.",
+    ],
   ]}
 />
 
@@ -274,7 +307,11 @@ navbar.
 <OptionTable
   options={[
     ["chat.link", "string", "URL of the chat link."],
-    ["chat.icon", "React.ReactNode | React.FC", "Icon or element of the chat link."],
+    [
+      "chat.icon",
+      "React.ReactNode | React.FC",
+      "Icon or element of the chat link.",
+    ],
   ]}
 />
 
@@ -331,7 +368,11 @@ notice.
 <OptionTable
   options={[
     ["banner.dismissible", "boolean", "Closable banner or not."],
-    ["banner.key", "string", "Storage key to keep the banner state (dismissed or not)."],
+    [
+      "banner.key",
+      "string",
+      "Storage key to keep the banner state (dismissed or not).",
+    ],
     ["banner.text", "React.ReactNode | React.FC", "Text of the banner."],
   ]}
 />
@@ -368,8 +409,16 @@ Customize the entire navbar component.
 
 <OptionTable
   options={[
-    ["navbar.component", "React.ReactNode | React.FC<NavBarProps>", "Navbar component."],
-    ["navbar.extraContent", "React.ReactNode | React.FC", "Display extra content after last icon."],
+    [
+      "navbar.component",
+      "React.ReactNode | React.FC<NavBarProps>",
+      "Navbar component.",
+    ],
+    [
+      "navbar.extraContent",
+      "React.ReactNode | React.FC",
+      "Display extra content after last icon.",
+    ],
   ]}
 />
 
@@ -396,7 +445,11 @@ Customize the entire navbar component.
 }>`,
       "Custom renderer for sidebar titles.",
     ],
-    ["sidebar.toggleButton", "boolean", "Hide/show sidebar toggle button. Defaults to `false`."],
+    [
+      "sidebar.toggleButton",
+      "boolean",
+      "Hide/show sidebar toggle button. Defaults to `false`.",
+    ],
   ]}
 />
 
@@ -470,20 +523,34 @@ Provide custom [MDX components](https://mdxjs.com/table-of-components/) to
 render the content. For example, you can use a custom `pre` component to render
 code blocks.
 
-<OptionTable options={[["components", "Record<string, React.FC>", "Custom MDX components."]]} />
+<OptionTable
+  options={[
+    ["components", "Record<string, React.FC>", "Custom MDX components."],
+  ]}
+/>
 
 ### Writing Direction
 
 The default writing direction of the website.
 
-<OptionTable options={[["direction", '"ltr" | "rtl"', "Default writing direction."]]} />
+<OptionTable
+  options={[["direction", '"ltr" | "rtl"', "Default writing direction."]]}
+/>
 
 ### Main Content
 
 Render top and/or bottom content of main area of the page. It can be used to
 render a comment section, a newsletter form, or any other type of content.
 
-<OptionTable options={[["main", "React.FC<{ children: React.ReactNode }>", "Component of main content."]]} />
+<OptionTable
+  options={[
+    [
+      "main",
+      "React.FC<{ children: React.ReactNode }>",
+      "Component of main content.",
+    ],
+  ]}
+/>
 
 ## TOC Sidebar
 
@@ -494,11 +561,27 @@ navigating between headings.
 
 <OptionTable
   options={[
-    ["toc.component", "React.ReactNode | React.FC<TOCProps>", "Custom renderer of the TOC."],
-    ["toc.extraContent", "React.ReactNode | React.FC", "Display extra content below the TOC content."],
+    [
+      "toc.component",
+      "React.ReactNode | React.FC<TOCProps>",
+      "Custom renderer of the TOC.",
+    ],
+    [
+      "toc.extraContent",
+      "React.ReactNode | React.FC",
+      "Display extra content below the TOC content.",
+    ],
     ["toc.float", "boolean", "Float the TOC next to the content."],
-    ["toc.title", "React.ReactNode | React.FC", "Title of the TOC sidebar. By default it’s “On This Page”."],
-    ["toc.headingComponent", "React.FC<{ id: string, children: string }>", "Custom renderer of TOC headings."],
+    [
+      "toc.title",
+      "React.ReactNode | React.FC",
+      "Title of the TOC sidebar. By default it’s “On This Page”.",
+    ],
+    [
+      "toc.headingComponent",
+      "React.FC<{ id: string, children: string }>",
+      "Custom renderer of TOC headings.",
+    ],
     ["toc.backToTop", "boolean", "Add `Scroll to top` link."],
   ]}
 />
@@ -516,7 +599,11 @@ Show an “Edit this page” link on the page that points to the file URL on Git
 
 <OptionTable
   options={[
-    ["editLink.text", "React.ReactNode | React.FC", "Content of the default edit link."],
+    [
+      "editLink.text",
+      "React.ReactNode | React.FC",
+      "Content of the default edit link.",
+    ],
     [
       "editLink.component",
       `React.FC<{
@@ -529,7 +616,9 @@ Show an “Edit this page” link on the page that points to the file URL on Git
   ]}
 />
 
-<Callout type="info">To disable it, you can set `editLink.component` to `null`.</Callout>
+<Callout type="info">
+  To disable it, you can set `editLink.component` to `null`.
+</Callout>
 
 ### Feedback Link
 
@@ -540,8 +629,16 @@ the docs repository, with the current website title prefilled:
 
 <OptionTable
   options={[
-    ["feedback.content", "React.ReactNode | React.FC", "Content of the feedback button."],
-    ["feedback.labels", "string", "Labels that can be added to the new created GitHub issue."],
+    [
+      "feedback.content",
+      "React.ReactNode | React.FC",
+      "Content of the feedback button.",
+    ],
+    [
+      "feedback.labels",
+      "string",
+      "Labels that can be added to the new created GitHub issue.",
+    ],
     [
       "feedback.useLink",
       "() => string",
@@ -550,7 +647,9 @@ the docs repository, with the current website title prefilled:
   ]}
 />
 
-<Callout type="info">To disable it, you can set `feedback.content` to `null`.</Callout>
+<Callout type="info">
+  To disable it, you can set `feedback.content` to `null`.
+</Callout>
 
 ## End of Page
 
@@ -587,7 +686,11 @@ of the content.
 
 <OptionTable
   options={[
-    ["gitTimestamp", "React.ReactNode | React.FC<{ timestamp: Date }>", "Component to render the last updated info."],
+    [
+      "gitTimestamp",
+      "React.ReactNode | React.FC<{ timestamp: Date }>",
+      "Component to render the last updated info.",
+    ],
   ]}
 />
 
@@ -598,8 +701,16 @@ default footer, or fully customize it with a custom component.
 
 <OptionTable
   options={[
-    ["footer.text", "React.ReactNode | React.FC", "Content of the default footer component."],
-    ["footer.component", "React.ReactNode | React.FC<{ menu: boolean }>", "Customized footer component."],
+    [
+      "footer.text",
+      "React.ReactNode | React.FC",
+      "Content of the default footer component.",
+    ],
+    [
+      "footer.component",
+      "React.ReactNode | React.FC<{ menu: boolean }>",
+      "Customized footer component.",
+    ],
   ]}
 />
 
@@ -633,7 +744,11 @@ export default {
       "React.ReactNode | React.FC<{ lite?: boolean, className?: string }>",
       "Component to render the theme switch.",
     ],
-    ["themeSwitch.useOptions", "ThemeOptions | () => ThemeOptions", "Options in the theme switch."],
+    [
+      "themeSwitch.useOptions",
+      "ThemeOptions | () => ThemeOptions",
+      "Options in the theme switch.",
+    ],
   ]}
 />
 
@@ -666,4 +781,6 @@ export default {
 This isn’t supported by all browsers, but it’s a nice way to customize the
 favicon of the website simply by using an emoji or character.
 
-<OptionTable options={[["faviconGlyph", `string`, "The glyph to use as the favicon."]]} />
+<OptionTable
+  options={[["faviconGlyph", `string`, "The glyph to use as the favicon."]]}
+/>

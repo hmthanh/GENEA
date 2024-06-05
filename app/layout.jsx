@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico"></link>
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>GENEA 2024</title>
