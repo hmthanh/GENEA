@@ -31,10 +31,27 @@
 }
 
 html {
-  font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1, 'ss06' 1 !important;
-  font-family: Segoe UI, ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue,
-    Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1,
+    "ss01" 1,
+    "ss06" 1 !important;
+  font-family:
+    Segoe UI,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Noto Sans,
+    Ubuntu,
+    Cantarell,
+    Helvetica Neue,
+    Arial,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
     Noto Color Emoji;
 }
 
@@ -42,7 +59,10 @@ html {
   scroll-padding-top: 4rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1,
+    "ss01" 1;
   -webkit-tap-highlight-color: transparent;
   font-size: 1rem;
 }

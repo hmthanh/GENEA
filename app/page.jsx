@@ -40,10 +40,9 @@ export default function Home() {
     //   </div>
     // </div>
     <>
-      {/* <Header /> */}
-      {/* <Body>hello</Body> */}
-      hello
-      {/* <Footer /> */}
+      <Header />
+      <Body>sdfsdj</Body>
+      <Footer />
     </>
   )
 }
