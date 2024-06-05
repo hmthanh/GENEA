@@ -2,13 +2,11 @@
 
 import { useMenu } from "@/contexts/menu"
 import { useContext } from "react"
-import { Separator } from "./separator"
+import { Separator } from "./Separator"
 import { Anchor } from "@/nextra/anchor"
-import { useFSRoute } from "@/nextra/utils/use-fs-route"
 import cn from "clsx"
 import { useActiveAnchor } from "@/contexts/active-anchor"
 import { useRouter } from "next/navigation"
-import { OnFocusItemContext } from "@/components/sidebar"
 
 const classes = {
   link: cn(
@@ -36,7 +34,7 @@ const classes = {
 export function File({ item, anchors }) {
   // const route = useFSRoute()
   const route = useRouter()
-  const onFocus = useContext(OnFocusItemContext)
+  // const onFocus = useContext(OnFocusItemContext)
 
   // It is possible that the item doesn't have any route - for example an external link.
   // const active = item.route && [route, route + "/"].includes(item.route + "/")
@@ -56,12 +54,12 @@ export function File({ item, anchors }) {
         onClick={() => {
           setMenu(false)
         }}
-        onFocus={() => {
-          onFocus?.(item.route)
-        }}
-        onBlur={() => {
-          onFocus?.(null)
-        }}
+        // onFocus={() => {
+        //   onFocus?.(item.route)
+        // }}
+        // onBlur={() => {
+        //   onFocus?.(null)
+        // }}
       >
         {item.title}
       </Anchor>
