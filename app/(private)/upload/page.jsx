@@ -30,10 +30,8 @@ export default function Page() {
 
   return (
     <>
-      <div className="">
-        <Upload handleUpload={upload} />
-        {/* <button onClick={handleThis}>Sample</button> */}
-      </div>
+      <Upload handleUpload={upload} />
+      {/* <button onClick={handleThis}>Sample</button> */}
     </>
   )
 }
