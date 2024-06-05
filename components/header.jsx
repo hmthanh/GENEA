@@ -48,7 +48,7 @@ export default function Header() {
         href="https://genea-workshop.github.io/2024/"
         target="blank"
         rel="blank"
-        className=" contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+        className="text-sm contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
         aria-current="false"
       >
         GENEA 2024 ↗
