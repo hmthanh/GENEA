@@ -7,6 +7,7 @@ import Footer from "@/components/footer"
 import Body from "@/components/body"
 import { ThemeProvider } from "next-themes"
 import Header from "@/components/header"
+import Twitter from "@/components/twitter"
 // import { useThemeConfig } from "@/contexts/theme";
 
 export const metadata = {
