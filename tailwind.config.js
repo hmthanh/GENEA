@@ -57,6 +57,7 @@ module.exports = {
       orange: colors.orange,
       blue: colors.blue,
       yellow: colors.yellow,
+      spaceblack: { 500: "rgba(0, 0, 0, 0.04)" },
       primary: {
         50: makePrimaryColor(97),
         100: makePrimaryColor(94),

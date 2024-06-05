@@ -42,17 +42,19 @@ export default function RegisterPage({ searchParams }) {
   )
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
-      <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <h3 className="text-xl font-semibold">Sign Up</h3>
+    <div className="flex h-screen items-center justify-center bg-gray-100 dark:bg-neutral-900">
+      <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl dark:border-neutral-800">
+        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 dark:border-neutral-800 dark:bg-spaceblack-500 bg-white px-4 py-6 pt-8 text-center sm:px-16">
+          <h3 className="text-xl font-semibold dark:text-neutral-100">
+            Sign Up
+          </h3>
           <p className="text-sm text-gray-500">
             Create an account with your email and password
           </p>
         </div>
         <form
           onSubmit={handleRegister}
-          className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
+          className="flex flex-col space-y-4 bg-gray-50 dark:bg-spaceblack-500 px-4 py-8 sm:px-16"
           encType="multipart/form-data"
           method="POST"
         >
@@ -75,7 +77,7 @@ export default function RegisterPage({ searchParams }) {
               placeholder="sample@gmail.com"
               autoComplete="email"
               required=""
-              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 dark:border-neutral-800 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm  bg-black/[.05] dark:bg-gray-50/10 placeholder:text-gray-500 dark:placeholder:text-gray-400"
               name="email"
             />
           </div>
@@ -92,14 +94,14 @@ export default function RegisterPage({ searchParams }) {
               onChange={(e) => setPassword(e.target.value)}
               type="current-password"
               required=""
-              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 dark:border-neutral-800 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm  bg-black/[.05] dark:bg-gray-50/10 placeholder:text-gray-500 dark:placeholder:text-gray-400"
               name="current-password"
             />
           </div>
           <button
             type="submit"
             aria-disabled="false"
-            className="flex h-10 w-full items-center bg-primary-600 font-bold text-white justify-center rounded-md border text-sm transition-all focus:outline-none"
+            className="flex h-10 w-full items-center bg-primary-600 font-bold dark:border-neutral-800 text-white justify-center rounded-md border text-sm transition-all focus:outline-none"
           >
             {loading ? (
               <Loading color="#fff" />
@@ -114,7 +116,10 @@ export default function RegisterPage({ searchParams }) {
           </button>
           <p className="text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <a className="font-semibold text-gray-800" href="/login">
+            <a
+              className="font-semibold text-gray-800 dark:text-gray-100"
+              href="/login"
+            >
               Sign in
             </a>{" "}
             instead.
