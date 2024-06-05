@@ -1,7 +1,7 @@
 "use client"
 
-import cn from 'clsx'
-import { createContext, memo, useCallback, useContext, useState } from 'react'
+import cn from "clsx"
+import { createContext, memo, useCallback, useContext, useState } from "react"
 
 const ctx = createContext(0)
 
@@ -13,8 +13,8 @@ function Tree({ children }) {
   return (
     <div
       className={cn(
-        'nextra-filetree mt-6 select-none text-sm text-gray-800 dark:text-gray-300',
-        'not-prose' // for nextra-theme-blog
+        "nextra-filetree mt-6 select-none text-sm text-gray-800 dark:text-gray-300",
+        "not-prose" // for nextra-theme-blog
       )}
     >
       <div className="inline-block rounded-lg border px-4 py-2 dark:border-neutral-800">
@@ -64,8 +64,8 @@ const Folder = memo(
               strokeWidth="2"
               d={
                 isFolderOpen
-                  ? 'M5 19a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4l2 2h4a2 2 0 0 1 2 2v1M5 19h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2Z'
-                  : 'M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2Z'
+                  ? "M5 19a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4l2 2h4a2 2 0 0 1 2 2v1M5 19h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2Z"
+                  : "M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2Z"
               }
             />
           </svg>
@@ -80,13 +80,13 @@ const Folder = memo(
     )
   }
 )
-Folder.displayName = 'Folder'
+Folder.displayName = "Folder"
 
 const File = memo(({ label, name, active }) => (
   <li
     className={cn(
-      'flex list-none',
-      active && 'text-primary-600 contrast-more:underline'
+      "flex list-none",
+      active && "text-primary-600 contrast-more:underline"
     )}
   >
     <span className="inline-flex cursor-default items-center py-1">
@@ -105,8 +105,8 @@ const File = memo(({ label, name, active }) => (
     </span>
   </li>
 ))
-File.displayName = 'File'
+File.displayName = "File"
 
 // export const FileTree = Object.assign(Tree, { Folder, File })
 
-export {Tree, Folder, File}
+export { Tree, Folder, File }

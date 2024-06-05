@@ -31,29 +31,6 @@ OnFocusItemContext.displayName = "OnFocusItem"
 const FolderLevelContext = createContext(0)
 FolderLevelContext.displayName = "FolderLevel"
 
-const classes = {
-  link: cn(
-    "flex rounded px-2 py-1.5 text-sm transition-colors [word-break:break-word]",
-    "cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:border"
-  ),
-  inactive: cn(
-    "text-gray-500 hover:bg-gray-100 hover:text-gray-900",
-    "dark:text-neutral-400 dark:hover:bg-primary-100/5 dark:hover:text-gray-50",
-    "contrast-more:text-gray-900 contrast-more:dark:text-gray-50",
-    "contrast-more:border-transparent contrast-more:hover:border-gray-900 contrast-more:dark:hover:border-gray-50"
-  ),
-  active: cn(
-    "bg-primary-100 font-semibold text-primary-800 dark:bg-primary-400/10 dark:text-primary-600",
-    "contrast-more:border-primary-500 contrast-more:dark:border-primary-500"
-  ),
-  list: cn("flex flex-col gap-1"),
-  border: cn(
-    "relative before:absolute before:inset-y-1",
-    'before:w-px before:bg-gray-200 before:content-[""] dark:before:bg-neutral-800',
-    "ltr:pl-3 ltr:before:left-0 rtl:pr-3 rtl:before:right-0"
-  ),
-}
-
 export function Sidebar({
   docsDirectories,
   fullDirectories,
@@ -139,8 +116,8 @@ export function Sidebar({
           <div className="px-4 pt-4 md:hidden">
             {renderComponent(themeConfig.search.component)}
           </div>
-        )}
-        <FocusedItemContext.Provider value={focused}>
+        )} */}
+        {/* <FocusedItemContext.Provider value={focused}>
           <OnFocusItemContext.Provider
             value={(item) => {
               setFocused(item)
@@ -154,19 +131,6 @@ export function Sidebar({
               )}
               ref={sidebarRef}
             >
-              {(!asPopover || !showSidebar) && (
-                <Collapse isOpen={showSidebar} horizontal>
-                  <Menu
-                    className="nextra-menu-desktop max-md:hidden"
-                    // The sidebar menu, shows only the docs directories.
-                    directories={docsDirectories}
-                    // When the viewport size is larger than `md`, hide the anchors in
-                    // the sidebar when `floatTOC` is enabled.
-                    anchors={themeConfig.toc.float ? [] : anchors}
-                    onlyCurrentDocs
-                  />
-                </Collapse>
-              )}
               {mounted && window.innerWidth < 768 && (
                 <Menu
                   className="nextra-menu-mobile md:hidden"
@@ -179,6 +143,21 @@ export function Sidebar({
             </div>
           </OnFocusItemContext.Provider>
         </FocusedItemContext.Provider> */}
+        {/* {(!asPopover || !showSidebar) && (
+                <Collapse isOpen={showSidebar} horizontal>
+                  <Menu
+                    className="nextra-menu-desktop max-md:hidden"
+                    // The sidebar menu, shows only the docs directories.
+                    directories={docsDirectories}
+                    // When the viewport size is larger than `md`, hide the anchors in
+                    // the sidebar when `floatTOC` is enabled.
+                    anchors={themeConfig.toc.float ? [] : anchors}
+                    onlyCurrentDocs
+                  />
+                </Collapse>
+              )}
+              
+           */}
         Sidebar
         {/* {hasMenu && (
           <div

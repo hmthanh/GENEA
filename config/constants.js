@@ -173,3 +173,5 @@ export const DEEP_OBJECT_KEYS = Object.entries(DEFAULT_SCREEN_CONFIG)
     }
   })
   .filter(Boolean)
+
+export const ERROR_ROUTES = new Set(["/404", "/500"])
