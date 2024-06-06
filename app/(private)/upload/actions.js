@@ -9,11 +9,11 @@ import { v4 as uuid } from "uuid"
 // region: "us-east-005",
 export async function upload(files) {
   const s3 = new S3Client({
-    endpoint: "https://s3.us-east-005.backblazeb2.com",
-    region: "us-east-005",
+    endpoint: process.env.B2_ENDPOINT,
+    region: process.env.B2_REGION,
     credentials: {
-      accessKeyId: "005ab245bb45bb20000000002",
-      secretAccessKey: "K005z2e5S9dwfVezJ3FEB9hrQt/EOJk",
+      accessKeyId: process.env.B2_KEYID,
+      secretAccessKey: process.env.B2_APPLICATIONKEY,
     },
   })
 
