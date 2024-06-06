@@ -35,7 +35,7 @@ export default async function Page() {
 
   return (
     <div>
-      <Table>
+      {/* <Table>
         <thead>
           <Tr>
             <Th>ID</Th>
@@ -49,7 +49,7 @@ export default async function Page() {
             return <Study study={study} index={index} key={index} />
           })}
         </tbody>
-      </Table>
+      </Table> */}
 
       <div
         className={cn(
@@ -76,7 +76,7 @@ export default async function Page() {
                 <td className="py-2 pl-6">{index + 1}</td>
                 <td className="py-2 pl-6">{study.status}</td>
                 <td className="py-2 pl-6">{study.pages.length}</td>
-                <td className="py-2 pl-6">
+                <td className="py-2 pl-6 h-24">
                   <div className="w-full overflow-y-auto">study</div>
                 </td>
               </tr>
@@ -84,6 +84,33 @@ export default async function Page() {
           </tbody>
         </table>
       </div>
+
+      {/* <div class="grid grid-cols-4 ">
+        <div class="bg-white p-4 border">Row 1, Col 1</div>
+        <div class="bg-white p-4 border border-l-0">Row 1, Col 2</div>
+        <div class="bg-white p-4 border border-l-0">Row 1, Col 3</div>
+        <div class="bg-white p-4 border border-l-0">Row 1, Col 4</div>
+
+        <div class="bg-white p-4 border">Row 2, Col 1</div>
+        <div class="bg-white p-4 border border-l-0">Row 2, Col 2</div>
+        <div class="bg-white p-4 border border-l-0">Row 2, Col 3</div>
+        <div class="bg-white p-4 border border-l-0">Row 2, Col 4</div>
+
+        <div class="bg-white p-4 border">Row 3, Col 1</div>
+        <div class="bg-white p-4 border">Row 3, Col 2</div>
+        <div class="bg-white p-4 border">Row 3, Col 3</div>
+        <div class="bg-white p-4 border">Row 3, Col 4</div>
+
+        <div class="bg-white p-4 border">Row 4, Col 1</div>
+        <div class="bg-white p-4 border">Row 4, Col 2</div>
+        <div class="bg-white p-4 border">Row 4, Col 3</div>
+        <div class="bg-white p-4 border">Row 4, Col 4</div>
+
+        <div class="bg-white p-4 border">Row 5, Col 1</div>
+        <div class="bg-white p-4 border">Row 5, Col 2</div>
+        <div class="bg-white p-4 border">Row 5, Col 3</div>
+        <div class="bg-white p-4 border">Row 5, Col 4</div>
+      </div> */}
     </div>
   )
 }
