@@ -5,6 +5,7 @@ import clientPromise from "@/server/mongodb"
 import Study from "./User"
 import { Table, Th, Tr } from "@/nextra"
 import cn from "clsx"
+import ActionList from "@/components/actionlist"
 
 async function fetchUsers() {
   try {
@@ -58,12 +59,7 @@ export default async function Page() {
         </tbody>
       </Table> */}
 
-      <div
-        className={cn(
-          "-mx-6 mb-4 mt-6 overflow-x-auto overscroll-x-contain px-6 pb-4 ",
-          "mask-gradient"
-        )}
-      >
+      <div className={cn("-mx-6 mb-4 mt-6  px-6 pb-4 ")}>
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="border-b py-4 text-left dark:border-neutral-700">
@@ -88,7 +84,7 @@ export default async function Page() {
                 <td className="py-2 pl-6">{user.completion_code}</td>
                 <td className="py-2 pl-6 h-24">
                   <div className="w-full overflow-y-auto">
-                    {JSON.stringify(user.total_actions)}
+                    <ActionList actions={user.total_actions} />
                   </div>
                 </td>
               </tr>
