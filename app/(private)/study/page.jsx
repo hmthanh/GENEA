@@ -5,6 +5,8 @@ import clientPromise from "@/server/mongodb"
 import Study from "./Study"
 import { Code, Pre, Table, Th, Tr } from "@/nextra"
 import cn from "clsx"
+import { Status } from "./Status"
+import ScreenInfo from "./ScreenInfo"
 
 async function fetchStudy() {
   try {
@@ -75,18 +77,14 @@ export default async function Page() {
               >
                 <td className="py-2 pl-6">{index + 1}</td>
                 <td className="py-2 pl-6">
-                  <div className="mt-2 flex items-center justify-between p-2 leading-normal text-red-600 bg-red-100 rounded-lg">
-                    {study.status}
-                  </div>
+                  <Status type={study.status} />
                 </td>
                 <td className="py-2 pl-6">{study.pages.length}</td>
                 <td className="py-2 pl-6 h-24">
-                  <div className="w-full overflow-y-auto nextra-code relative mt-6 first:mt-0">
-                    {JSON.stringify(study.pages)}
-                    {/* <Pre className="overflow-x-auto subpixel-antialiased text-[.9em] bg-white dark:bg-black py-4 ring-1 ring-inset ring-gray-300 dark:ring-neutral-700 contrast-more:ring-gray-900 contrast-more:dark:ring-gray-50 contrast-more:contrast-150 rounded-md">
-                      <Code data-language={"json"}>
-                      </Code>
-                    </Pre> */}
+                  <div className="w-full overflow-y-auto nextra-code pr-2 relative mt-6 first:mt-0 flex flex-col gap-2 h-96">
+                    {study.pages.map((page, index) => (
+                      <ScreenInfo info={page} key={index} />
+                    ))}
                   </div>
                 </td>
                 <td className="py-2 pl-6 h-24">
