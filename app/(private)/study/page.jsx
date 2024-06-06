@@ -7,6 +7,7 @@ import { Code, Pre, Table, Th, Tr } from "@/nextra"
 import cn from "clsx"
 import { Status } from "./Status"
 import ScreenInfo from "./ScreenInfo"
+import ActionList from "@/components/actionlist"
 
 async function fetchStudy() {
   try {
@@ -88,8 +89,8 @@ export default async function Page() {
                   </div>
                 </td>
                 <td className="py-2 pl-6 h-24">
-                  <div className="w-full overflow-y-auto">
-                    {JSON.stringify(study.total_actions)}
+                  <div className="min-w-56 overflow-visible">
+                    <ActionList actions={study.total_actions} />
                   </div>
                 </td>
               </tr>
