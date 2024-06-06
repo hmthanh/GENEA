@@ -3,7 +3,7 @@
 import React from "react"
 import clientPromise from "@/server/mongodb"
 import Study from "./Study"
-import { Table, Th, Tr } from "@/nextra"
+import { Code, Pre, Table, Th, Tr } from "@/nextra"
 import cn from "clsx"
 
 async function fetchStudy() {
@@ -81,7 +81,18 @@ export default async function Page() {
                 </td>
                 <td className="py-2 pl-6">{study.pages.length}</td>
                 <td className="py-2 pl-6 h-24">
-                  <div className="w-full overflow-y-auto">study</div>
+                  <div className="w-full overflow-y-auto nextra-code relative mt-6 first:mt-0">
+                    {JSON.stringify(study.pages)}
+                    {/* <Pre className="overflow-x-auto subpixel-antialiased text-[.9em] bg-white dark:bg-black py-4 ring-1 ring-inset ring-gray-300 dark:ring-neutral-700 contrast-more:ring-gray-900 contrast-more:dark:ring-gray-50 contrast-more:contrast-150 rounded-md">
+                      <Code data-language={"json"}>
+                      </Code>
+                    </Pre> */}
+                  </div>
+                </td>
+                <td className="py-2 pl-6 h-24">
+                  <div className="w-full overflow-y-auto">
+                    {JSON.stringify(study.total_actions)}
+                  </div>
                 </td>
               </tr>
             ))}
