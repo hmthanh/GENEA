@@ -56,8 +56,7 @@ export default async function Page() {
 
       <div
         className={cn(
-          "-mx-6 mb-4 mt-6 overflow-x-auto overscroll-x-contain px-6 pb-4 ",
-          "mask-gradient"
+          "-mx-6 mb-4 mt-6 overflow-x-auto overscroll-x-contain px-6 pb-4 "
         )}
       >
         <table className="w-full border-collapse text-sm">
