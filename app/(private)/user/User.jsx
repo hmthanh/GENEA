@@ -1,14 +1,14 @@
 import { Table, Td, Th, Tr } from "@/nextra"
 import React from "react"
 
-export default function Study({ study, index }) {
-  console.log(study)
+export default function User({ user, index }) {
+  console.log(user)
   return (
     <Tr>
       <Td>{index + 1}</Td>
-      <Td align="center">{study.name}</Td>
-      <Td align="center">{study.pages.length}</Td>
-      <Td align="center">{study.status}</Td>
+      <Td align="center">{user.name}</Td>
+      <Td align="center">{user.pages.length}</Td>
+      <Td align="center">{user.status}</Td>
     </Tr>
   )
 }
