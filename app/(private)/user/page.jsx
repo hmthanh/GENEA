@@ -2,20 +2,27 @@
 
 import React from "react"
 import clientPromise from "@/server/mongodb"
-import Study from "./Study"
+import Study from "./User"
 import { Table, Th, Tr } from "@/nextra"
 import cn from "clsx"
 
-async function fetchStudy() {
+async function fetchUsers() {
   try {
     const client = await clientPromise
     const db = client.db("HemVip")
 
     const studies = await db.collection("studies").find({}).toArray()
+    const users = studies.map((study) => ({
+      prolific_userid: study.prolific_userid,
+      prolific_studyid: study.prolific_studyid,
+      prolific_sessionid: study.prolific_sessionid,
+      completion_code: study.completion_code,
+      total_actions: study.total_actions,
+    }))
 
     // const newStudies = studies.filter((study) => study.status === "new")
 
-    return studies
+    return users
   } catch (e) {
     console.error(e)
     return JSON.stringify({ message: "Internal Server Error" })
@@ -30,7 +37,7 @@ async function fetchStudy() {
 }
 
 export default async function Page() {
-  const data = await fetchStudy()
+  const users = await fetchUsers()
   // console.log(data)
 
   return (
@@ -61,27 +68,28 @@ export default async function Page() {
           <thead>
             <tr className="border-b py-4 text-left dark:border-neutral-700">
               <th className="py-2 font-semibold">ID</th>
-              <th className="py-2 font-semibold">Status</th>
-              <th className="py-2 pl-6 font-semibold">Page</th>
-              <th className="px-6 py-2 font-semibold">Status</th>
-              <th className="px-6 py-2 font-semibold">Actions</th>
+              <th className="py-2 font-semibold">Prolific UserID</th>
+              <th className="py-2 pl-6 font-semibold">Prolific StudyID</th>
+              <th className="px-6 py-2 font-semibold">SessionID</th>
+              <th className="px-6 py-2 font-semibold">Completion Code</th>
+              <th className="px-6 py-2 font-semibold">Total Actions</th>
             </tr>
           </thead>
           <tbody className="align-baseline text-gray-900 dark:text-gray-100">
-            {data.map((study, index) => (
+            {users.map((user, index) => (
               <tr
                 key={index}
                 className="border-b border-gray-100 dark:border-neutral-700/50"
               >
                 <td className="py-2 pl-6">{index + 1}</td>
-                <td className="py-2 pl-6">
-                  <div className="mt-2 flex items-center justify-between p-2 leading-normal text-red-600 bg-red-100 rounded-lg">
-                    {study.status}
-                  </div>
-                </td>
-                <td className="py-2 pl-6">{study.pages.length}</td>
+                <td className="py-2 pl-6">{user.prolific_userid}</td>
+                <td className="py-2 pl-6">{user.prolific_studyid}</td>
+                <td className="py-2 pl-6">{user.prolific_sessionid}</td>
+                <td className="py-2 pl-6">{user.completion_code}</td>
                 <td className="py-2 pl-6 h-24">
-                  <div className="w-full overflow-y-auto">study</div>
+                  <div className="w-full overflow-y-auto">
+                    {JSON.stringify(user.total_actions)}
+                  </div>
                 </td>
               </tr>
             ))}
