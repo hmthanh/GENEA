@@ -9,7 +9,7 @@ import cn from "clsx"
 async function fetchTeam() {
   try {
     const client = await clientPromise
-    const db = client.db("HemVip")
+    const db = client.db("hemvip")
 
     const team = await db.collection("team").find({}).toArray()
 
