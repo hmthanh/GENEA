@@ -9,3 +9,22 @@ export const signOut = async (e) => {
   await supabase.auth.signOut()
   return redirect("/login")
 }
+
+export async function getFirstUser() {
+  const client = await clientPromise
+  const collection = client.db("HemVip").collection("users")
+  const results = await collection.findOne(
+    {},
+    {
+      projection: { _id: 0, emailVerified: 0 },
+    }
+  )
+  if (results) {
+    return {
+      ...results,
+      bioMdx: await getMdxSource(results.bio || placeholderBio),
+    }
+  } else {
+    return null
+  }
+}

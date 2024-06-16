@@ -1,29 +1,32 @@
-import nextMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypeKatex from 'rehype-katex'
-import remarkMath from 'remark-math'
+import nextMDX from "@next/mdx"
+import remarkGfm from "remark-gfm"
+import remarkParse from "remark-parse"
+import remarkRehype from "remark-rehype"
+import rehypeStringify from "rehype-stringify"
+import rehypeKatex from "rehype-katex"
+import remarkMath from "remark-math"
 // import rehypeRaw from 'rehype-raw'
-import rehypePrettyCode from 'rehype-pretty-code'
-import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
-import { remarkMermaid } from '@theguild/remark-mermaid'
-import rehypeShiki from '@shikijs/rehype'
+import rehypePrettyCode from "rehype-pretty-code"
+import { rendererRich, transformerTwoslash } from "@shikijs/twoslash"
+import { remarkMermaid } from "@theguild/remark-mermaid"
+import rehypeShiki from "@shikijs/rehype"
 import remarkMdxDisableExplicitJsx from "./plugins/remark-mdx-disable-explicit-jsx.mjs"
-import { remarkCustomHeadingId } from './plugins/remark-custom-heading-id.mjs'
-import { remarkHeadings } from './plugins/remark-headings.mjs'
-import { remarkLinkRewrite } from './plugins/remark-link-rewrite.mjs'
-import { remarkMdxFrontMatter } from './plugins/remark-mdx-frontmatter.mjs'
+import { remarkCustomHeadingId } from "./plugins/remark-custom-heading-id.mjs"
+import { remarkHeadings } from "./plugins/remark-headings.mjs"
+import { remarkLinkRewrite } from "./plugins/remark-link-rewrite.mjs"
+import { remarkMdxFrontMatter } from "./plugins/remark-mdx-frontmatter.mjs"
 // import { remarkMdxTitle } from './plugins/remark-mdx-title.mjs'
-import { remarkStaticImage } from './plugins/remark-static-image.mjs'
-import { remarkStructurize } from './plugins/remark-structurize.mjs'
-import { DEFAULT_REHYPE_PRETTY_CODE_OPTIONS, rehypeAttachCodeMeta, rehypeParseCodeMeta } from './plugins/rehype.mjs'
-import { rehypeExtractTocContent } from './plugins/rehype-extract-toc-content.mjs'
-import { rehypeIcon } from './plugins/rehype-icon.mjs'
+import { remarkStaticImage } from "./plugins/remark-static-image.mjs"
+import { remarkStructurize } from "./plugins/remark-structurize.mjs"
+import {
+  DEFAULT_REHYPE_PRETTY_CODE_OPTIONS,
+  rehypeAttachCodeMeta,
+  rehypeParseCodeMeta,
+} from "./plugins/rehype.mjs"
+import { rehypeExtractTocContent } from "./plugins/rehype-extract-toc-content.mjs"
+import { rehypeIcon } from "./plugins/rehype-icon.mjs"
 // import { recmaRewriteJsx } from './plugins/recma-rewrite-jsx.mjs'
 // import { recmaRewriteFunctionBody } from './plugins/recma-rewrite-function-body.mjs'
-
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
@@ -40,11 +43,14 @@ const withMDX = nextMDX({
       remarkCustomHeadingId,
       // remarkMdxTitle,
       [remarkHeadings, { exportName: "useTOC" }],
-      [remarkLinkRewrite, {
-        pattern: /\.mdx?(?:(?=[#?])|$)/,
-        replace: '',
-        excludeExternalLinks: true
-      }],
+      [
+        remarkLinkRewrite,
+        {
+          pattern: /\.mdx?(?:(?=[#?])|$)/,
+          replace: "",
+          excludeExternalLinks: true,
+        },
+      ],
       remarkStaticImage,
       [remarkStructurize, { codeblocks: true }],
     ],
@@ -61,21 +67,24 @@ const withMDX = nextMDX({
           transformers: [
             transformerTwoslash({
               renderer: rendererRich(),
-              explicitTrigger: true
-            })
+              explicitTrigger: true,
+            }),
           ],
-        }
+        },
       ],
 
       [rehypeParseCodeMeta, { defaultShowCopyCode: true }],
       rehypeStringify,
       rehypeKatex,
-      [rehypeShiki, {
-        themes: {
-          light: 'github-light',
-          dark: 'github-dark'
-        }
-      }],
+      [
+        rehypeShiki,
+        {
+          themes: {
+            light: "github-light",
+            dark: "github-dark",
+          },
+        },
+      ],
       rehypeIcon,
       rehypeAttachCodeMeta,
       rehypeExtractTocContent,
@@ -90,23 +99,17 @@ const withMDX = nextMDX({
       //       return node.id.name === 'MDXContent'
       //     }
       //   })
-
       //   // Remove `MDXContent` since we use custom HOC_MDXContent
       //   let [mdxContent] = ast.body.splice(mdxContentIndex, 1)
-
       //   // In MDX3 MDXContent is directly exported as export default when `outputFormat: 'program'` is specified
       //   if (mdxContent.type === 'ExportDefaultDeclaration') {
       //     mdxContent = mdxContent.declaration
       //   }
-
       //   const mdxContentArgument = mdxContent.body.body[0].argument
-
       //   file.data.hasMdxLayout =
       //     !!mdxContentArgument &&
       //     mdxContentArgument.openingElement.name.name === 'MDXLayout'
-
       //   const localExports = new Set(['title', 'frontMatter' /* 'useTOC' */])
-
       //   for (const node of ast.body) {
       //     if (node.type === 'ExportNamedDeclaration') {
       //       let varName
@@ -122,7 +125,6 @@ const withMDX = nextMDX({
       //       } else {
       //         throw new Error(`\`${declaration.type}\` unsupported.`)
       //       }
-
       //       if (localExports.has(varName)) {
       //         Object.assign(node, node.declaration)
       //       }
@@ -139,5 +141,5 @@ export default withMDX({
   // output: 'export',
   // images: { unoptimized: true },
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 })

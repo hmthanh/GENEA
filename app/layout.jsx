@@ -3,11 +3,13 @@ import "./index.css"
 import "../styles/custom.css"
 import "katex/dist/katex.min.css"
 
-import Footer from "@/components/footer"
-import Body from "@/components/body"
 import { ThemeProvider } from "next-themes"
+import { SessionProvider } from "next-auth/react"
+import Body from "@/components/body"
+import Footer from "@/components/footer"
 import Header from "@/components/header"
 import Twitter from "@/components/twitter"
+import AuthProvider from "@/components/auth/AuthProvider"
 // import { useThemeConfig } from "@/contexts/theme";
 
 export const metadata = {
@@ -34,11 +36,13 @@ export default function RootLayout({ children }) {
       </head>
       <body className="nextra-banner-hidden">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <div dir="ltr">
-            <Header />
-            {children}
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div dir="ltr">
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
