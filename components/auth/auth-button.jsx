@@ -14,14 +14,14 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default function AuthButton() {
-  // const { data: session, status } = useSession()
+  const { data: session, status } = useSession()
   const [loading, setLoading] = useState(false)
-  const status = "finish"
+  // const status = "finish"
   return (
     <>
       {status !== "loading" &&
-        // (session?.user ? (
-        ("hmthanh" ? (
+        (session?.user ? (
+          // ("hmthanh" ? (
           <>
             <a
               className="text-sm items-center contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap  hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
@@ -35,8 +35,8 @@ export default function AuthButton() {
                 className="text-sm font-medium subpixel-antialiased contrast-more:text-gray-700 contrast-more:dark:text-gray-100"
                 aria-current="true"
               >
-                Hi, {"hmthanh" || "User"}
-                {/* Hi, {session.user.name || "User"} */}
+                {/* Hi, {"hmthanh" || "User"} */}
+                Hi, {session.user.name || "User"}
               </span>
               <form action={signOut}>
                 <button
