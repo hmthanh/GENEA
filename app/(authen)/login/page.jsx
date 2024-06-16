@@ -33,7 +33,7 @@ export default function LoginPage({ searchParams }) {
           setErrorMessage("Could not authenticate user")
           // redirect("/login?message=Could not authenticate user");
         } else {
-          router.push("/")
+          router.push("/getting-started")
         }
       } catch (error) {
       } finally {
