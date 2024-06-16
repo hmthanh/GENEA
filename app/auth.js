@@ -5,7 +5,14 @@ import clientPromise from "@/server/mongodb"
 
 // export default NextAuth({
 const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise, {
+    collections: {
+      Users: "users",
+      Accounts: "accounts",
+      Sessions: "sessions",
+      VerificationTokens: "verification_tokens",
+    },
+  }),
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
@@ -27,6 +34,8 @@ const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, user }) {
       // Send properties to the client, like an access_token from a provider.
       session.username = user.username
+      session.email = user.email
+      session.name = user.name
       return session
     },
   },
