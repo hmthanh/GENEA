@@ -46,26 +46,33 @@ export default function Page() {
     [6, 7, 0.6],
   ]
 
-  const heatmapData = [
-    { modelPair: "Model A vs Model B", input: "Input 1", score: 1 },
-    { modelPair: "Model A vs Model B", input: "Input 2", score: 0 },
-    { modelPair: "Model A vs Model B", input: "Input 3", score: -1 },
-    { modelPair: "Model C vs Model D", input: "Input 1", score: -1 },
-    { modelPair: "Model C vs Model D", input: "Input 2", score: 0 },
-    { modelPair: "Model C vs Model D", input: "Input 3", score: 1 },
-    { modelPair: "Model E vs Model F", input: "Input 1", score: 0 },
-    { modelPair: "Model E vs Model F", input: "Input 2", score: 1 },
-    { modelPair: "Model E vs Model F", input: "Input 3", score: -1 },
-    { modelPair: "Model G vs Model H", input: "Input 1", score: 1 },
-    { modelPair: "Model G vs Model H", input: "Input 2", score: -1 },
-    { modelPair: "Model G vs Model H", input: "Input 3", score: 0 },
-    // Add more data points here
+  const models = [
+    "Model A",
+    "Model B",
+    "Model C",
+    "Model D",
+    "Model E",
+    "Model F",
+    "Model G",
+    "Model H",
   ]
+  const inputs = Array.from({ length: 40 }, (_, i) => `Input ${i + 1}`)
+
+  const generateScores = () => {
+    const scores = [-1, 0, 1]
+    return inputs.map((input) => ({
+      modelPair: `${models[Math.floor(Math.random() * models.length)]} vs ${models[Math.floor(Math.random() * models.length)]}`,
+      input: input,
+      score: scores[Math.floor(Math.random() * scores.length)],
+    }))
+  }
+
+  const heatmapData = [...generateScores()]
 
   return (
     <div>
       <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-        Evaluation Result
+        Evaluation Result (This page could be change)
       </h1>
       <h3 class="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-8 text-2xl">
         Sample 1
