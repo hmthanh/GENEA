@@ -2,10 +2,8 @@
 import { MongoClient } from "mongodb"
 
 const uri = process.env.MONGODB_URI
-console.log("uri", uri)
-const options = {
-  useUnifiedTopology: true,
-}
+// console.log("uri", uri)
+const options = {}
 
 let client
 let clientPromise
