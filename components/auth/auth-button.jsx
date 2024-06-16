@@ -14,62 +14,40 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default function AuthButton() {
-  const { data: session, status } = useSession()
-  const [loading, setLoading] = useState(false)
-  // const supabase = createClient()
   // const { data: session, status } = useSession()
-  // const [loading, setLoading] = useState(false)
-
-  // const {
-  //   data: { user },
-  // } = await supabase.auth.getUser()
-
-  // return session ? (
-  //   <div className="flex items-center gap-4">
-  //     <span
-  //       className="text-sm font-medium subpixel-antialiased contrast-more:text-gray-700 contrast-more:dark:text-gray-100"
-  //       aria-current="true"
-  //     >
-  //       Hi, {user.email}
-  //     </span>
-  //     <form action={signOut}>
-  //       <button
-  //         className="text-sm p-2 contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-semibold subpixel-antialiased hover:underline"
-  //         aria-current="true"
-  //       >
-  //         Logout
-  //       </button>
-  //     </form>
-  //   </div>
-  // ) : (
-  //   <Link
-  //     href="/login"
-  //     //   className="py-2 px-3 flex font-medium rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-  //     className="py-2 px-3 flex contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-semibold subpixel-antialiased"
-  //   >
-  //     Login
-  //   </Link>
-  // )
+  const [loading, setLoading] = useState(false)
+  const status = "finish"
   return (
     <>
       {status !== "loading" &&
-        (session?.user ? (
-          <div className="flex items-center gap-4">
-            <span
-              className="text-sm font-medium subpixel-antialiased contrast-more:text-gray-700 contrast-more:dark:text-gray-100"
-              aria-current="true"
+        // (session?.user ? (
+        ("hmthanh" ? (
+          <>
+            <a
+              className="text-sm items-center contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap  hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+              aria-current="false"
+              href="/getting-started"
             >
-              Hi, {session.user.name || "User"}
-            </span>
-            <form action={signOut}>
-              <button
-                className="text-sm py-1 px-2 border border-black  contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap subpixel-antialiased hover:underline rounded-md transition-all"
+              Dashboard
+            </a>
+            <div className="flex items-center gap-4">
+              <span
+                className="text-sm font-medium subpixel-antialiased contrast-more:text-gray-700 contrast-more:dark:text-gray-100"
                 aria-current="true"
               >
-                Logout
-              </button>
-            </form>
-          </div>
+                Hi, {"hmthanh" || "User"}
+                {/* Hi, {session.user.name || "User"} */}
+              </span>
+              <form action={signOut}>
+                <button
+                  className="text-sm py-1 px-2 border border-black  contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap subpixel-antialiased hover:underline rounded-md transition-all"
+                  aria-current="true"
+                >
+                  Logout
+                </button>
+              </form>
+            </div>
+          </>
         ) : (
           <button
             disabled={loading}

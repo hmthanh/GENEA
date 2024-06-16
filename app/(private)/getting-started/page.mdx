@@ -1,59 +1,64 @@
+import { Steps } from "@/nextra"
+
 # Getting started
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+## Summary
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+![slide_process](/slide_process.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+![prolific_result](/prolific_result.png)
 
 ## Evaluation Process
 
-### Mermaid
+<Steps>
+### Download `submission_inputs.csv` file
 
-Nextra supports [mermaid](https://mermaid.js.org) diagrams. Like in GitHub you
-can use it in your markdown files by using the `mermaid` code block language.
-Out of the box, Nextra uses
-[`@theguild/remark-mermaid`](https://npmjs.com/package/@theguild/remark-mermaid)
-package that replaces the code block with the `<Mermaid />` component.
-
-## Example
-
-```mermaid
-graph TD;
-subgraph AA [Consumers]
-A[Mobile app];
-B[Web app];
-C[Node.js client];
-end
-subgraph BB [Services]
-E[REST API];
-F[GraphQL API];
-G[SOAP API];
-end
-Z[GraphQL API];
-A --> Z;
-B --> Z;
-C --> Z;
-Z --> E;
-Z --> F;
-Z --> G;
+```text
+input_code, video_file
+234083450345, 234083450345.mp4
+346643424234, 346643424234.mp4
+443646423423, 443646423423.mp4
 ```
 
-## Usage
+### Run your model inference
 
-````mdx filename="Markdown"
-```mermaid
-graph TD;
-subgraph AA [Consumers]
-A[Mobile app];
-B[Web app];
-C[Node.js client];
-end
-subgraph BB [Services]
-E[REST API];
-F[GraphQL API];
-G[SOAP API];
-end
-Z[GraphQL API];
-A --> Z;
-B --> Z;
-C --> Z;
-Z --> E;
-Z --> F;
-Z --> G;
+Run your model inference to get all video file output.
+
+```text
+234083450345.mp4
+346643424234.mp4
+443646423423.mp4
 ```
-````
+
+### Upload your video model
+
+Go to `/submission` and upload all video of your model
+
+### Generate all study pairwise compare screen
+
+Sample study screen
+![study_screen](/study_screen.png)
+
+- You can visit `/study` to get information about each study screen.
+- You can visit `/user` to follow all user participation our study.
+
+### Recruit partipation on Prolific to study
+
+Each Prolific partipation will be study for
+![prolific](/prolific.png)
+
+### When partipation study, we record all action and final result
+
+![actions_record](/actions_record.png)
+
+### Evalution final result
+
+![actions_record](/actions_record.png)
+
+</Steps>
