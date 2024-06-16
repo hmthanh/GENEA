@@ -10,7 +10,7 @@ import ActionList from "@/components/actionlist"
 async function fetchUsers() {
   try {
     const client = await clientPromise
-    const db = client.db("hemvip")
+    const db = client.db("HemVip")
 
     const studies = await db.collection("studies").find({}).toArray()
     const users = studies.map((study) => ({

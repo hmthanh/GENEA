@@ -12,7 +12,7 @@ const { handlers, auth, signIn, signOut } = NextAuth({
       Sessions: "sessions",
       VerificationTokens: "verification_tokens",
     },
-    databaseName: "hemvip",
+    databaseName: "HemVip",
   }),
   providers: [
     GitHubProvider({
