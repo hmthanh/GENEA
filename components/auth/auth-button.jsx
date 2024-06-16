@@ -63,7 +63,7 @@ export default function AuthButton() {
             </span>
             <form action={signOut}>
               <button
-                className="text-sm p-2 contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-semibold subpixel-antialiased hover:underline"
+                className="text-sm p-2 h-8 contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap font-semibold subpixel-antialiased hover:underline rounded-md transition-all"
                 aria-current="true"
               >
                 Logout
