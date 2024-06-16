@@ -115,7 +115,7 @@ export default function AuthButton() {
             disabled={loading}
             onClick={() => {
               setLoading(true)
-              signIn("github", { callbackUrl: `/profile` })
+              signIn("github", { callbackUrl: `/getting-started` })
             }}
             className={`${
               loading
