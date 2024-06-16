@@ -43,21 +43,16 @@ export default async function Page() {
 
   return (
     <div>
-      {/* <Table>
-        <thead>
-          <Tr>
-            <Th>ID</Th>
-            <Th align="center">Name</Th>
-            <Th align="right">Page</Th>
-            <Th align="right">Status</Th>
-          </Tr>
-        </thead>
-        <tbody>
-          {data.map((study, index) => {
-            return <Study study={study} index={index} key={index} />
-          })}
-        </tbody>
-      </Table> */}
+      <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+        Prolific Participants
+      </h1>
+      <p className="mt-6 leading-7 first:mt-0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <h2 className="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-10 border-b pb-1 text-3xl border-neutral-200/70 contrast-more:border-neutral-400 dark:border-primary-100/10 contrast-more:dark:border-neutral-400">
+        All Prolific participants screen
+      </h2>
 
       <div className={cn("-mx-6 mb-4 mt-6  px-6 pb-4 ")}>
         <table className="w-full border-collapse text-sm">
