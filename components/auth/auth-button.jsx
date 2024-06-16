@@ -97,7 +97,7 @@ export default function AuthButton() {
         (session?.user ? (
           <Link href={`/${session.username}`}>
             <a className="w-8 h-8 rounded-full overflow-hidden">
-              <Image
+              {/* <Image
                 src={
                   session.user.image ||
                   `https://avatar.tobi.sh/${session.user.name}`
@@ -107,7 +107,8 @@ export default function AuthButton() {
                 height={300}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2PYsGHDfwAHNAMQumvbogAAAABJRU5ErkJggg=="
-              />
+              /> */}
+              {session.user.name || "User"}
             </a>
           </Link>
         ) : (
