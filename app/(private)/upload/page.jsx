@@ -30,7 +30,25 @@ export default function Page() {
 
   return (
     <>
-      <Upload handleUpload={upload} />
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+        Upload
+      </h1>
+      <p class="mt-6 leading-7 first:mt-0">
+        When enabled, KaTeX’s CSS and fonts will be automatically included in
+        your site, and you can start writing math expressions in your MDX files.
+        Using LaTeX within MDX is as simple as wrapping your expression in{" "}
+        <code class="nextra-code" dir="ltr">
+          $
+        </code>{" "}
+        or{" "}
+        <code class="nextra-code" dir="ltr">
+          $$
+        </code>
+        .
+      </p>
+      <div className="mt-3">
+        <Upload handleUpload={upload} />
+      </div>
       {/* <button onClick={handleThis}>Sample</button> */}
     </>
   )
