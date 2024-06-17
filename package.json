@@ -16,7 +16,7 @@
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.4",
     "@popperjs/core": "^2.11.8",
-    "@shikijs/twoslash": "^1.6.5",
+    "@shikijs/twoslash": "^1.7.0",
     "@supabase/ssr": "^0.3.0",
     "@theguild/remark-mermaid": "^0.0.6",
     "@types/mdx": "^2.0.13",
@@ -24,7 +24,6 @@
     "clsx": "^2.1.1",
     "cssnano": "^7.0.2",
     "estree-util-value-to-estree": "^3.1.1",
-    "filepond": "^4.31.1",
     "framer-motion": "^11.2.10",
     "github-slugger": "^2.0.0",
     "hast-util-to-estree": "^3.1.0",
@@ -41,7 +40,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-dropzone": "^14.2.3",
-    "react-filepond": "^7.1.2",
     "rehype-katex": "^7.0.0",
     "rehype-pretty-code": "^0.13.2",
     "rehype-raw": "^7.0.0",
@@ -59,14 +57,14 @@
     "yaml": "^2.4.5"
   },
   "devDependencies": {
-    "@shikijs/rehype": "^1.6.5",
+    "@shikijs/rehype": "^1.7.0",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.12.2",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
     "prettier": "^3.3.2",
-    "shiki": "^1.6.5",
+    "shiki": "^1.7.0",
     "tailwindcss": "^3.4.4"
   }
 }

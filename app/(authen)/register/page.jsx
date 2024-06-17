@@ -14,32 +14,32 @@ export default function RegisterPage({ searchParams }) {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(searchParams.error)
 
-  const handleRegister = useCallback(
-    async (e) => {
-      e.preventDefault()
-      // setLoading(true)
+  // const handleRegister = useCallback(
+  //   async (e) => {
+  //     e.preventDefault()
+  //     // setLoading(true)
 
-      // const supabase = createClient()
+  //     // const supabase = createClient()
 
-      // const data = {
-      //     email: email,
-      //     password: password,
-      // }
+  //     // const data = {
+  //     //     email: email,
+  //     //     password: password,
+  //     // }
 
-      // const { error } = await supabase.auth.signUp(data)
+  //     // const { error } = await supabase.auth.signUp(data)
 
-      // setLoading(false)
+  //     // setLoading(false)
 
-      // if (error) {
-      //     console.log("error", error)
-      //     setErrorMessage("Could not register with email " + email)
-      // } else {
-      //     router.refresh();
-      //     router.push("/login?info=Check email to continue sign in process")
-      // }
-    },
-    [email, password, router]
-  )
+  //     // if (error) {
+  //     //     console.log("error", error)
+  //     //     setErrorMessage("Could not register with email " + email)
+  //     // } else {
+  //     //     router.refresh();
+  //     //     router.push("/login?info=Check email to continue sign in process")
+  //     // }
+  //   },
+  //   [email, password, router]
+  // )
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100 dark:bg-neutral-900">

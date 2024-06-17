@@ -6,7 +6,6 @@ import AuthButton from "@/components/auth/auth-button"
 import Image from "next/image"
 
 export default function Header() {
-  // console.log("go here")
   return (
     // <div className="nextra-nav-container sticky top-0 z-20 w-full bg-transparent print:hidden">
     //     <div className="nextra-nav-container-blur">
