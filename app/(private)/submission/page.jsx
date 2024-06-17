@@ -39,6 +39,10 @@ export default function Page() {
     )
   }
 
+  if (!session) {
+    return <Callout type="error">Please login with github</Callout>
+  }
+
   console.log(session)
   return (
     <>

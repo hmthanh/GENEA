@@ -1,23 +1,12 @@
 "use client"
 
 import axios from "axios"
-import React, { useCallback } from "react"
+import React, { useCallback, useState } from "react"
 import { useDropzone } from "react-dropzone"
 
-const dropzoneStyles = {
-  border: "2px dashed #666666",
-}
-
 export default function Upload({ handleUpload }) {
-  // const [files, setFiles] = useState([])
+  const [files, setFiles] = useState([])
 
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser()
-
-  //   if (!user) {
-  //     return redirect("/login")
-  //   }
   const onDrop = useCallback(async (acceptedFiles) => {
     // Do something with the files, like upload to a server
     console.log(acceptedFiles)
@@ -53,10 +42,15 @@ export default function Upload({ handleUpload }) {
   return (
     <div
       {...getRootProps()}
-      style={dropzoneStyles}
+      style={{ border: "2px dashed #666666" }}
       className="flex-grow min-w-0 p-32 cursor-pointer rounded-lg text-center appearance-none border border-[#666666] bg-white text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} accept="video/*" />
+      <ul>
+        {files.map((file, index) => (
+          <li key={index}>{file.name}</li>
+        ))}
+      </ul>
       {isDragActive ? (
         <p>Drop the files here...</p>
       ) : (
