@@ -8,6 +8,7 @@ import { v4 as uuid } from "uuid"
 
 // region: "us-east-005",
 export async function upload(files) {
+  console.log("go here", files)
   const s3 = new S3Client({
     endpoint: process.env.B2_ENDPOINT,
     region: process.env.B2_REGION,

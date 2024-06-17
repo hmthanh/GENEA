@@ -2,7 +2,7 @@ import React from "react"
 import Github from "./icons/github"
 import Twitter from "./icons/twitter"
 import Navbar from "./navbar"
-import AuthButton from "./auth/auth-button"
+import AuthButton from "@/components/auth/auth-button"
 import Image from "next/image"
 
 export default function Header() {
