@@ -27,7 +27,7 @@ export async function upload(files) {
   try {
     const putObjectParams = {
       Bucket: "gesture", // Use the bucket created or an existing bucket
-      Key: "test-object.txt",
+      Key: "genea/test-object.txt",
       Body: "This is a test object.",
     }
 

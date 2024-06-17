@@ -2,18 +2,13 @@
 
 import { useState } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
-import Loading from "../loading/loading"
 
 export default function AuthButton() {
   const { data: session, status } = useSession()
   const [loading, setLoading] = useState(false)
 
   if (status === "loading") {
-    return (
-      <div className="flex justify-center ">
-        <Loading />
-      </div>
-    )
+    return <div className="flex justify-center ">{/* <Loading /> */}</div>
   }
 
   return (
