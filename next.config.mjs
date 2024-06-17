@@ -141,5 +141,10 @@ export default withMDX({
   // output: 'export',
   // images: { unoptimized: true },
   reactStrictMode: true,
+  i18n: {
+    locales: ["en-US"],
+    defaultLocale: "en-US",
+    localeDetection: false,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 })

@@ -4,7 +4,6 @@ import "../styles/custom.css"
 import "katex/dist/katex.min.css"
 
 import { ThemeProvider } from "next-themes"
-import { SessionProvider } from "next-auth/react"
 import Body from "@/components/body"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
