@@ -1,76 +1,55 @@
-"use server"
+"use client"
 
-import React from "react"
-import clientPromise from "@/server/mongodb"
-import Study from "./Team"
-import { Code, Pre, Table, Th, Tr } from "@/nextra"
-import cn from "clsx"
+// import { createClient } from "@/utils/supabase/server"
+import { redirect } from "next/navigation"
+// Import FilePond styles
+// import "filepond/dist/filepond.min.css"
+// import { FilePond, registerPlugin } from "react-filepond"
+// import { useState } from "react"
+// import FilePond from "@/components/filepond/customfilepond"
+// import NewFilePond from "@/components/filepond/newfilepond"
+import { upload } from "./actions"
+import Upload from "./upload"
 
-async function fetchTeam() {
-  try {
-    const client = await clientPromise
-    const db = client.db("HemVip")
+// import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation"
+// import FilePondPluginImagePreview from "filepond-plugin-image-preview"
+// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
 
-    const team = await db.collection("team").find({}).toArray()
+// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
-    // const newteam = team.filter((study) => study.status === "new")
+export default function Page() {
+  //   const supabase = createClient()
 
-    return team
-  } catch (e) {
-    console.error(e)
-    return JSON.stringify({ message: "Internal Server Error" })
-  }
-}
+  //   const {
+  //     data: { user },
+  //   } = await supabase.auth.getUser()
 
-export default async function Page() {
-  const data = await fetchTeam()
+  //   if (!user) {
+  //     return redirect("/login")
+  //   }
 
   return (
-    <div>
-      <h2 className="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-10 border-b pb-1 text-3xl border-neutral-200/70 contrast-more:border-neutral-400 dark:border-primary-100/10 contrast-more:dark:border-neutral-400">
-        Submission
-      </h2>
-      <p className="mt-6 leading-7 first:mt-0">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum
+    <>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+        Upload
+      </h1>
+      <p class="mt-6 leading-7 first:mt-0">
+        When enabled, KaTeX’s CSS and fonts will be automatically included in
+        your site, and you can start writing math expressions in your MDX files.
+        Using LaTeX within MDX is as simple as wrapping your expression in{" "}
+        <code class="nextra-code" dir="ltr">
+          $
+        </code>{" "}
+        or{" "}
+        <code class="nextra-code" dir="ltr">
+          $$
+        </code>
+        .
       </p>
-      <div
-        className={cn(
-          "-mx-6 mb-4 mt-6 overflow-x-auto overscroll-x-contain px-6 pb-4 ",
-          "mask-gradient"
-        )}
-      >
-        <table className="w-full border-collapse text-sm">
-          <thead>
-            <tr className="border-b py-4 text-left dark:border-neutral-700">
-              <th className="py-2 font-semibold">ID</th>
-              <th className="py-2 font-semibold">Team name</th>
-              <th className="py-2 pl-6 font-semibold">Submissions</th>
-            </tr>
-          </thead>
-          <tbody className="align-baseline text-gray-900 dark:text-gray-100">
-            {data.map((team, index) => (
-              <tr
-                key={index}
-                className="border-b border-gray-100 dark:border-neutral-700/50"
-              >
-                <td className="py-2 pl-6">{team.id}</td>
-                <td className="py-2 pl-6">{team.name}</td>
-                <td className="py-2 pl-6 h-24">
-                  <div className="w-full overflow-y-auto nextra-code relative mt-6 first:mt-0">
-                    {JSON.stringify(team.submissions)}
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mt-3">
+        <Upload handleUpload={upload} />
       </div>
-    </div>
+      {/* <button onClick={handleThis}>Sample</button> */}
+    </>
   )
 }
