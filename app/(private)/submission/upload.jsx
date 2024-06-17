@@ -9,20 +9,14 @@ import { upload } from "./actions"
 
 export default function Upload() {
   const { data: session, status } = useSession()
-  const [files, setFiles] = useState([
-    { name: "sdfjsdf.mp4" },
-    { name: "sdfsdf.mp4" },
-  ])
+  const [files, setFiles] = useState([])
   const [previews, setPreviews] = useState([])
+  const [isError, setIsError] = useState("")
 
   const onDrop = useCallback(async (acceptedFiles) => {
+    setIsError(false)
     // Do something with the files, like upload to a server
-    console.log(acceptedFiles)
-    const formData = new FormData()
-    for (let i = 0; i < acceptedFiles.length; i++) {
-      formData.append("files", acceptedFiles[i])
-    }
-
+    // console.log(acceptedFiles)
     setFiles(acceptedFiles)
     const selectedFiles = Array.from(acceptedFiles).map((file) => ({
       file,
@@ -31,12 +25,7 @@ export default function Upload() {
     setPreviews(selectedFiles)
 
     try {
-      // const response = await axios.post("/api/upload", formData, {
-      //   headers: {
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // })
-      handleUpload()
+      // handleUpload()
       // console.log(response.data.message)
     } catch (error) {
       console.error("Error uploading files:", error)
@@ -45,21 +34,29 @@ export default function Upload() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
-  // const handleUpload = async () => {
-  //   console.log(files)
-  // }
+  const handleUpload = async (e) => {
+    e.preventDefault()
+    if (!session) {
+      setIsError("Please login with github")
+      return
+    }
 
-  // const handleFileChange = (e) => {
-  //   console.log(e.target)
-  //   setFiles(e.target.value)
-  // }
+    if (files.length <= 0) {
+      setIsError("Please upload video")
+      return
+    }
 
-  // if (!session) {
-  //   return <Callout type="error">Please login with github</Callout>
-  // }
-
-  const handleUpload = () => {
-    console.log("object")
+    console.log("object", files)
+    const formData = new FormData()
+    for (let i = 0; i < files.length; i++) {
+      formData.append("files", files[i])
+    }
+    formData.append("userId", session.userId)
+    // const response = await axios.post("/api/upload", formData, {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // })
   }
 
   if (status === "loading") {
@@ -89,6 +86,7 @@ export default function Upload() {
           value={session.email ? session.email : "sample@gmail.com"}
         />
       </div>
+
       <div className="flex flex-row items-center gap-4">
         <label htmlFor="username" className="w-[20%] flex justify-end">
           Github username
@@ -142,7 +140,7 @@ export default function Upload() {
         >
           <input {...getInputProps()} accept="video/*" />
           {previews.length > 0 && (
-            <ul className="w-full flex flex-wrap gap-2">
+            <ul className="w-full flex flex-wrap gap-2 justify-center">
               {previews.map(({ file, url }, index) => (
                 <li
                   key={index}
@@ -164,11 +162,20 @@ export default function Upload() {
           )}
         </div>
       </div>
+
+      {isError && (
+        <div className="w-full pl-[20%]">
+          <Callout type="error" className="mt-0  ">
+            {isError}
+          </Callout>
+        </div>
+      )}
+
       <div className="flex flex-col items-center">
         <div className="pl-[20%] flex justify-start">
           <button
             className=" flex h-10  w-44 betterhover:hover:bg-gray-600 dark:betterhover:hover:bg-gray-300 justify-center rounded-md border border-transparent bg-black px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-gray-800 dark:bg-white dark:text-black dark:focus:ring-white sm:text-sm  transition-all "
-            onClick={upload}
+            onClick={handleUpload}
           >
             Submission
           </button>
