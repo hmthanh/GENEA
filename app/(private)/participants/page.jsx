@@ -87,33 +87,6 @@ export default async function Page() {
           </tbody>
         </table>
       </div>
-
-      {/* <div class="grid grid-cols-4 ">
-        <div class="bg-white p-4 border">Row 1, Col 1</div>
-        <div class="bg-white p-4 border border-l-0">Row 1, Col 2</div>
-        <div class="bg-white p-4 border border-l-0">Row 1, Col 3</div>
-        <div class="bg-white p-4 border border-l-0">Row 1, Col 4</div>
-
-        <div class="bg-white p-4 border">Row 2, Col 1</div>
-        <div class="bg-white p-4 border border-l-0">Row 2, Col 2</div>
-        <div class="bg-white p-4 border border-l-0">Row 2, Col 3</div>
-        <div class="bg-white p-4 border border-l-0">Row 2, Col 4</div>
-
-        <div class="bg-white p-4 border">Row 3, Col 1</div>
-        <div class="bg-white p-4 border">Row 3, Col 2</div>
-        <div class="bg-white p-4 border">Row 3, Col 3</div>
-        <div class="bg-white p-4 border">Row 3, Col 4</div>
-
-        <div class="bg-white p-4 border">Row 4, Col 1</div>
-        <div class="bg-white p-4 border">Row 4, Col 2</div>
-        <div class="bg-white p-4 border">Row 4, Col 3</div>
-        <div class="bg-white p-4 border">Row 4, Col 4</div>
-
-        <div class="bg-white p-4 border">Row 5, Col 1</div>
-        <div class="bg-white p-4 border">Row 5, Col 2</div>
-        <div class="bg-white p-4 border">Row 5, Col 3</div>
-        <div class="bg-white p-4 border">Row 5, Col 4</div>
-      </div> */}
     </div>
   )
 }

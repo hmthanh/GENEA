@@ -14,7 +14,7 @@ export default function NewFilePond() {
       maxFiles={3}
       server="/api/upload"
       name="files" /* sets the file input name, it's filepond by default */
-      labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+      labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
     />
   )
 }

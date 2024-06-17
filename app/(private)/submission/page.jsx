@@ -18,34 +18,22 @@ import Upload from "./upload"
 // registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
 export default function Page() {
-  //   const supabase = createClient()
-
-  //   const {
-  //     data: { user },
-  //   } = await supabase.auth.getUser()
-
-  //   if (!user) {
-  //     return redirect("/login")
-  //   }
-
   return (
     <>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-        Upload
+      <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+        Submission
       </h1>
-      <p class="mt-6 leading-7 first:mt-0">
-        When enabled, KaTeX’s CSS and fonts will be automatically included in
+      <h2 class="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-10 border-b pb-1 text-3xl border-neutral-200/70 contrast-more:border-neutral-400 dark:border-primary-100/10 contrast-more:dark:border-neutral-400">
+        Download input samples
+      </h2>
+      <p className="mt-6 leading-7 first:mt-0">
+        When enabled, KaTe's CSS and fonts will be automatically included in
         your site, and you can start writing math expressions in your MDX files.
-        Using LaTeX within MDX is as simple as wrapping your expression in{" "}
-        <code class="nextra-code" dir="ltr">
-          $
-        </code>{" "}
-        or{" "}
-        <code class="nextra-code" dir="ltr">
-          $$
-        </code>
-        .
+        Using LaTeX within MDX is as simple as wrapping your expression in
       </p>
+      <h2 class="font-semibold tracking-tight text-slate-900 dark:text-slate-100 mt-10 border-b pb-1 text-3xl border-neutral-200/70 contrast-more:border-neutral-400 dark:border-primary-100/10 contrast-more:dark:border-neutral-400">
+        Upload videos
+      </h2>
       <div className="mt-3">
         <Upload handleUpload={upload} />
       </div>
