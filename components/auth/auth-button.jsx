@@ -1,17 +1,8 @@
-// import { createClient } from "@/utils/supabase/client"
-// import Link from "next/link"
-// import { signOut } from "./actions"
-// import { useSession } from "next-auth/react"
-// import Image from "next/image"
-// import Loading from "../loading/loading"
-// import { signIn } from "@/auth"
 "use client"
 
 import { useState } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
 import Loading from "../loading/loading"
-import Image from "next/image"
-import Link from "next/link"
 
 export default function AuthButton() {
   const { data: session, status } = useSession()

@@ -1,10 +1,9 @@
 import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import GitHubProvider from "next-auth/providers/github"
-import NextAuth from "next-auth"
 import clientPromise from "@/server/mongodb"
+import NextAuth from "next-auth"
 
-// export default NextAuth({
-const { handlers, auth, signIn, signOut } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: MongoDBAdapter(clientPromise, {
     collections: {
       Users: "users",
@@ -41,5 +40,3 @@ const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
 })
-
-export { handlers, auth, signIn, signOut }
