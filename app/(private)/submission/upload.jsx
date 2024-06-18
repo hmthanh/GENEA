@@ -6,6 +6,7 @@ import { useDropzone } from "react-dropzone"
 import { Callout } from "@/nextra"
 import Loading from "@/components/loading/loading"
 import { upload } from "./actions"
+import axios from "axios"
 
 export default function Upload() {
   const { data: session, status } = useSession()
@@ -48,18 +49,18 @@ export default function Upload() {
 
     console.log("object", files)
 
-    upload(files)
-    // const formData = new FormData()
-    // for (let i = 0; i < files.length; i++) {
-    //   formData.append("files", files[i])
-    // }
-    // formData.append("userId", session.userId)
-    // const response = await axios.post("/api/upload", formData, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // })
-    // console.log(response)
+    // upload(files)
+    const formData = new FormData()
+    for (let i = 0; i < files.length; i++) {
+      formData.append("video", files[i])
+    }
+    formData.append("userId", session.userId)
+    const response = await axios.post("/api/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    console.log(response)
   }
 
   if (status === "loading") {
