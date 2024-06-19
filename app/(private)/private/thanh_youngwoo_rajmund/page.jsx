@@ -6,11 +6,11 @@ import React, { useState } from "react"
 export default function Page() {
   const [submission, setSubmission] = useState("")
   const [studies, setStudies] = useState("")
-  const [inputids, setInputIds] = useState("")
+  const [codes, setCodes] = useState("")
   const handleGenerate = async () => {
     const res = await axios.get("/api/generate")
     setSubmission(JSON.stringify(res.data.videoitems, null, 2))
-    setInputIds(JSON.stringify(res.data.inputids, null, 2))
+    setCodes(JSON.stringify(res.data.codes, null, 2))
     setStudies(JSON.stringify(res.data.studies, null, 2))
     console.log("result", res)
   }
@@ -23,37 +23,38 @@ export default function Page() {
       <p className="mt-6 leading-7 first:mt-0">
         This page is private to only for Thanh Youngwoo Rajmund
       </p>
-      <div className="mt-3"></div>
-      <button
-        className="text-sm py-2 px-4 border border-green-500 bg-green-500 text-white contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap subpixel-antialiased hover:underline rounded-md transition-all"
-        aria-current="true"
-        onClick={handleGenerate}
-      >
-        Generate All
-      </button>
-
       <div className="flex flex-row items-center gap-4">
-        <label htmlFor="inputids" className="flex justify-end w-[15%]">
+        <label htmlFor="codes" className="flex justify-end w-[15%]">
           Inputs
         </label>
         <textarea
           className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
-          id="inputids"
-          rows="20"
-          name="inputids"
-          value={inputids}
-          onChange={(e) => setInputIds(e.target.value)}
+          id="codes"
+          rows="7"
+          name="codes"
+          value={codes}
+          onChange={(e) => setCodes(e.target.value)}
         />
+      </div>
+      <hr />
+      <div className="mt-3 text-center">
+        <button
+          className="text-sm py-2 px-4 border border-green-500 bg-green-500 text-white contrast-more:text-gray-700 contrast-more:dark:text-gray-100 max-md:hidden whitespace-nowrap subpixel-antialiased hover:underline rounded-md transition-all"
+          aria-current="true"
+          onClick={handleGenerate}
+        >
+          Generate All Studies
+        </button>
       </div>
 
       <div className="flex flex-row items-center gap-4">
         <label htmlFor="submission" className="flex justify-end w-[15%]">
-          Submission
+          All Submission
         </label>
         <textarea
           className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
           id="submission"
-          rows="20"
+          rows="10"
           name="submission"
           value={submission}
           onChange={(e) => setSubmission(e.target.value)}

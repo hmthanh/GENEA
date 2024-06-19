@@ -24,22 +24,22 @@ export async function GET(req, res) {
     )
   }
 
+  const inputcodes = await db.collection("inputcode").find({}).toArray()
+  const codes = inputcodes[0].codes
+
   const submissions = await db.collection("submissions").find({}).toArray()
   const teamitems = submissions.map((submission) => {
     return submission.videoitems
   })
-  const inputids = submissions[0].videoitems.map((item) => {
-    return item.inputid
-  })
 
   const studies = []
 
-  inputids.map((inputid) => {
+  codes.map((code) => {
     const crossInputId = []
 
     teamitems.map((teamitem) => {
       teamitem.map((videoitem) => {
-        if (videoitem.inputid === inputid) {
+        if (videoitem.inputid === code) {
           crossInputId.push(videoitem)
         }
       })
@@ -64,7 +64,7 @@ export async function GET(req, res) {
       {
         success: true,
         msg: "Your submission uploaded successfully.",
-        inputids: inputids,
+        codes: codes,
         videoitems: teamitems,
         studies: studies,
         error: null,
