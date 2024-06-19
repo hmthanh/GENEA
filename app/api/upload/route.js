@@ -6,8 +6,6 @@ import {
   PutObjectCommand,
 } from "@aws-sdk/client-s3"
 import { v4 as uuid } from "uuid"
-// import formidable from "formidable"
-import * as formidable from "formidable"
 import { Upload } from "@aws-sdk/lib-storage"
 
 async function buffer(readable) {
@@ -123,7 +121,6 @@ export async function POST(req, res) {
   //   Body: fileContent,
   //   ContentType: contentType,
   // }
-  // const form = new formidable.IncomingForm()
 
   // form.parse(req, async (err, fields, files) => {
   //   if (err) {
