@@ -49,6 +49,8 @@ export async function POST(req, res) {
   //   fs.unlinkSync(videoFile.filepath)
   // }
   const userId = formData.get("userId")
+  const email = formData.get("email")
+  const teamname = formData.get("teamname")
   const s3 = new S3Client({
     endpoint: process.env.B2_ENDPOINT,
     region: process.env.B2_REGION,
@@ -104,7 +106,7 @@ export async function POST(req, res) {
     return Response.json(
       {
         success: false,
-        msg: "Authentication failed. Check your credentials and permissions.",
+        msg: "Your submission is failed, please contant support.",
         error: error,
       },
       { status: 500 }

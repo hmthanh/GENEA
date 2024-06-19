@@ -1,7 +1,7 @@
 "use client"
 
 import { useSession } from "next-auth/react"
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { Callout } from "@/nextra"
 import Loading from "@/components/loading/loading"
@@ -12,10 +12,25 @@ export default function Upload() {
   const { data: session, status } = useSession()
   const [files, setFiles] = useState([])
   const [previews, setPreviews] = useState([])
-  const [isError, setIsError] = useState("")
+  const [errorMsg, setErrorMsg] = useState("")
+  const [uploading, setUploading] = useState(false)
+  const [success, setSuccess] = useState("")
+
+  const [email, setEmail] = useState("")
+  const [teamname, setTeamName] = useState("")
+
+  useEffect(() => {
+    if (session) {
+      setEmail(session.email)
+      setTeamName(session.name)
+    }
+  }, [session])
 
   const onDrop = useCallback(async (acceptedFiles) => {
-    setIsError(false)
+    setErrorMsg(false)
+    setUploading(false)
+    setSuccess("")
+
     // Do something with the files, like upload to a server
     // console.log(acceptedFiles)
     setFiles(acceptedFiles)
@@ -38,29 +53,51 @@ export default function Upload() {
   const handleUpload = async (e) => {
     e.preventDefault()
     if (!session) {
-      setIsError("Please login with github")
+      setErrorMsg("Please login with github")
       return
     }
 
     if (files.length <= 0) {
-      setIsError("Please upload video")
+      setErrorMsg("Please upload video")
       return
     }
 
-    console.log("object", files)
+    // if (!email) {
+    //   setErrorMsg("Please add email address")
+    //   return
+    // }
 
-    // upload(files)
-    const formData = new FormData()
-    for (let i = 0; i < files.length; i++) {
-      formData.append("video", files[i])
+    // if (!teamname) {
+    //   setErrorMsg("Please add your team name")
+    //   return
+    // }
+
+    try {
+      const formData = new FormData()
+      formData.append("userId", session.userId)
+      formData.append("email", email)
+      formData.append("teamname", teamname)
+
+      for (let i = 0; i < files.length; i++) {
+        formData.append("video", files[i])
+      }
+
+      const response = await axios.post("/api/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+
+      const { success, msg, error } = response.data
+      if (success) {
+        setSuccess(msg)
+      } else {
+        setErrorMsg(msg)
+        console.log(error)
+      }
+    } catch (error) {
+      setErrorMsg(error)
     }
-    formData.append("userId", session.userId)
-    const response = await axios.post("/api/upload", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
-    console.log(response)
   }
 
   if (status === "loading") {
@@ -75,19 +112,43 @@ export default function Upload() {
     return <Callout type="error">Please login with github</Callout>
   }
 
+  if (success) {
+    return (
+      <div className="w-full p-12 justify-center ">
+        <Callout type="info" className="mt-0">
+          {success}
+        </Callout>
+      </div>
+    )
+  }
+
   return (
     <form className="mt-6 flex flex-col w-[80%] px-10 gap-4">
+      <div className="flex flex-row items-center gap-4">
+        <label htmlFor="name" className="w-[20%] flex justify-end">
+          Team Name
+        </label>
+        <input
+          className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
+          id="name"
+          type="name"
+          name="name"
+          value={teamname}
+          onChange={(e) => setTeamName(e.target.value)}
+        />
+      </div>
+
       <div className="flex flex-row items-center gap-4">
         <label htmlFor="email-address" className="w-[20%] flex justify-end">
           Email address
         </label>
         <input
-          disabled={true}
           className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
           id="email-address"
           type="email"
           name="email-address"
-          value={session.email ? session.email : "sample@gmail.com"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
@@ -97,25 +158,11 @@ export default function Upload() {
         </label>
         <input
           disabled={true}
-          className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
+          className="flex-grow disabled:bg-gray-200 min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
           id="username"
           type="username"
           name="username"
           value={session.username}
-        />
-      </div>
-
-      <div className="flex flex-row items-center gap-4">
-        <label htmlFor="name" className="w-[20%] flex justify-end">
-          Name
-        </label>
-        <input
-          disabled={true}
-          className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
-          id="name"
-          type="name"
-          name="name"
-          value={session.name}
         />
       </div>
 
@@ -125,7 +172,7 @@ export default function Upload() {
         </label>
         <input
           disabled={true}
-          className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
+          className="flex-grow min-w-0 disabled:bg-gray-200 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
           id="userId"
           type="userId"
           name="userId"
@@ -142,7 +189,7 @@ export default function Upload() {
           style={{ border: "2px dashed #666666" }}
           className="w-[80%] p-4 cursor-pointer rounded-lg text-center appearance-none border border-[#666666] bg-white text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
         >
-          <input {...getInputProps()} accept="video/*" />
+          <input id="upload" {...getInputProps()} accept="video/*" />
           {previews.length > 0 && (
             <ul className="w-full flex flex-wrap gap-2 justify-center">
               {previews.map(({ file, url }, index) => (
@@ -167,10 +214,10 @@ export default function Upload() {
         </div>
       </div>
 
-      {isError && (
+      {errorMsg && (
         <div className="w-full pl-[20%]">
           <Callout type="error" className="mt-0  ">
-            {isError}
+            {errorMsg}
           </Callout>
         </div>
       )}
@@ -178,10 +225,10 @@ export default function Upload() {
       <div className="flex flex-col items-center">
         <div className="pl-[20%] flex justify-start">
           <button
-            className=" flex h-10  w-44 betterhover:hover:bg-gray-600 dark:betterhover:hover:bg-gray-300 justify-center rounded-md border border-transparent bg-black px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-gray-800 dark:bg-white dark:text-black dark:focus:ring-white sm:text-sm  transition-all "
+            className=" flex h-10 items-center gap-2 w-44 betterhover:hover:bg-gray-600 dark:betterhover:hover:bg-gray-300 justify-center rounded-md border border-transparent bg-black px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-gray-800 dark:bg-white dark:text-black dark:focus:ring-white sm:text-sm  transition-all "
             onClick={handleUpload}
           >
-            Submission
+            {uploading ? <Loading color="#fff" /> : "Submission"}
           </button>
         </div>
       </div>
