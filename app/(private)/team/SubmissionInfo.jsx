@@ -6,12 +6,18 @@ export default function SubmissionInfo({ submission }) {
     <div
       className={cn(
         "flex flex-col border p-2 rounded-lg",
-        "border-red-200 bg-red-100"
+        "border-green-200 bg-green-100"
       )}
     >
-      <div className="">inputid: {submission.inputid}</div>
-      <div className="">videoid: {submission.videoid}</div>
-      <div className="">teamid: {submission.teamid}</div>
+      <div className="">
+        inputid: <code className="nextra-code">{submission.inputid}</code>
+      </div>
+      <div className="">
+        videoid: <code className="nextra-code">{submission.videoid}</code>
+      </div>
+      <div className="">
+        teamid: <code className="nextra-code">{submission.teamid}</code>
+      </div>
       <div className="">
         url:{" "}
         <a
