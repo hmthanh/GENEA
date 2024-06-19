@@ -9,49 +9,13 @@ import { v4 as uuid } from "uuid"
 import { Upload } from "@aws-sdk/lib-storage"
 import clientPromise from "@/server/mongodb"
 
-async function buffer(readable) {
-  const chunks = []
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk)
-  }
-  return Buffer.concat(chunks)
-}
-
 export async function POST(req, res) {
   const formData = await req.formData()
-  // console.log(req.headers)
-  // const formData = await req.formData()
-
-  // const buf = await buffer(req)
-  // const rawBody = buf.toString("utf8")
-  // console.log(rawBody)
-  // const data = await req.formData()
-  // console.log("data: ", data)
-
-  // // Access the uploaded video files
-  // const videoFiles = Array.isArray(files.videos) ? files.videos : [files.videos]
-
-  // // Process each video file
-  // for (let i = 0; i < videoFiles.length; i++) {
-  //   const videoFile = videoFiles[i]
-
-  //   // Generate a unique key for the video file
-  //   const uniqueKey = `videos/${Date.now()}_${videoFile.originalFilename}`
-
-  //   // Create the parameters for the PutObjectCommand
-  //   const params = {
-  //     Bucket: process.env.B2_BUCKET_NAME,
-  //     Key: uniqueKey,
-  //     Body: fs.createReadStream(videoFile.filepath),
-  //     ContentType: videoFile.mimetype,
-  //   }
-
-  //   // Clean up the temporary file
-  //   fs.unlinkSync(videoFile.filepath)
-  // }
   const userId = formData.get("userId")
   const email = formData.get("email")
   const teamname = formData.get("teamname")
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const s3 = new S3Client({
     endpoint: process.env.B2_ENDPOINT,
     region: process.env.B2_REGION,
@@ -60,9 +24,30 @@ export async function POST(req, res) {
       secretAccessKey: process.env.B2_APPLICATIONKEY,
     },
   })
+  if (!s3) {
+    return Response.json(
+      {
+        success: false,
+        msg: "Cannot connect to blackblaze storage.",
+        error: null,
+      },
+      { status: 500 }
+    )
+  }
 
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const client = await clientPromise
   const db = client.db("HemVip")
+  if (!db) {
+    return Response.json(
+      {
+        success: false,
+        msg: "Cannot connect to MongoDB storage.",
+        error: null,
+      },
+      { status: 500 }
+    )
+  }
 
   const submissions = []
 
@@ -71,7 +56,7 @@ export async function POST(req, res) {
       if (key === "video") {
         const arrayBuffer = await value.arrayBuffer()
         const uniqueKey = `genea/${userId}/${Date.now()}_${value.name}`
-        console.log("Uploading uniqueKey", uniqueKey)
+        console.log("Uploading uniqueKey: ", uniqueKey)
 
         // Create the parameters for the PutObjectCommand
         const params = {
@@ -88,7 +73,7 @@ export async function POST(req, res) {
         })
 
         parallelUploads3.on("httpUploadProgress", (progress) => {
-          console.log("progress", progress)
+          console.log("progress", progress.Key)
         })
 
         const uploadResult = await parallelUploads3.done()
@@ -114,7 +99,7 @@ export async function POST(req, res) {
     const insertResult = await db
       .collection("submissions")
       .insertOne({ userId, teamname, email, submissions })
-    console.log("insertResult", insertResult)
+    // console.log("insertResult", insertResult)
 
     if (insertResult.insertedId) {
       return Response.json(
