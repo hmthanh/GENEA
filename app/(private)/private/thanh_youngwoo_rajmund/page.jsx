@@ -6,10 +6,12 @@ import React, { useState } from "react"
 export default function Page() {
   const [submission, setSubmission] = useState("")
   const [studies, setStudies] = useState("")
+  const [inputids, setInputIds] = useState("")
   const handleGenerate = async () => {
-    const result = await axios.get("/api/generate")
-    setSubmission(JSON.stringify(result.data.data, null, 2))
-    console.log("result", result)
+    const res = await axios.get("/api/generate")
+    setSubmission(JSON.stringify(res.data.videoitems, null, 2))
+    setInputIds(JSON.stringify(res.data.inputids, null, 2))
+    console.log("result", res)
   }
 
   return (
@@ -28,6 +30,20 @@ export default function Page() {
       >
         Generate All
       </button>
+
+      <div className="flex flex-row items-center gap-4">
+        <label htmlFor="inputids" className="flex justify-end w-[15%]">
+          Inputs
+        </label>
+        <textarea
+          className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
+          id="inputids"
+          rows="20"
+          name="inputids"
+          value={inputids}
+          onChange={(e) => setInputIds(e.target.value)}
+        />
+      </div>
 
       <div className="flex flex-row items-center gap-4">
         <label htmlFor="submission" className="flex justify-end w-[15%]">

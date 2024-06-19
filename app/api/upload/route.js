@@ -49,7 +49,7 @@ export async function POST(req, res) {
     )
   }
 
-  const submissions = []
+  const videoitems = []
 
   try {
     for (let [key, value] of formData.entries()) {
@@ -84,7 +84,7 @@ export async function POST(req, res) {
           filename.pop()
         }
         const inputid = filename.join(".")
-        submissions.push({
+        videoitems.push({
           inputid: inputid,
           videoid: uploadResult.Key,
           teamid: userId,
@@ -98,7 +98,7 @@ export async function POST(req, res) {
 
     const insertResult = await db
       .collection("submissions")
-      .insertOne({ userId, teamname, email, submissions })
+      .insertOne({ userId, teamname, email, videoitems })
     // console.log("insertResult", insertResult)
 
     if (insertResult.insertedId) {

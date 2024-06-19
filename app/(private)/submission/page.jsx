@@ -1,8 +1,5 @@
 "use client"
 
-// import { createClient } from "@/utils/supabase/server"
-import { redirect } from "next/navigation"
-
 import Upload from "./upload"
 
 export default function Page() {

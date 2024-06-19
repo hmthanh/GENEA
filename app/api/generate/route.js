@@ -25,7 +25,22 @@ export async function GET(req, res) {
     }
 
     const submissions = await db.collection("submissions").find({}).toArray()
-    console.log(submissions)
+    const videoitems = submissions.map((submission) => {
+      return submission.submissions
+    })
+    const inputids = submissions[0].submissions.map((item) => {
+      return item.inputid
+    })
+
+    inputids.map((inputid) => {
+      const studies = []
+
+      videoitems.map((submission) => {
+        submission
+      })
+      console.log(inputid)
+    })
+    // console.log(submissions[0].submissions)
 
     // const insertResult = await db
     //   .collection("studies")
@@ -37,7 +52,8 @@ export async function GET(req, res) {
         {
           success: true,
           msg: "Your submission uploaded successfully.",
-          data: submissions,
+          inputids: inputids,
+          videoitems: videoitems,
           error: null,
         },
         { status: 200 }
@@ -47,6 +63,7 @@ export async function GET(req, res) {
         {
           success: false,
           msg: "Upload success but failed insert submissions, please contact for support.",
+          inputids: "",
           error: null,
         },
         { status: 500 }
@@ -57,6 +74,7 @@ export async function GET(req, res) {
       {
         success: false,
         msg: "Your submissions is failed, please contact for support.",
+        inputids: "",
         error: error,
       },
       { status: 500 }
