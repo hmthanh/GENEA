@@ -11,6 +11,7 @@ export default function Page() {
     const res = await axios.get("/api/generate")
     setSubmission(JSON.stringify(res.data.videoitems, null, 2))
     setInputIds(JSON.stringify(res.data.inputids, null, 2))
+    setStudies(JSON.stringify(res.data.studies, null, 2))
     console.log("result", res)
   }
 
