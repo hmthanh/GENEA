@@ -2,16 +2,17 @@
 
 import React from "react"
 import clientPromise from "@/server/mongodb"
-import Study from "./Team"
+import Study from "./SubmissionInfo"
 import { Code, Pre, Table, Th, Tr } from "@/nextra"
 import cn from "clsx"
+import SubmissionInfo from "./SubmissionInfo"
 
 async function fetchTeam() {
   try {
     const client = await clientPromise
     const db = client.db("HemVip")
 
-    const team = await db.collection("team").find({}).toArray()
+    const team = await db.collection("submissions").find({}).toArray()
 
     // const newteam = team.filter((study) => study.status === "new")
 
@@ -59,11 +60,13 @@ export default async function Page() {
                 key={index}
                 className="border-b border-gray-100 dark:border-neutral-700/50"
               >
-                <td className="py-2 pl-6">{team.id}</td>
-                <td className="py-2 pl-6">{team.name}</td>
+                <td className="py-2 pl-6">{team.userId}</td>
+                <td className="py-2 pl-6">{team.teamname}</td>
                 <td className="py-2 pl-6 h-24">
-                  <div className="w-full overflow-y-auto nextra-code relative mt-6 first:mt-0">
-                    {JSON.stringify(team.submissions)}
+                  <div className="w-full overflow-y-auto relative first:mt-0 flex flex-col gap-2 max-h-96">
+                    {team.submissions.map((info, index) => {
+                      return <SubmissionInfo submission={info} key={index} />
+                    })}
                   </div>
                 </td>
               </tr>

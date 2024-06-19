@@ -13,7 +13,7 @@ export default function Upload() {
   const [files, setFiles] = useState([])
   const [previews, setPreviews] = useState([])
   const [errorMsg, setErrorMsg] = useState("")
-  const [uploading, setUploading] = useState(false)
+  const [uploading, setUploading] = useState("")
   const [success, setSuccess] = useState("")
 
   const [email, setEmail] = useState("")
@@ -27,8 +27,8 @@ export default function Upload() {
   }, [session])
 
   const onDrop = useCallback(async (acceptedFiles) => {
-    setErrorMsg(false)
-    setUploading(false)
+    setErrorMsg("")
+    setUploading("")
     setSuccess("")
 
     // Do something with the files, like upload to a server
@@ -52,6 +52,7 @@ export default function Upload() {
 
   const handleUpload = async (e) => {
     e.preventDefault()
+
     if (!session) {
       setErrorMsg("Please login with github")
       return
@@ -73,6 +74,7 @@ export default function Upload() {
     // }
 
     try {
+      setUploading("Uploading your submission, please waiting ...")
       const formData = new FormData()
       formData.append("userId", session.userId)
       formData.append("email", email)
@@ -97,6 +99,8 @@ export default function Upload() {
       }
     } catch (error) {
       setErrorMsg(error)
+    } finally {
+      setUploading("")
     }
   }
 
@@ -117,6 +121,20 @@ export default function Upload() {
       <div className="w-full p-12 justify-center ">
         <Callout type="info" className="mt-0">
           {success}
+        </Callout>
+      </div>
+    )
+  }
+
+  if (uploading) {
+    return (
+      <div className="w-full p-12  justify-center ">
+        <div className="flex w-full justify-center">
+          <Loading className="" />
+        </div>
+
+        <Callout type="warning" className="mt-0">
+          {uploading}
         </Callout>
       </div>
     )
@@ -228,7 +246,7 @@ export default function Upload() {
             className=" flex h-10 items-center gap-2 w-44 betterhover:hover:bg-gray-600 dark:betterhover:hover:bg-gray-300 justify-center rounded-md border border-transparent bg-black px-4 py-2 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-gray-800 dark:bg-white dark:text-black dark:focus:ring-white sm:text-sm  transition-all "
             onClick={handleUpload}
           >
-            {uploading ? <Loading color="#fff" /> : "Submission"}
+            Submission
           </button>
         </div>
       </div>

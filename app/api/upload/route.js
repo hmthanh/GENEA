@@ -7,6 +7,7 @@ import {
 } from "@aws-sdk/client-s3"
 import { v4 as uuid } from "uuid"
 import { Upload } from "@aws-sdk/lib-storage"
+import clientPromise from "@/server/mongodb"
 
 async function buffer(readable) {
   const chunks = []
@@ -60,6 +61,10 @@ export async function POST(req, res) {
     },
   })
 
+  const client = await clientPromise
+  const db = client.db("HemVip")
+
+  const submissions = []
   for (let [key, value] of formData.entries()) {
     if (key === "video") {
       const arrayBuffer = await value.arrayBuffer()
@@ -81,32 +86,59 @@ export async function POST(req, res) {
       })
 
       parallelUploads3.on("httpUploadProgress", (progress) => {
-        console.log(progress)
+        console.log("progress", progress)
       })
 
-      const result = await parallelUploads3.done()
-      console.log("Upload complete:", result)
+      const uploadResult = await parallelUploads3.done()
+      console.log("Upload complete:", uploadResult)
+
+      const filename = value.name.split(".")
+      if (filename.length > 1) {
+        filename.pop()
+      }
+      const inputid = filename.join(".")
+      submissions.push({
+        inputid: inputid,
+        videoid: uploadResult.Key,
+        teamid: userId,
+        url: uploadResult.Location,
+      })
 
       // Upload the video file to B2 storage
       // await s3.send(new PutObjectCommand(putObjectParams))
     }
   }
-  console.log("Finish")
+
+  const insertResult = await db
+    .collection("submissions")
+    .insertOne({ userId, teamname, email, submissions })
+  console.log("insertResult", insertResult)
 
   try {
-    return Response.json(
-      {
-        success: true,
-        msg: "Object uploaded successfully.",
-        error: null,
-      },
-      { status: 200 }
-    )
+    if (insertResult.insertedId) {
+      return Response.json(
+        {
+          success: true,
+          msg: "Your submission uploaded successfully.",
+          error: null,
+        },
+        { status: 200 }
+      )
+    } else {
+      return Response.json(
+        {
+          success: false,
+          msg: "Upload success but failed insert submissions, please contact for support.",
+          error: null,
+        },
+        { status: 500 }
+      )
+    }
   } catch (error) {
     return Response.json(
       {
         success: false,
-        msg: "Your submission is failed, please contant support.",
+        msg: "Your submissions is failed, please contact for support.",
         error: error,
       },
       { status: 500 }
