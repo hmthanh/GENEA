@@ -10,7 +10,7 @@ export default function SubmissionInfo({ submission }) {
       )}
     >
       <div className="">
-        inputid: <code className="nextra-code">{submission.inputid}</code>
+        inputcode: <code className="nextra-code">{submission.inputid}</code>
       </div>
       <div className="">
         videoid: <code className="nextra-code">{submission.videoid}</code>

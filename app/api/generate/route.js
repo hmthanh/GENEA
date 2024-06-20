@@ -1,12 +1,3 @@
-// "use server"
-
-import {
-  S3Client,
-  CreateBucketCommand,
-  PutObjectCommand,
-} from "@aws-sdk/client-s3"
-import { v4 as uuid } from "uuid"
-import { Upload } from "@aws-sdk/lib-storage"
 import clientPromise from "@/server/mongodb"
 
 export async function GET(req, res) {
@@ -32,6 +23,81 @@ export async function GET(req, res) {
     return submission.videoitems
   })
 
+  const templateStudies = {
+    status: "new",
+    name: "Pairwise Comparison of Gesture Generation AI Model Studies",
+    prolific_userid: "",
+    prolific_studyid: "",
+    prolific_sessionid: "",
+    completion_code: "CMTN9LUK",
+    total_actions: [],
+    pages: [
+      {
+        pageid: "3242342",
+        type: "generic",
+        name: "Startup guide to participate gesture generation study",
+        content: "",
+        actions: [],
+      },
+      {
+        pageid: "3242342",
+        type: "video",
+        name: "Page 1 of Y",
+        content: "How human-like was the agent in this video?",
+        selected: {
+          value: 9,
+          label: "Right better",
+        },
+        actions: [],
+        videos: [
+          {
+            teamid: "123123",
+            inputid: "56567342159353489347",
+            value: 4,
+            url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          },
+          {
+            teamid: "645634",
+            inputid: "56567342159353489347",
+            value: 9,
+            url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          },
+        ],
+      },
+      {
+        pageid: "3242342",
+        type: "video",
+        name: "Page 2 of Y",
+        content: "How human-like was the agent in this video?",
+        selected: {
+          value: 9,
+          label: "Right better",
+        },
+        actions: [],
+        videos: [
+          {
+            teamid: "123123",
+            inputid: "56567342159353489347",
+            value: 4,
+            url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          },
+          {
+            teamid: "645634",
+            inputid: "56567342159353489347",
+            value: 9,
+            url: "https://github.com/hmthanh/GENEA/raw/main/public/gesture_video.mp4",
+          },
+        ],
+      },
+      {
+        pageid: "3242342",
+        type: "finish",
+        name: "Finish page",
+        content: "",
+        actions: [],
+      },
+    ],
+  }
   const studies = []
 
   codes.map((code) => {
@@ -46,7 +112,7 @@ export async function GET(req, res) {
     })
 
     for (let i = 0; i < crossInputId.length; i++) {
-      for (let j = 1; j < crossInputId.length - 1; j++) {
+      for (let j = i + 1; j < crossInputId.length; j++) {
         studies.push({ videos: [crossInputId[i], crossInputId[j]] })
       }
     }
