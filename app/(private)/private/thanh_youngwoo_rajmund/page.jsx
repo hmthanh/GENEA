@@ -13,6 +13,7 @@ export default function Page() {
   const [codeSize, setCodeSize] = useState(12)
   const [totalCode, setTotalCode] = useState(40)
   const [nteam, setNTeam] = useState(4)
+  const [npairwise, setNPairwise] = useState(4)
   const [screenPerStudy, setScreenPerStudy] = useState(20)
   const [totalStudies, setTotalStudies] = useState(1000)
 
@@ -117,6 +118,20 @@ export default function Page() {
         <div className="flex flex-row items-center gap-4">
           <label htmlFor="nteam" className="w-[20%] flex justify-end">
             Total Submission (Team)
+          </label>
+          <input
+            className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
+            id="nteam"
+            type="number"
+            value={nteam}
+            onChange={(e) => setNTeam(e.target.value)}
+            name="nteam"
+          />
+        </div>
+
+        <div className="flex flex-row items-center gap-4">
+          <label htmlFor="nteam" className="w-[20%] flex justify-end">
+            Pairse Compare Screen Per Team
           </label>
           <input
             className="flex-grow min-w-0 appearance-none rounded-md border border-[#666666] bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:border-[#888888] dark:bg-transparent dark:text-white dark:focus:border-white sm:text-sm"
